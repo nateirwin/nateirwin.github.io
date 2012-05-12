@@ -1,0 +1,43 @@
+--- 
+layout: post
+title: Migrating from BlogEngine.Net to WordPress
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:78:"http://www.nateirwin.net/2008/11/02/migrating-from-blogenginenet-to-wordpress/";s:7:"tinyurl";s:25:"http://tinyurl.com/be27o8";s:4:"isgd";s:17:"http://is.gd/CELm";s:5:"bitly";s:19:"http://bit.ly/EjnYK";s:5:"snipr";s:22:"http://snipr.com/im4a5";s:5:"snurl";s:22:"http://snurl.com/im4a5";s:7:"snipurl";s:24:"http://snipurl.com/im4a5";}
+  _edit_last: "2"
+  tweetbackscheck: "1243099321"
+  tweetcount: "0"
+tags: 
+- Technology
+type: post
+status: publish
+---
+I finally did it. I pulled the trigger and switched nateirwin.net to WordPress. I’ve used open source Asp.Net blog engines (first dasBlog and then BlogEngine.Net) since the inception of this blog, but finally decided to move to the best supported blog engine out there. Why?
+
+Well, first of all I am ready for a simple blogging experience. I simply don’t have the time to “tweak” and “hack” anymore. When I first started writing back in the Fall of 2006, I had much more time on my hands. Nowadays I’m trying to juggle multiple projects and at least keep some semblance of a personal life going. Secondly, I really want to start playing around with platforms other than Asp.Net, and PHP seemed like a good place to start.
+
+So what does this mean for the blog? Well, now that I don’t have to put a lot of time into maintaining the blog, I’ll hopefully be able to post more often. I’m also planning on posting much more code, including some fully-working demo projects.
+
+Now that that’s out of the way, I’ll outline what I had to do to get all of my content from BlogEngine.Net into WordPress. It was actually pretty simple.
+
+First of all, I used the “Export to BlogML” tool in BlogEngine.Net to get all of my posts (including categories, comments, and tags) out of the system and into a format that I could easily transfer. <a href="http://blogml.org" target="_blank">BlogML</a> is…
+<blockquote>an open format derived from XML to store and restore the content of a blog.</blockquote>
+I then followed <a href="http://www.aaronlerch.com/blog/2007/08/23/breaking-up-moving-blog-engines/" target="_blank">this post</a> from Aaron Lerch’s blog to walk me through importing the content into WordPress. A couple of high-level points:
+<ol>
+	<li>Download the latest import module from the <a href="http://www.aaronlerch.com/blog/tools/" target="_blank">tools section</a> of Aaron Lerch’s site (here’s a <a href="http://www.aaronlerch.com/files/wordpress/blogml_wp_2.3.zip" target="_blank">direct link</a> to the download).</li>
+	<li>Update the “PATH_TO_CURRENT_DIRECTORY” section to the path that you’re using.</li>
+	<li>Download the Php.XPath library from Sourceforge.</li>
+	<li>Upload “blogml.php” and “XPath.class.php” to your “/wp-admin/import” directory.</li>
+	<li>Go to the “Manage&gt;Import” section in the WordPress admin area and click on “BlogML”.</li>
+	<li>Now you need to go back into the “blogml.php” file and comment out the section shown in the syntax box below(thanks to <a href="http://balajiramesh.wordpress.com/2008/06/21/blogml-importer-for-wordpress-25/" target="_blank">this post</a> for pointing this out).</li>
+	<li>Next, simply go back to the “Manage&gt;Import” section and load the BlogML file. When the operation is successfully finished, you should download the CSV file that is created in the process, as you can use this to create redirects in your .htaccess file from the old urls to the new urls.</li>
+</ol>
+<pre>
+//include_once('import.php');
+//if(function_exists('register_importer')) {
+    $blogml_import = new BlogML_Import();
+    register_importer('blogml', 'BlogML', ('Import posts, comments, users, and categories from a BlogML file'), array ($blogml_import, 'dispatch'));
+//}
+</pre>
+And that’s it. You are now good to go.

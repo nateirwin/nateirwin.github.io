@@ -1,0 +1,38 @@
+--- 
+layout: post
+title: Improving TortoiseSVN Performance
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:70:"http://www.nateirwin.net/2008/04/15/improving-tortoisesvn-performance/";s:7:"tinyurl";s:25:"http://tinyurl.com/cwxkmc";s:4:"isgd";s:17:"http://is.gd/CDld";s:5:"bitly";s:20:"http://bit.ly/14Uro1";s:5:"snipr";s:22:"http://snipr.com/ilx2j";s:5:"snurl";s:22:"http://snurl.com/ilx2j";s:7:"snipurl";s:24:"http://snipurl.com/ilx2j";}
+  _edit_last: "2"
+  tweetbackscheck: "1243068312"
+  tweetcount: "0"
+tags: 
+- Development
+type: post
+status: publish
+---
+I've been having some serious TortoiseSVN performance issues lately, including 30-45 second system freezes when using Windows Explorer to navigate through my system directories, so I decided to try and dig in a bit to figure out what was going on. Here's what I found:
+
+A lot of TortoiseSVN's overhead comes from the TSVNCache process. This process is responsible for tracking changes in versioned files and displaying status information back to the user through the Windows Shell. Unfortunately, it seems that the TSVNCache process is a bit of a resource hog and doesn't work as efficiently as one would hope.
+
+Here are some tips to help alleviate the issues. After implementing these two "fixes", my performance issues went away:
+
+Set the TSVNCache.exe process to a lower priority:
+<ul>
+	<li>Open up the Windows Task Manager (Ctrl-Alt-Del then press "Task Manager" button).</li>
+	<li>Under the "Processes" tab, sort by "Image Name" and then right-click on "TSVNCache.exe".</li>
+	<li>Hover over "Set Priority" and select "Low".</li>
+</ul>
+Turn off Icon Overlays, other than where they are explicitly needed (e.g. the directory where your repositories are located):
+<ul>
+	<li>Open up the TortoiseSVN settings dialog (on XP, Start &gt; All Programs &gt; TortoiseSVN &gt; Settings (32 and/or 64 bit)).</li>
+	<li>Click on "Icon Overlays" in the settings tree on the left-hand side of the dialog.</li>
+	<li>Check the "Show overlays and context menu only in explorer" box.</li>
+</ul>
+<p align="center"><img id="id" style="border-width: 0px" src="http://images.nateirwin.net/ImprovingTortoiseSVNPerformance_9685/tortoisePerformance2.png" border="0" alt="tortoisePerformance2" width="575" height="73" /></p>
+
+Narrow the icon overlays down to only your Subversion directories using the "Exclude paths:" and "Include paths:" dialogs at the bottom. Here are my settings:
+<p align="center"><a href="http://images.nateirwin.net/ImprovingTortoiseSVNPerformance_9685/tortoisePerformance1.png"><img id="id" style="border-width: 0px" src="http://images.nateirwin.net/ImprovingTortoiseSVNPerformance_9685/tortoisePerformance1_thumb.png" border="0" alt="tortoisePerformance1" width="554" height="289" /></a></p>
+<p align="left">Here's where I found most of the information: <a title="http://www.nabble.com/Disable-TSVNCache.exe-to-minimize-disk-IO--to2385446.html" href="http://www.nabble.com/Disable-TSVNCache.exe-to-minimize-disk-IO--to2385446.html">http://www.nabble.com/Disable-TSVNCache.exe-to-minimize-disk-IO--to2385446.html</a>.</p>

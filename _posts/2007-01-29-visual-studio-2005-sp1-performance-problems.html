@@ -1,0 +1,20 @@
+--- 
+layout: post
+title: Visual Studio 2005 SP1 Performance Problems
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+<img src="http://www.nateirwin.net/images/memoryhog3.png" alt="" align="right" />
+
+Visual Studio and I have a love hate relationship. I love working in it, but why does it have to hog all of my system resources? I've got a decent system (3GHz Pentium 4, 3 GB of RAM, etc.), but lately I've been running into major issues: 5 minute freeze-ups, devenv.exe using ~200 Mb of memory (which seems like a lot to me, but I found posts from other users saying that it used over 500 Mb on their systems), etc. Doing a Google search for "devenv.exe hogging resources" shows that many others are experiencing the same type of problems. The search also, unfortunately, reveals that there really isn't a great solution for the problem. You can always disable add-ons, of course, but this doesn't always fix the problem and sometimes just isn't an option.
+
+Well, I ran into an <a href="http://blogs.vbcity.com/drydo/archive/2006/06/15.aspx" target="_blank">interesting and bizarre workaround</a>: when you see that devenv.exe is getting out of control and funky minimize the Visual Studio window(s) and then restore it/them. This takes devenv.exe's memory usage down to a more reasonable level. Watch out, though, as it will likely start to slowly creep up again.
+
+The ultimate inefficient workaround that I'm currently implementing is downloading the next version of Visual Studio, currently codenamed "Orcas". I'm going to run it in a virtual machine on my desktop. I've been meaning to do this for awhile, as it's got a lot of features that I'm really interested in trying out, including full support for C# 3.0 and integration of the Language Integrated Query (LINQ) project, but this VS 2005 performance issue is pushing me towards this workaround a little faster than I might have gotten there otherwise.
+
+Anyone else have tips on optimizing the Visual Studio environment?

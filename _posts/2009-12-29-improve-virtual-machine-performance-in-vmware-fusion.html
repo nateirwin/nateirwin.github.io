@@ -1,0 +1,20 @@
+--- 
+layout: post
+title: Improve Virtual Machine Performance in VMWare Fusion
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Technology
+type: post
+status: publish
+---
+<span class="drop_cap">I</span>n early 2008, while working on a time-sensitive development project, the power supply and motherboard in my four year old homemade workstation failed and I was forced to make a decision: build another machine myself or give in and buy a machine with a good support contract. I decided to go with the latter, so I went down to the local Apple store and bought a Mac Pro (remember, this was a time-sensitive project, so I really needed the machine up and running within a day). At the time, I intended to install Windows on it and run with it, but after playing around a bit with OS X, I decided that I really liked the operating system and wanted to switch over to it permanently.
+
+The only problem with this was that I still needed to be able to develop .NET applications using Visual Studio, so I needed to either use Boot Camp to run a copy of Windows or set up Windows to run in a virtual machine. After a bit of research, I decided to use VMWare Fusion to run a Windows virtual machine within OS X. Problem solved. I was, and continued to be, very happy with the solution.
+
+Fast forward to a few weeks ago. I realized that the performance of my virtual machine (and OS X Snow Leopard in general) was starting to degrade dramatically. It was getting to the point where OS X would take minutes to boot up and my virtual machine was almost unusable. What to do?
+
+I had already upgraded the Mac Pro to six gigabytes of memory, so I didn't think throwing more memory in the machine would solve the performance issues. I did a bit of research, and found a number of articles touting impressive performance gains brought about by the installation of solid state drives. The only catch? They aren't cheap. But being that I was looking for a good end of the year tax deduction or two, I decided to go ahead and pull the trigger.
+
+I received my <a href="http://www.amazon.com/gp/product/B002IGT7IU?ie=UTF8&amp;tag=nateirwinnet-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B002IGT7IU" target="_blank">Intel X25-M drive</a> in the mail today, and followed <a href="http://macperformanceguide.com/Mac-LightingFast.html" target="_blank">these instructions</a> to replace my existing SATA boot drive with the new solid state drive (note that my boot drive also contains my virtual machine images). And the difference is amazing! Mac OS X boots up three times as fast as it did, all of my applications (including VMWare Fusion, Photoshop, and other "heavy" applications) startup within three seconds, and my virtual machine runs *almost as fast as a native Windows machine. In short, I am very happy with the purchase, and don't think I'll go back to using normal drives anytime soon.

@@ -1,0 +1,19 @@
+--- 
+layout: post
+title: Validation Scripts Stop Working in ASP.NET 2.0
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+Another problem and solution to a cryptic ASP.NET 2 problem. This is related to the issue with ASP.NET 1.1, ASP.NET 2.0, 64-bit, and IIS 6.0 that I discussed in my <a href="http://www.nateirwin.net/2006/10/31/64bit+Server+ASPNET+11+Amp+ASPNET+20.aspx">last blog post</a>.
+
+I noticed that all of my client-side validation scripts stopped working all of a sudden. Well, this was a major problem, as I didn't have any code to catch errors. The validation scripts were stopping errors (such as required fields being left blank) on the client-side before they were posted to the server. I did a Google search and found that many others had experienced the same "mysterious" behavior.
+
+Well, I finally found a solution to my problem at <a href="http://aspnetresources.com/blog/ie_validators.aspx#cmt459" target="_blank">ASPNetResources.com</a>. Turns out that when ASP.NET 1.1 was installed the other day on our 64-bit machine it messed with the scripts that are stored in the aspnet_client directory of the application. So, the solution simply involved removing all client-side scripts (command line: <span style="color: #ff0000;">c:\windows\microsoft.net\framework64\v2.0.50727\aspnet_regiis.exe -ea</span>) and then re-installing them (command line: <span style="color: #ff0000;">c\windows\microsoft.net\framework64\v2.0.50727\aspnet_regiis.exe -c</span>). The thing is, the validation just stopped working today while the ASP.NET 1.1 issue was solved a couple of days ago. Humm...
+
+<span style="font-size: xx-small;"><em>Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B0002M5TCU/nateirwinnet-20" target="_blank">Brad Mehldau - Live in Tokyo</a>...
+My Nose is In <a href="http://www.amazon.com/exec/obidos/ASIN/0060558121/nateirwinnet-20" target="_blank">Neil Gaiman - American Gods</a>...</em></span>

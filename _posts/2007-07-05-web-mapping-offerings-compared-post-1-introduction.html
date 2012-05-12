@@ -1,0 +1,39 @@
+--- 
+layout: post
+title: Web Mapping Offerings Compared (Post 1 - Introduction)
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Web Mapping
+type: post
+status: publish
+---
+Online mapping is taking off in a big way. Just look at the number of online mapping sites now available (Ask.com, ESRI, Google, Mapquest, Microsoft, and Yahoo! are the ones I can think of off the top of my head) and, especially, at the work and money that's being put into enhancing these applications and the data that they serve, and you'll see that mapping - albeit in a simple form - has truly become an integral part of most people's everyday lives. These products all have their own way of doing things, although there are obvious similarities between them all. Now the rush is on to see who is going to provide the best - and most open - application programming interface (API) and licensing model.
+
+Over the last couple of months, I have worked to develop prototype applications with several different web mapping APIs, including ESRI's, Google's, Microsoft's, and Open Layers'. My goal when initiating this development was to get a feel for the strengths and weaknesses of each of the offerings, and, in the end, to decide the best route for my organization. In addition to working  with each of the APIs alone, I also worked with (or at least discussed in length with the vendor(s)) some third-party products that allow you to tie into the data offerings of the large online mapping vendors while working directly with databases on the backend. Through the process of learning these new technologies, I discovered quite a bit about each of them, and feel like I now have a pretty good understanding of how they compare.
+
+Before I delve into each of them, here's a bit of background to help frame this series of posts: My organization is pretty much a strictly ESRI shop. Our current architecture sits on a Microsoft/ESRI platform, so we really only use SQL Server, ArcSDE, and ArcGIS Server. When ArcGIS Server 9.2 came out, we decided that we were going to use it exclusively for our web map applications, as it tied seamlessly into our existing infrastructure and expertise. Well, we initially ran into the same problems that everyone who used the Web ADF ran into (some of which a lot of developers are <strong><em>still</em></strong> running into - see the <a href="http://forums.esri.com/forums.asp?c=158" target="_blank">ArcGIS Server Forums</a>) and were a bit discouraged by the lack of quality, documentation, and - most importantly - response from ESRI. We weren't dissuaded, though; we kept at it, trying to build tile cache after tile cache after... Granted, we were trying to build massive tile caches, but we figured since ArcGIS Server was an enterprise product, it would be up for the task. From our experiences, I can now say that we were wrong. There was only minimal documentation available initially to help us in our massive cache builds, so we had to learn each lesson the hard way. In addition to this, the product simply didn't work as advertised. Even with quite a few fairly powerful servers dedicated to building cache for weeks at a time, a lot of times we couldn't get the processes to successfully complete, and had to either start over from scratch (as there is still not a good way, at least that we're aware of, of picking up a failed cache build where it left off) or give up all together.
+
+In this context, with lots of frustration and a bit of regret, we made the decision to widen our vision to other web map products and/or data services, as we needed to find a way to include high-quality and high-performance nationwide base data for our applications. In doing our initial research, we considered a couple of important requirements:
+<ol>
+	<li>Ability to Plug-in to our Existing Infrastructure</li>
+	<li>Performance</li>
+	<li>Cost</li>
+	<li>Quality of User Experience</li>
+	<li>Ability to Support Open Data Types</li>
+	<li>Scalability</li>
+</ol>
+After considering these requirements, we settled on a number of possibilities, including:
+<ul>
+	<li>ArcWeb Services</li>
+	<li>Google Maps API</li>
+	<li>GeoServer</li>
+	<li>MapDotNet Server</li>
+	<li>Microsoft Virtual Earth API</li>
+	<li>Open Layers API</li>
+	<li>Visual Fusion Server</li>
+</ul>
+Now, you've probably noticed a couple of similarities in these different products. First of all, many of them are free-to-use (unless you use their data internally, of course, or go over the usage limits that they have specified (that is, in the case of using data served by either Google or Microsoft)). ESRI ArcWeb Services, MapDotNet Server, and Visual Fusion Server are the exceptions to this first rule. Second, each of them have the ability to access high-performing data that are served from either Google or Microsoft. This was probably the most important requirement to us, as we realized while trying to build our tile caches for ArcGIS Server that there was no way our organization could sustain the practice of maintaining huge datasets and building massive tile caches, and that, even if we did get a cache successfully built, we would never be able to meet the performance expectations/needs of our users while serving the data from our infrastructure. The last common thread between the products is the fact that they all support open standards, albeit some more comprehensively than others. This was another absolute requirement, as, like many other organizations, we are trying to move in the direction of open standards.
+
+In the series of posts that are soon to follow, I will discuss my experience with these different products, focusing on the requirements of my organization and how well each of the products meet these requirements. This may be helpful to others, as our requirements seem to be shared by many others out there.

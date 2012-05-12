@@ -1,0 +1,279 @@
+html, body {
+  height: 100%;
+}
+
+img, object {
+  max-width: 100%
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+  display: block
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 15px;
+}
+
+::-moz-selection {
+  background: #333;
+  color: #fff;
+}
+::selection {
+  background: #333;
+  color: #fff;
+}
+
+/* Sticky Footer */
+#wrapper {
+  min-height: 100%;
+}
+#main {
+  overflow: auto;
+  padding-bottom: 75px;
+}
+#sticky {
+  position: relative;
+  margin-top: -75px;
+  height: 45px;
+  clear: both;
+}
+/*Opera Fix*/
+body:before {
+  content: "";
+  height: 100%;
+  float: left;
+  width: 0;
+  margin-top: -32767px;/
+}
+
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+a:hover, a:active {
+  outline: 0
+}
+.clearfix {
+  *zoom: 1  
+}
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both
+}
+.navbar-inner {
+  background-color: #BF4D28;
+  background-image: none;
+}
+.navbar .nav > li > a, .navbar-inner a {
+  color: #000;
+}
+body {
+  color: #454441;
+  background-color: #fff;
+}
+body, p {
+  font-family: "Cantarell", sans-serif;
+  font-size: 13px;
+  line-height: 28px;
+}
+li {
+  line-height: 28px
+}
+a {
+  font-weight: inherit;
+  line-height: inherit;
+  color: #655643;
+  text-decoration: none;
+}
+a:hover {
+  color: #BF4D28;
+  text-decoration: underline;
+}
+p {
+  margin-bottom: 14px
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: normal;
+  color: #111;
+  line-height: 28px;
+}
+h1 {
+  margin: 0 0 10px;
+  font-size: 32px;
+  line-height: 40.32px;
+}
+h2 {
+  margin: 20px 0 10px;
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+h3 {
+  margin: 24px 0 5px;
+  font-size: 16px;
+}
+h4 {
+  margin: 16px 0 5px;
+  font-size: 9.328px;
+}
+h1 small {
+  font-size: 20px;
+  color: #999999;
+}
+ul, ol {
+  padding: 0;
+  margin: 0 0 14px;
+}
+ul {
+  list-style: disc
+}
+ol {
+  list-style: decimal
+}
+li {
+  line-height: 28px
+}
+hr {
+  margin: 27px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #fff;
+}
+strong {
+  font-style: inherit;
+  font-weight: bold;
+  color: #222;
+}
+em {
+  font-style: italic;
+  font-weight: inherit;
+}
+abbr {
+  background-color: #eee;
+  display: inline-block;
+  padding: 3px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #555;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+code, pre {
+  padding: 0 3px 2px;
+  font-family: monospace;
+  font-size: 13px;
+  color: #333333;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+code {
+  padding: 2px 4px;
+  color: #d14;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+pre {
+  display: block;
+  padding: 13.5px;
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 28px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+    pre code {
+      padding: 0;
+      color: inherit;
+      background-color: transparent;
+      border: 0;
+    }
+blockquote {
+  border-left: 1px solid #DDD;
+  color: #666;
+  padding: 10px 20px;
+  margin-bottom: 14px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+    blockquote p {
+      font-size: 14px;
+      margin-bottom: 0;
+      text-indent: -0.4em;
+    }
+    blockquote p:before {
+      content: '\201C'
+    }
+    blockquote p:after {
+      content: '\201D'
+    }
+img {
+  display: block;
+  margin: 0 0 20px;
+}
+.post {
+  position: relative
+}
+    .post img {
+      border: solid 1px #DDDDDD;
+      max-width: 100%;
+      padding: 5px;
+    }
+    .post ul, .post ol {
+      margin-left: 30px
+    }
+.tw_button {
+  margin: 14px 0
+}
+.meta {
+  display: block;
+  margin: -10px 0 10px;
+  color: #ccc;
+}
+.right {
+  float: right
+}
+.left {
+  float: left
+}
+
+@media (max-width: 480px) { 
+  body, p, li {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  pre {
+    font-size: 12px;
+    line-height: 20px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}

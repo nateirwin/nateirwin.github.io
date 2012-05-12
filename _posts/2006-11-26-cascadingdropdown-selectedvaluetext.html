@@ -1,0 +1,25 @@
+--- 
+layout: post
+title: CascadingDropDown SelectedValue.Text
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:72:"http://www.nateirwin.net/2006/11/26/cascadingdropdown-selectedvaluetext/";s:7:"tinyurl";s:25:"http://tinyurl.com/bs2r7n";s:4:"isgd";s:17:"http://is.gd/CEt0";s:5:"bitly";s:20:"http://bit.ly/12mHGG";s:5:"snipr";s:22:"http://snipr.com/im2t3";s:5:"snurl";s:22:"http://snurl.com/im2t3";s:7:"snipurl";s:24:"http://snipurl.com/im2t3";}
+  _edit_last: "2"
+  tweetbackscheck: "1243077894"
+  tweetcount: "0"
+tags: 
+- Development
+type: post
+status: publish
+---
+A quick one: Up until this latest version of the ASP.NET Ajax extensions, one of the glaring "bugs" (if you want to call it that) with the CascadingDropDown control was that it returned the backend value of the dropdown rather than the actual selected display value. This caused problems when trying to access the SelectedValue. The only way to quasi-cleanly work around this was to manually edit the associated javascript.
+
+Well, I just found out that this problem was addressed in the latest release. You can now access the SelectedValue of a CascadingDropDown control without having to implement a messy workaround:
+<pre>
+ddlCars.SelectedItem.Text
+</pre>
+Not anything ground-breaking, but a <em>very</em> welcome fix.
+
+<span style="font-size: xx-small;"><em>Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B00008RBJU/nateirwinnet-20" target="_blank">Broken Social Scene - You Forgot It in People</a>...
+My Nose is In <a href="http://www.amazon.com/exec/obidos/ASIN/0553375407/nateirwinnet-20" target="_blank">Daniel Quinn - Ishamel</a>...</em></span>

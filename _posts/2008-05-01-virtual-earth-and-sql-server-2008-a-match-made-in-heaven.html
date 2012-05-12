@@ -1,0 +1,31 @@
+--- 
+layout: post
+title: Virtual Earth and SQL Server 2008 - A Match Made in Heaven?
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:93:"http://www.nateirwin.net/2008/05/01/virtual-earth-and-sql-server-2008-a-match-made-in-heaven/";s:7:"tinyurl";s:25:"http://tinyurl.com/autqzh";s:4:"isgd";s:17:"http://is.gd/CCDt";s:5:"bitly";s:19:"http://bit.ly/pkWwM";s:5:"snipr";s:22:"http://snipr.com/ilthx";s:5:"snurl";s:22:"http://snurl.com/ilthx";s:7:"snipurl";s:24:"http://snipurl.com/ilthx";}
+  _edit_last: "2"
+  tweetbackscheck: "1243063775"
+  tweetcount: "0"
+tags: 
+- Database
+- SQL Server
+- Virtual Earth
+- Web Mapping
+type: post
+status: publish
+---
+<p align="center"><img id="id" style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" src="http://images.nateirwin.net/VirtualEarthandSQLServer2008AMatchMadein_AC0F/WebServicesArchitecture.png" border="0" alt="WebServicesArchitecture" width="437" height="237" /></p>
+
+Johannes Kebeck has an <a href="http://johanneskebeck.spaces.live.com/blog/cns!42E1F70205EC8A96!4504.entry" target="_blank">interesting post</a> showing how to get the benefits of the MapPoint Web Service method, FindNearRoute, through the use of SQL Server 2008. He uses a newly-added feature of the Virtual Earth API that allows developers to gain access to a complete returned route-geometry when performing a route. This new feature, however, does require that the mapping application use <a href="http://msdn.microsoft.com/en-us/library/bb924353.aspx" target="_blank">customer identification</a> (which, in turn, requires that you sign up for a <a href="https://mappoint-css.live.com/mwssignup" target="_blank">Virtual Earth platform developer account</a>).
+
+If you haven't checked out Johannes' blog lately, you might want to give it a go now. He has written a whole slew of Virtual Earth and SQL Server 2008 posts lately, and there's a wealth of good information there.
+
+We've already started using SQL Server 2008 in some of our development applications, and are planning on taking advantage of ArcSDE 9.3's ability to utilize SQL Server 2008's spatial data types. We're hoping that by doing this, we'll be able to offer access to our geometries through both traditional GIS tools (ArcGIS Desktop for our shop) and web services (ADO.Net Data Services returning JSON and XML and other services built on top of WCF). As we're already using ArcGIS Server 9.3's REST capabilities from within our JavaScript/Virtual Earth applications, if we can "close the circle" by tying SQL Server 2008 and Virtual Earth together in a robust and meaningful way, we may just be able to hit the proverbial bulls-eye. We've already written quite a bit of code that brings these technologies together, but are still deciding on the best overall approach.
+
+One thing that is still unclear to me is if we're going to utilize ESRI's tools heavily or try to avoid them as much as possible and stick with all of the non-ESRI .NET technologies. In a lot of ways, we're already going the latter route (saying ArcGIS Server 9.2 still leaves a bad taste in my mouth), but I've been impressed with ArcGIS Server 9.3 so far, so I'm withholding judgement until we see how the new set of technologies perform in a couple of months.
+
+And from the Microsoft camp, I expect that more direct integration with SQL Server 2008 will be coming soon to the Virtual Earth API. I haven't, however, heard of any solid dates yet. Any integration will be much-welcomed, as it will save us precious development time.
+
+Whichever route we decide to take, it's pretty obvious that now is a great time to be working in web mapping. Especially if you're able to take advantage of all the integration points available through .NET.

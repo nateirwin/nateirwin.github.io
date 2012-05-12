@@ -1,0 +1,53 @@
+--- 
+layout: post
+title: JSON Array to C# Using Json.Net
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:66:"http://www.nateirwin.net/2008/11/20/json-array-to-c-using-jsonnet/";s:7:"tinyurl";s:25:"http://tinyurl.com/cydppm";s:4:"isgd";s:17:"http://is.gd/CCP2";s:5:"bitly";s:19:"http://bit.ly/9Xjr3";s:5:"snipr";s:22:"http://snipr.com/iluly";s:5:"snurl";s:22:"http://snurl.com/iluly";s:7:"snipurl";s:24:"http://snipurl.com/iluly";}
+  _edit_last: "2"
+  tweetbackscheck: "1243103381"
+  tweetcount: "0"
+tags: 
+- Development
+type: post
+status: publish
+---
+<a href="http://www.codeplex.com/Json">Json.Net</a> is a great little library that “makes working with JavaScript and  JSON formatted data in .Net simple”. I’ve been using Json.Net for quite some  time now, but have restricted my use mostly to building JSON strings in C# and  pushing them down to the client. It works well for this, although I'll admit that I don't think that manually building JSON strings in C# will ever be anything other than tedious.
+
+Well, today I starting working on a query framework for NPMap, and decided  that JSON was the easiest (and most efficient) way to pass parameters for the  queries up to the server. You see, the user interface allows the user to query  one or more database entities and choose one or more (or all) fields from each  entity to include in the query. So I decided to send up an array of JavaScript  objects that looked a little something like this:
+<pre>
+[
+  {
+    "entity": "Battlefields",
+    "fields": "BattlefieldCode, BattlefieldName, StartDate, EndDate"
+  },
+  {
+    "entity": "CivilRightsSites",
+    "fields": "SiteId, StartDate, EndDate"
+  }
+]
+</pre>
+But how to deserialize that JSON string into something I can use on the server? Enter Json.Net.
+
+First I created a class to hold each of the JavaScript objects:
+<pre>
+public class QueryEntity
+{
+     public string entity {get; set; }
+     public string fields {get; set; }
+}
+</pre>
+Next I deserialized the JSON string into a list of QueryEntity objects:
+<pre>
+List&lt;QueryEntity&gt; entities = (List&lt;QueryEntity&gt;) JavaScriptConvert.DeserializeObject(json, typeof(List&lt;QueryEntity&gt;));
+</pre>
+And finally I iterated through the objects:
+<pre>
+foreach (QueryEntity obj in entities)
+{
+     string entity = obj.entity;
+     string fields = obj.fields;
+}
+</pre>
+And that's it. Json.Net saves the day again!

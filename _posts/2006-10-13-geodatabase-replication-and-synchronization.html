@@ -1,0 +1,26 @@
+--- 
+layout: post
+title: Geodatabase Replication and Synchronization
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:80:"http://www.nateirwin.net/2006/10/13/geodatabase-replication-and-synchronization/";s:7:"tinyurl";s:25:"http://tinyurl.com/dfoj5m";s:4:"isgd";s:17:"http://is.gd/CFlD";s:5:"bitly";s:19:"http://bit.ly/X8GjX";s:5:"snipr";s:22:"http://snipr.com/im74l";s:5:"snurl";s:22:"http://snurl.com/im74l";s:7:"snipurl";s:24:"http://snipurl.com/im74l";}
+  _edit_last: "2"
+  tweetbackscheck: "1243082276"
+  tweetcount: "0"
+tags: 
+- Database
+type: post
+status: publish
+---
+As many of you probably already know, ESRI's upcoming ArcGIS 9.2 release will greatly enhance the ability of an organization to expand its enterprise GIS to multiple sites through the use of geodatabase replication and synchronization. This ability comes with the workgroup and enterprise versions of ArcSDE; it does not work with personal or file-based geodatabases.
+
+Data have to be registered with the geodatabase and versioned before they are replicated, and a globally unique identifier (GUID) has to be added to each table record to aid in the tracking of multiple copies of the same tables (feature classes). Thankfully, there are ways to limit the data that are synchronized between geodatabases, allowing for a database administrator to control the amount of bandwidth used - and the data exchanged - by replicating and synchronizing only the data that are needed.
+
+As far as versions go, they are replicated and synchronized with the geodatabase, as well. This is obviously necessary, but I can see it being both a good and a bad thing, depending on how you look at it. One thing is for sure, though: the addition of these features to the geodatabase, while adding a tremendously useful resource to the toolset of a geodatabase administrator, adds another dimension of complexity to the SDE world.
+
+I am currently working on a project that will eventually replicate a geodatabase between multiple (10-50) sites, including the management and replication/synchronization of over 300 versions of multiple enterprise datasets from these sites. Up until the 9.2 release, this project wasn't a possibility for us, as many of the sites that we are focusing on have iffy - at best - network connectivity. Also, the check-in/out capabilities that currently exist in the ESRI world have problems that make them an undesirable solution in many situations.
+
+I plan on detailing the progress of our project as it progresses. I'm sure we'll run into many pitfalls and (hopefully) some triumphs along the way.
+
+<em><span style="font-size: xx-small;">Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B000EOTUY4/nateirwinnet-20">Calexico - Garden Ruin</a>...</span></em>

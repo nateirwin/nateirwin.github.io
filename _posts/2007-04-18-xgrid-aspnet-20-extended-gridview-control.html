@@ -1,0 +1,29 @@
+--- 
+layout: post
+title: "XGrid: ASP.NET 2.0 Extended GridView Control"
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+I was trying to overcome one of the shortfalls in ASP.NET 2.0's built-in controls today and stumbled on a gem: an extended GridView control that was built by <a href="http://bhaidar.net" target="_blank">Bilal Haidar</a>.
+
+The problem I ran into came up when I defined a fixed height for a GridView control. If you don't define a fixed height, the GridView dynamically changes its height when you page/sort, etc. This can obviously be a design problem, so I definitely like to avoid it. The thing is, if you go ahead and define a fixed height and then page to a view with only a couple of rows, the rows that do exist expand in height to fill up to the defined height. This can also be a major design problem.
+
+Well, the search for a solution led me to XGrid.
+
+First of all, and most importantly, this is not a completely rewritten control; it, rather, extends on the core capabilities of ASP.NET 2.0's GridView control. There are lots of custom Grid controls out there, including Telerik's AJAX-enabled r.a.d.grid and ComponentArt's Grid for ASP.net, but most of them are rewritten from scratch.
+
+Here's a highlight [at least for me] of the added features; a <a href="http://aspalliance.com/946" target="_blank">complete list</a> of the XGrid control's features is available at <a href="http://aspalliance.com" target="_blank">ASPAlliance.com</a>:
+<ul>
+	<li>Single row and double row click events</li>
+	<li>Context menu for each row</li>
+	<li>GridView height fixed when number of rows is less than fixed height</li>
+	<li>Built-in filter textbox</li>
+</ul>
+You can download the new control from the following link: <a href="http://authors.aspalliance.com/bhaidar/946.zip">http://authors.aspalliance.com/bhaidar/946.zip</a>. To install, grab the CustomControls.dll from the bin directory, put it in your site's bin directory, and add the controls to your toolbox in Visual Studio.
+
+Happy gridding!

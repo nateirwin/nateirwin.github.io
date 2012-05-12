@@ -1,0 +1,41 @@
+--- 
+layout: post
+title: ESRI White Paper - 'An Overview of Distributing Data with Geodatabases'
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:104:"http://www.nateirwin.net/2007/07/18/esri-white-paper-an-overview-of-distributing-data-with-geodatabases/";s:7:"tinyurl";s:25:"http://tinyurl.com/auljb7";s:4:"isgd";s:17:"http://is.gd/CCg3";s:5:"bitly";s:20:"http://bit.ly/1gk8MT";s:5:"snipr";s:22:"http://snipr.com/ilrh8";s:5:"snurl";s:22:"http://snurl.com/ilrh8";s:7:"snipurl";s:24:"http://snipurl.com/ilrh8";}
+  _edit_last: "2"
+  tweetbackscheck: "1243064373"
+  tweetcount: "0"
+tags: 
+- Database
+type: post
+status: publish
+---
+This past week, ESRI released several new white papers. The one that I'm most interested in is "<a href="http://downloads.esri.com/support/whitepapers/other_/ArcGISServer_Distributed_Install_061407.pdf" target="_blank">An Overview of Distributing Data with Geodatabases</a>". This is the white paper that was <a href="http://www.nateirwin.net/A+NotSoConcise+Summary+Of+My+Week+At+The+2007+ESRI+UC.aspx" target="_blank">promised</a> during the "Managing Distributed Data with Geodatabase Replication" session at the ESRI 2007 UC.
+
+The first several pages are full of the now obligatory replication/synchronization diagrams which, while maybe helpful to some, I've seen at least a hundred times now. The post then, however, goes into the guts of the different techniques, including geodatabase replication, DBMS replication, and simple copying and loading of data. Here's a quick summary of each technique:
+<ul>
+	<li><span style="text-decoration: underline;">Geodatabase replication</span> replicates data from a source (parent) geodatabase to a destination (child) geodatabase and creates the infrastructure to allow for tracking and synchronization of changes. Geodatabase replication is fairly powerful; it allows parameters to be defined that restrict the data that are replicated. At 9.2, geodatabase replication can only occur on SDE geodatabases, but at 9.3 SDE geodatabases will be able replicate one-way with a file or personal geodatabase. There are different types of replicas, including check-out/check-in, one-way, and two-way.</li>
+</ul>
+<blockquote>Developers can work with replicas through the GeoDatabaseDistributed ArcObjects library components. If you just need coarse-grained access to the geodatabase, you can use the GeodataServer object model. If you need more fine-grained access, however, you will want to use some of the older ArcObjects object models which allow you more capabilities but restricts you to working with geodatabases that live on your Local Area Network.
+
+Geodatabase synchronization can be automated using the synchronize changes geoprocessing tool (create a Python script, call it from a script (.bat or otherwise), and schedule it using Windows scheduler).
+
+In cases where large amounts of data are stored in a geodatabase and need to be moved to a remote office and synchronized, it may be best to detach the database from the parent, send it to the child (mail it, etc.), and then reattach it. You can then use the 'register with existing data' tool to create the replica.</blockquote>
+<ul>
+	<li><span style="text-decoration: underline;">DBMS replication</span> is good for replicating an entire geodatabase to a read-only geodatabase in a connected system. Therefore, this is a good option for load balancing and fail over. The major limitation is the inability to choose what gets replicated.</li>
+</ul>
+<blockquote>To setup and use DBMS replication, you must first understand how a geodatabase interacts with its underlying database.</blockquote>
+<ul>
+	<li><span style="text-decoration: underline;">Data copying and loading</span> is the "low-tech" way of setting up replication between multiple geodatabases. There are multiple geoprocessing tools available to help automate and schedule this process. Using this method, however, there is not a great way to verify data integrity during the replication. You can write your own code to avoid redundancy, but this is a lot of work compared to just using one of the other replication techniques.</li>
+</ul>
+This white paper didn't go as in-depth as I was hoping for. It does, however, tie the concepts together, and it contains links to other helpful resources. We've been using one-way replication successfully for a while now, and are looking to setup several two-way replicas with some remote offices here shortly. I'm sure you'll hear back from me about our experiences.
+
+Here are a couple of other resources to help you learn more about distributed geodatabases. The technical brief is especially useful:
+<ul>
+	<li>Link to the "<a href="http://downloads.esri.com/support/whitepapers/other_/ArcGISServer_Distributed_Install_061407.pdf" target="_blank">An Overview of Distributing Data with Geodatabases</a>" white paper</li>
+	<li>ESRI's "Geodatabase Replication: An Overview" Podcast (<a href="http://www.esri.com/news/podcasts/transcripts/geodatabasereplication_anoverview.pdf" target="_blank">link to transcript</a>)</li>
+	<li>ESRI Systems Integration Technical Brief: "<a href="http://www.esri.com/news/podcasts/transcripts/geodatabasereplication_anoverview.pdf" target="_blank">ArcSDE Geodatabase Replication Overview</a>"</li>
+</ul>

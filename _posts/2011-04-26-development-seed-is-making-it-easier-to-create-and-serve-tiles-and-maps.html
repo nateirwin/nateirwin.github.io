@@ -1,0 +1,20 @@
+--- 
+layout: post
+title: Development Seed is making it easier to create and serve tiles and maps
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Cartography
+- Design
+- Web Mapping
+type: post
+status: publish
+---
+<p><span class="drop_cap">I</span>nteresting news today in the world of web mapping: <a href="http://developmentseed.org">Development Seed</a>, a company that works primarily in the international development space, <a href="http://developmentseed.org/blog/2011/apr/26/mapbox-launches-tilestream-hosting-and-announces-tilemill-appliance">announced</a> that they are releasing two new commercially-focused products: a hosted TileStream service and a TileMill/TileStream appliance that is mobile and can be deployed behind corporate firewalls. If you don&#8217;t know much about <a href="http://tilemill.com/">TileMill</a> or <a href="https://github.com/mapbox/tilestream">TileStream</a>, here&#8217;s a brief explanation: These two standalone but complementary open source software projects work together to allow cartographers to design, create, and serve image tiles for use in web maps. The hosted service and appliance will undoubtedly make it easier for someone out there to get web maps up and running, and that is a good thing.</p>
+
+<p>Although these are interesting products in and of themselves, what makes TileMill and TileStream both interesting to me and relevant to my organization is their support for the <a href="http://mbtiles.org">MBTiles</a> format and <a href="https://github.com/mapbox/mbtiles-spec/blob/master/1.1/utfgrid.md">UTFGrid encoding scheme</a>. These two implementations combined make up the &#8220;holy grail&#8221; of web mapping; using them together allows you to utilize tiled images to render data over web maps while still supporting interactive mouseover/click behavior that users have come to expect when using modern web maps.</p>
+
+<p>MBTiles is a portable format that utilizes SQLite to store image tiles as blob data. A MBTiles file can be easily transferred over the network, and can serve tiles even when a mobile device is disconnected from the network. In short, MBTiles makes it easy to store, transfer, and serve image tiles for use in web mapping applications. The UTFGrid encoding scheme adds support for interactive mouse events to a set of tiles stored in the MBTiles format. In many cases, this eliminates the need for a call to the server to get information about a geospatial feature.</p>
+
+<p>What&#8217;s funny is that <a href="http://mapwrecker.wordpress.com/">Bill Thorp</a> of the <a href="http://maps.nps.gov">NPMap</a> team developed a similar approach a few years back. We were looking at ways to improve performance, and wrote a layer handler for NPMap that built out an R-tree for a geospatial layer on the server, then pushed it out to the web browser where it could be used to dynamically &#8220;query&#8221; the R-tree generated on top of the ArcGIS Server service. Our implementation wasn&#8217;t quite as refined or elegant as Development Seed&#8217;s, though, so I really look forward to utilizing TileMill and TileStream in some of our NPMap projects.</p>

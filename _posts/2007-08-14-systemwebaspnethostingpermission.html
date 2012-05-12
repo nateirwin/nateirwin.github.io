@@ -1,0 +1,26 @@
+--- 
+layout: post
+title: System.Web.AspNetHostingPermission
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:69:"http://www.nateirwin.net/2007/08/14/systemwebaspnethostingpermission/";s:7:"tinyurl";s:25:"http://tinyurl.com/b38le9";s:4:"isgd";s:17:"http://is.gd/CDMi";s:5:"bitly";s:20:"http://bit.ly/10U2zv";s:5:"snipr";s:22:"http://snipr.com/ilze8";s:5:"snurl";s:22:"http://snurl.com/ilze8";s:7:"snipurl";s:24:"http://snipurl.com/ilze8";}
+  _edit_last: "2"
+  tweetbackscheck: "1243094484"
+  tweetcount: "0"
+tags: 
+- Development
+type: post
+status: publish
+---
+I've run into this problem several times before, but have always forgotten to document it. Because of this, every time that I get to work setting up a new development environment and then try to compile an ASP.NET 2.0 application that sits on a network share, I have to relearn my lesson. Well, this time I'm going to stick this tidbit of information here, in hopes that I'll remember it next time I go through this, and I hope that it helps someone else out there, as well.
+
+Basically, the issue pops up when you try to compile an ASP.NET 2.0 application that lives on a network share in Visual Studio 2005. Here's the error: "ASP.NET runtime error: Request for the permission of type 'System.Web.AspNetHostingPermission, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089' failed."
+
+The AspNetHostingPermission Class protects public types in the System.Web namespaces. If you're developing, you can set the trust level on your development machine and move on. If you need to access these public types during runtime, you'll need to change the trust level in your application's web.config. By default, the AspNetHostingPermission is only assigned to applications that are running under Full trust.
+
+Luckily, the fix is simple (once you find it). On <strong><em>your development machine</em></strong>, open up the Microsoft .NET Framework 2.0 Configuration utility, either by getting to it through the "Administrative Tools" section of Control Panel or through the "Administrative Tools" link on your Start menu. Note that if you don't have "Administrative Tools" installed, you can <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=c16ae515-c8f4-47ef-a1e4-a8dcbacff8e3&amp;displaylang=en" target="_blank">download it</a> from Microsoft. It's included with the Windows Server 2003 SP1 Admin Pack.
+
+Once into the Microsoft .NET Framework 2.0 Configuration Utility, click the "+" next to "My Computer", click on "Runtime Security Policy", and then click on "Adjust Zone Security" underneath the "Tasks" section in the right-hand pane. In the "Security Adjustment Wizard" dialog, verify that the "Make changes to this computer" radio button is selected and click "Next&gt;" to advance in the dialog. Select "Local Intranet" from the top pane and move the slider on the bottom up to the very top, or "Full Trust". Click "Next&gt;" and then finish to verify and submit the change. If you still have Visual Studio 2005 open, you'll need to close it and reopen it. Recompile, and you should be good.
+
+Thanks to <a href="http://weblogs.asp.net/jgaylord/archive/2007/02/13/system-web-aspnethostingpermission-when-accessing-network-or-intranet-projects-using-visual-studio-2005.aspx" target="_blank">Jason Gaylord's blog entry</a> for pointing me (back) in the right direction.

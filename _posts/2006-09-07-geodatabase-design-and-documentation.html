@@ -1,0 +1,35 @@
+--- 
+layout: post
+title: Geodatabase Design and Documentation
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:73:"http://www.nateirwin.net/2006/09/07/geodatabase-design-and-documentation/";s:7:"tinyurl";s:25:"http://tinyurl.com/bm642l";s:4:"isgd";s:17:"http://is.gd/CJEz";s:5:"bitly";s:19:"http://bit.ly/SQrtD";s:5:"snipr";s:22:"http://snipr.com/imxiw";s:5:"snurl";s:22:"http://snurl.com/imxiw";s:7:"snipurl";s:24:"http://snipurl.com/imxiw";}
+  _edit_last: "2"
+  tweetbackscheck: "1243110201"
+  tweetcount: "0"
+tags: 
+- Database
+type: post
+status: publish
+---
+I've been looking for a better way to design, diagram, and document my geodatabase designs.
+
+Visio is my tool of choice for database design. It is easy to use and allows me to visualize and demonstrate the capabilities and limitations of my data model before actually creating the geodatabase. Using Visio, I can generate a UML schema and export it to XMI. From there, it is possible to generate all of the objects that exist in the data model into a geodatabase. There are other tools available, in addition to Visio. I haven't yet experimented with them, though.
+
+For diagramming geodatabases that weren't designed in Visio, I use <a href="http://arcscripts.esri.com/details.asp?dbid=13616" target="_blank">Geodatabase Diagrammer</a>, which is available for download on <a href="http://arcscripts.esri.com" target="_blank">ArcScripts</a>. This sweet little utility allows you to export a diagram straight out of a geodatabase (with the newest release, it supports both personal and enterprise) into Visio. It was initially developed as an internal ESRI tool, but was released to the public to help in the documentation of geodatabases. One problem that the tool has, though, is that it uses the default ESRI layout for the diagrams - which probably isn't that big of a deal for most. Another weakness that I see is that, like Geodatabase Designer 2, you have to export the entire geodatabase schema. This likely isn't much of a problem with personal geodatabases (or maybe it is for some???), but it can be a pain to export an entire SDE geodatabase schema out and then pick through the Visio model to get <em>just</em> the elements that you want in your diagram. I usually have more than one "data model" in my enterprise geodatabases, and would like to be able to select the feature classes that are associated with a particular model and get only those relationships classes and related tables that are tied to the model.
+
+For documentation of geodatabases, I use Richie Carmichael's (ESRI) <a href="http://arcscripts.esri.com/details.asp?dbid=13484" target="_blank">Geodatabase Designer 2</a>, and it works well for what it was designed to do. It allows you to import and export Geodatabase XML schemas and documents all of the tables (spatial and otherwise), subtypes, domains, relationships, and networks that exist in a geodatabase in both HTML and XML. One shortcoming that the tool has is the fact that, like the geodatabase diagrammer, you cannot pick and choose "parts" of a geodatabase to export. On the positive side, though, this is obviously a valuable tool. It would be really valuable if I could figure out how to convert the XML into a Visio model. If only we could reverse engineer an SDE geodatabase!
+
+Bottomline from what I've found is that if you didn't use UML to initially design your geodatabase, there is no single tool or method that will allow you to easily diagram your model. If you, however, did design your initial data model in Visio, you can then use that model as a visual tool and generate your geodatabase from it. To document all of the contents of the model, use Geodatabase Designer 2.
+
+I would love to hear about other methods of designing and documenting geodatabases. Any ideas?
+
+Helpful Links:
+<ul>
+	<li><a href="http://support.esri.com/index.cfm?fa=knowledgebase.documentation.viewDoc&amp;PID=43&amp;MetaID=658">Building Geodatabases with CASE Tools</a></li>
+	<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=3dd3f3be-656d-4830-a868-d0044406f57d&amp;DisplayLang=en">Visio 2003 UML to XMI Export Tool</a></li>
+</ul>
+<em><span style="font-size: xx-small;">Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B000002KD9/nateirwinnet-20">Neil Young - After the Gold Rush</a>...</span></em>
+
+<em></em>

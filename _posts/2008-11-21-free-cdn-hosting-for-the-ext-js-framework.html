@@ -1,0 +1,27 @@
+--- 
+layout: post
+title: Free CDN Hosting for the Ext JS Framework
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:78:"http://www.nateirwin.net/2008/11/21/free-cdn-hosting-for-the-ext-js-framework/";s:7:"tinyurl";s:25:"http://tinyurl.com/c2bl4g";s:4:"isgd";s:17:"http://is.gd/CDDM";s:5:"bitly";s:19:"http://bit.ly/ld0h9";s:5:"snipr";s:22:"http://snipr.com/ilyor";s:5:"snurl";s:22:"http://snurl.com/ilyor";s:7:"snipurl";s:24:"http://snipurl.com/ilyor";}
+  _edit_last: "2"
+  tweetbackscheck: "1243084284"
+  tweetcount: "0"
+tags: 
+- Development
+type: post
+status: publish
+---
+I'm a little late on this one, but I was just reading through some queued blog posts and <a href="http://extjs.com/blog/2008/11/18/ext-cdn-custom-builds-compression-and-fast-performance/">discovered</a> that Ext has teamed up with CacheFly to host their JavaScript library.
+
+This is big news. I still haven't quite figured out why Google doesn't serve Ext through their "<a href="http://code.google.com/apis/ajaxlibs/">AJAX Libraries API</a>" (I assume it has something to do with Ext's licensing), but now that we can get it from somewhere else, this is no longer a worry.
+
+Developers using Ext can instantly take advantage of fast delivery and caching by pointing to the resources on CacheFly. Here are the urls for ext-all.js and ext-all.css:
+
+<pre>
+&lt;script type="text/javascript" src="http://extjs.cachefly.net/ext-2.2/ext-all.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-2.2/resources/css/ext-all.css" /&gt;
+</pre>
+
+And CacheFly will also host your custom build of Ext, so if you aren't using some of the controls in your application, go and build your own Ext using the <a href="http://extjs.com/products/extjs/build/">Build It!</a> tool. You'll be given the choice to dump the build on CacheFly.

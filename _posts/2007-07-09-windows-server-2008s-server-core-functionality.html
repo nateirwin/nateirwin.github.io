@@ -1,0 +1,18 @@
+--- 
+layout: post
+title: Windows Server 2008's "Server Core" Functionality
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Technology
+type: post
+status: publish
+---
+I haven't (yet) had the chance to experiment with the June Community Technology Preview (CTP) of Windows Server 2008, previously code-named "Longhorn", but was excited <a href="http://blogs.iis.net/bills/archive/2007/06/26/iis7-on-server-core-june-ctp-build-released.aspx" target="_blank">to read</a> that a server core role has been added for IIS7. If you haven't played with or read about any of the features included in Windows Server 2008, I'll catch you up on one of the ones that I'm most excited about: the ability to run Windows Server 2008 in a stripped-down, lightweight, and extremely focused mode. Microsoft is calling this new feature, which is basically a set of new operating systems, server core.
+
+When running a server core, you are setting up an operating system to perform a single task, and are not installing any unnecessary features. This not only increases the stability of the operating system and lessens the load on the supporting hardware, but it also makes the machine much less vulnerable to attacks and makes maintenance (e.g. applying patches) on the machine less burdensome. And, best of all, there's no overhead of having a graphical user interface and features that you never use running.
+
+With the release of the June CTP, IIS7 has been added as the seventh supported server role. As a web developer, this is the server role that I'm most excited about, although there are others available, including file server, domain controller, DNS, DHCP, and network load balancing.
+
+One big problem remains, though (and I hope this is taken care of before or in the final release): Because of the <a href="http://blogs.technet.com/server_core/archive/2007/06/26/iis-in-server-core.aspx" target="_blank">lack of managed code support in server core</a>, IIS doesn't currently support ASP.NET when used on server core. If this problem is taken care of, I can see us utilizing server core on virtual machines and increasing the performance of our servers while also increasing the number of instances each of our physical servers can support.

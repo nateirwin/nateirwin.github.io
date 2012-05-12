@@ -1,0 +1,78 @@
+--- 
+layout: post
+title: Connecting MapDotNet Server 2007 to ArcSDE 9.2
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:82:"http://www.nateirwin.net/2007/05/11/connecting-mapdotnet-server-2007-to-arcsde-92/";s:7:"tinyurl";s:25:"http://tinyurl.com/d3zqjj";s:4:"isgd";s:17:"http://is.gd/CJJ8";s:5:"bitly";s:19:"http://bit.ly/3mB7q";s:5:"snipr";s:22:"http://snipr.com/imy1a";s:5:"snurl";s:22:"http://snurl.com/imy1a";s:7:"snipurl";s:24:"http://snipurl.com/imy1a";}
+  _edit_last: "2"
+  tweetbackscheck: "1243110723"
+  tweetcount: "0"
+tags: 
+- ArcSDE
+- Database
+- MapDotNet Server
+- Web Mapping
+type: post
+status: publish
+---
+I've been experimenting quite a bit recently with MapDotNet Server 2007 (from hereon, referred to as MDNS), and I'll say that I'm pretty impressed. Building maps in MDNS is admittedly more difficult than simply publishing an .mxd with ArcGIS Server - MDNS uses MapServer's map file format, but the power of gaining access to Virtual Earth base data far outweighs the trouble that it takes to build the application and the performance is killer when compared to the alternatives. One thing I've noticed, though, is that the documentation/<a href="http://support.mapdotnet.com" target="_blank">support site</a> for MDNS still needs a lot of work. It's obvious that <a href="http://www.goisc.com" target="_blank">ISC</a> has put some work into their help in the recent past, but there are still lots of topics that need to be covered in much more detail.
+
+One of the topics that is only briefly covered in the <a href="http://support.mapdotnet.com/wiki" target="_blank">support portal wiki</a> is integrating ArcSDE with an MDNS application. The steps are briefly outlined in the "<a href="http://support.mapdotnet.com/wiki/Wiki%20Pages/ArcSDE%20Integration.aspx" target="_blank">ArcSDE Integration</a>" wiki entry, but there really needs to be a comprehensive step-by-step walkthrough for a topic as important as this. If it were a <a href="http://en.wikipedia.org/wiki/WIKI" target="_blank">true wiki</a>, I would be able to edit the page and update the documentation for others to use, but I have yet to find a way to contribute. So I'm going to put up my little walkthrough here (as much for myself as for anyone else) and hope that it either gets integrated into the support site or that ISC updates their documentation soon.
+
+There are three steps to the process, first you need to download the "libmap.dll.sde92" dll (it wasn't included with the MDNS 2007 6.0 release for some reason), second you need to enable ArcSDE connections via MapDotNet Server 2007, and last you need to connect your specific application to an SDE geodatabase. Make sure that you perform all of the steps on both your development machine and your web server.
+<ol>
+	<li>Download the "libmap.dll.sde92" dll:
+<ol>
+	<li>Click on the <a href="http://support.mapdotnet.com/MDNForum/Lists/MapDotNet%20Forum/Attachments/125/libmap.dll.zip">following link</a> to download a .zip with the dll in it.</li>
+	<li>Unzip the dll and put it in the "\IGNORED_LIBMAP_DLLS" directory, which is located at "C:\Program Files\MapDotNet Server\v6.0\MapDotNetServer Web Service\bin\IGNORED_LIBMAP_DLLS" in a default install.</li>
+</ol>
+</li>
+	<li>Enable ArcSDE Connections via MapDotNet Server 2007:
+<ol>
+	<li>Install the ArcSDE 9.2 C SDK:
+<ol>
+	<li>The C SDK is included with your ArcSDE 9.2 install media.</li>
+	<li>Initiate the install by either inserting the disk and using the Autorun installation GUI or browsing to the "\ArcSDE\windows\ArcSdeSDK" directory and double-clicking "setup.exe".</li>
+	<li>Choose "ArcSDE C SDK" from the installation window and let it run to completion.</li>
+	<li>Add a Path variable to point to the ArcSDE\bin directory:
+<ol>
+	<li>In Windows, right-click on "My Computer" and select "Properties" from the context menu.</li>
+	<li>Click on the "Advanced" tab and then the "Environment Variables" button near the bottom of the window.</li>
+	<li>In the "System variables" section, scroll down to the "Path" variable and double-click it to open the "Edit System Variable" window.</li>
+	<li>Go all the way to the end of the "Variable value:" field and add the following to the end: ";C:\ArcGIS\ArcSDE\bin" (without the quotations).</li>
+	<li>Click "OK" three times to exit out of all the dialogs.</li>
+</ol>
+</li>
+	<li>Reset IIS by opening up a command line and running "iisreset".</li>
+</ol>
+</li>
+	<li>Browse to the "\IGNORED_LIBMAP_DLLS" directory, which is - again - located at "C:\Program Files\MapDotNet Server\v6.0\MapDotNetServer Web Service\bin\IGNORED_LIBMAP_DLLS" in a default install, and copy and paste the "libmap.dll.sde91" dll into the "\bin" directory.</li>
+	<li>Stop the "World Wide Web Publishing" service, as it likely has a lock (via the aspnet_wp) on the "libmap.dll":
+<ol>
+	<li>Right-click on "My Computer" and select "Manage".</li>
+	<li>Expand the "Services and Applications" console.</li>
+	<li>Click on "Services".</li>
+	<li>Scroll down to the bottom, right-click on "World Wide Web Publishing", and select "Stop" from the context menu.</li>
+</ol>
+</li>
+	<li>Cut and paste the "libmap.dll" dll from the "\bin" directory into the "\IGNORED_LIBMAP_DLLS" directory (just for safe-keeping).</li>
+	<li>Rename the "libmap.dll.sde92" dll that you placed in the "\bin" directory to "libmap.dll".</li>
+	<li>Restart the "World Wide Web Publishing" service:
+<ol>
+	<li>Back in "Computer Management" (see #3 above), restart the service by right-clicking on it and selecting "Start" from the context menu.</li>
+</ol>
+</li>
+</ol>
+</li>
+	<li>Connect Your Application to an SDE Geodatabase:
+<ol>
+	<li>Open your application's .map file using either the "MapFile Generator" or your preferred text editor.</li>
+	<li>Add a new layer to your .mapfile, using the following connection information (replace the red with your data source information):</li>
+</ol>
+</li>
+</ol>
+<blockquote>CONNECTION "<span style="color: #ff0000;">SERVER</span>,port:<span style="color: #ff0000;">PORTNUMBER</span>,<span style="color: #ff0000;">DATABASE</span>,<span style="color: #ff0000;">USERNAME</span>,<span style="color: #ff0000;">PASSWORD</span>"
+CONNECTIONTYPE SDE
+DATA "<span style="color: #ff0000;">DATABASE</span>.<span style="color: #ff0000;">USERNAME</span>.<span style="color: #ff0000;">NAMEOFFEATURECLASS</span>,SHAPE,SDE.<span style="color: #ff0000;">DEFAULT</span>"
+PROCESSING "CLOSE_CONNECTION=DEFER"</blockquote>

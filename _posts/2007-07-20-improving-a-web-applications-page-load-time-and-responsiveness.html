@@ -1,0 +1,42 @@
+--- 
+layout: post
+title: Improving a Web Application's Page Load Time and Responsiveness
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+Most web designers know that it's difficult to overstate the importance of page load time. Some studies show that if a page takes longer than 8 seconds to load, a third of users will leave immediately. This factor becomes even more important for "media-rich" websites, and web map sites (and most other sites today) certainly fall into the "media-rich" category. If your site takes a long time to load, you might be losing a large number of potential users who may never come back.
+
+There are tons of tools out there that allow you to analyze a page's load time. I prefer using a combination of tools that include <a href="http://www.google.com/url?sa=t&amp;ct=res&amp;cd=1&amp;url=http%3A%2F%2Fwww.fiddlertool.com%2F&amp;ei=bgmhRsnJI5PEet_CvNkB&amp;usg=AFQjCNENlmLsxhXXbm04SsymdSwZIL9URg&amp;sig2=HY-vW7v5dlDgvGRRWBMHRw" target="_blank">Fiddler</a> and Firefox's <a href="http://www.google.com/url?sa=t&amp;ct=res&amp;cd=1&amp;url=https%3A%2F%2Faddons.mozilla.org%2Ffirefox%2Faddon%2F1843&amp;ei=ewmhRtfyH4Xieuf69N8B&amp;usg=AFQjCNFeeiIXBngB6nyWDODclEE-XJPNfQ&amp;sig2=zWerCikBgMHlX9omSsk5SA" target="_blank">FireBug</a> extension.
+
+Don MacAskill, the CEO of the "love of my life" photo sharing site, SmugMug, recently wrote a <a href="http://blogs.smugmug.com/don/2007/05/15/speed-matters/" target="_blank">great blog post</a> about page load time and has promised a detailed followup post (although it's still not out) about how SmugMug's engineers optimize their application's load time. Reading his post made me want to jot down a few of the things that I do to improve load time on my sites. So, here they are:
+<ul>
+	<li>Register multiple DNS entries for each site and serve CSS, Images, and JavaScript from these DNS'. This helps get around the HTTP 1.1 limitation of only allowing two connections to a server per browser by tricking a user's internet browser into thinking that it is accessing multiple sites. For instance, for this site, nateirwin.net, I have three subdomains: css.nateirwin.net, images.nateirwin.net, and scripts.nateirwin.net that I use to serve the site's resources, so when a user comes to the site, his/her browser will start downloading the resources from each of the respective URLs without waiting for other connections to close.</li>
+	<li>Compress .png files using <a href="http://advsys.net/ken/utils.htm" target="_blank">Ken Silverman's pngout</a>. I add it to the right-click context menu and can then batch compress .png images by selecting multiple images, right-clicking, and choosing "pngout". Scott Hanselman has a writeup on <a href="http://www.hanselman.com/blog/AddingPNGOUTToTheExplorerRightClickContextMenu.aspx" target="_blank">how to add pngout to your context menu</a>. After compression, the images are usually 20-50% smaller. By the way, you can optimize JPEGs too using <a href="http://www.yafla.com/papers/purejpeg/filter_unnecessary_jpeg_info_such_as_exif.htm" target="_blank">PureJPEG</a>.</li>
+	<li>This tip doesn't improve load time, but it can greatly enhance the user's experience. I like to preload images on a page using CSS. Preloading images is useful when you have images on a page that don't need to display on page load, but will likely need to display after a user interacts with the page (e.g. calling an image from JavaScript). It is key to make sure that something loads initially, and that that "something" draws the attention of the user. While he/she is interacting with that "something", you can continue to load images in the background. Then, once they are ready to further interact with the page, the images will be waiting for them. How do you do it? Well, it's incredibly simple:
+<ul>
+	<li>Add a style class element to the header of your page called "preloadPic" and set it to display:none.</li>
+	<li>Then add the images to the bottom of your page and define their class "preloadPic".</li>
+</ul>
+</li>
+	<li>A lot of the web applications that I work on (especially the web mapping applications) rely heavily on JavaScript. Unfortunately, because of the complexity of the JavaScript these files can be pretty hefty to push out to the user. Before I deploy JavaScript to a web application, I run it through an optimizer that removes comments, whitespace, and other unnecessary characters. I like to use the <a href="http://gueschla.com/labs/jsjuicer/" target="_blank">web edition</a> of JSJuicer, although there is also a <a href="http://adrian3.googlepages.com/jsjuicer.html" target="_blank">command line version</a> that you can use. You can save up to 50% by doing this, which can have significant ramifications in how long it takes a page to load. This smaller size also makes the application more responsive, as browsers have to interpret JavaScript code.</li>
+	<li>I also like to combine/aggregate CSS and JavaScript as much as possible, as minimizing the number of HTTP requests is one of the best ways to improve performance of a web page. There are, however, obviously times where combining these files is not possible. In this case, I try to make sure that only the CSS and/or JavaScript that is needed is sent to the browser.</li>
+	<li>Bundle images to decrease the number of HTTP requests. This is especially useful for web map applications, as they often have a large number of icons that are of the same format (.png, etc.) and are the same size. Bundling images basically means that you create a single image that contains all of the necessary images and then use css to display the needed individual images off of that image. This allows a single image to be downloaded, which minimizes the number of HTTP requests. I am just starting to look into this optimization, but am *very excited about the possibilities, as this should help eliminate - or at least reduce - delays in an application's startup time. The Google Web Toolkit (which is, by the way, a great resource for anyone who is developing AJAX applications) has image bundling built in, but you can also do it fairly easily yourself.</li>
+</ul>
+These are just a few of the things that I do to optimize page load time for my sites. You can take this optimization as far as you want. Some other methods include streaming JavaScript to a browser, using CSS sprites, and optimizing your resources for maximum caching. Keep in mind, though, that these types of techniques (including the techniques that I discussed in detail above) shouldn't be applied without first analyzing your application and understanding how the technique(s) will impact the resources on the site. They are not meant to be applied in every instance.
+
+Conclusion: These techniques, if applied in the right circumstances, can greatly enhance a user's experience. If applied in the wrong circumstances, however, they can cause unintended consequences.
+
+Helpful Resources:
+<ul>
+	<li><a href="http://www.ajaxperformance.com/" target="_blank">AJAX Performance Blog</a></li>
+	<li><a href="http://googlewebtoolkit.blogspot.com/" target="_blank">Google Web Toolkit Blog</a></li>
+	<li><a href="http://yuiblog.com" target="_blank">Yahoo! User Interface Blog</a> (here is a link to an <a href="http://yuiblog.com/blog/2006/11/28/performance-research-part-1/" target="_blank">especially helpful series of blog posts</a>)</li>
+</ul>
+[ASIDE] I've said it before, and I'll say it again: If you're looking for a photo sharing site, I *highly recommend looking into SmugMug. In my opinion, it is, by far, the best photo sharing site out there. The SmugMug team is revolutionary in both how they run the company and in how they embrace new technologies to help enhance the service that they provide. This much, at least, is immediately obvious when you start using their site. If you'd like to support my Smugmug account - and, of course, this blog, click on the Smugmug banner just below. You'll be able to sign up for a free 14 day trial (without even giving them a credit card!).
+<div><a onmouseover="window.status='http://www.smugmug.com/';return true;" onmouseout="window.status=' ';return true;" href="http://www.tkqlhce.com/click-2133805-10444484" target="_blank">
+<img src="http://images.nateirwin.net/smugmug3.gif" border="0" alt="" width="468" height="60" /></a></div>

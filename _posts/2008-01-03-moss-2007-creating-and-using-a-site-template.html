@@ -1,0 +1,36 @@
+--- 
+layout: post
+title: MOSS 2007 - Creating and Using a Site Template
+published: true
+meta: 
+  twittercomments: a:3:{i:1887466561;s:7:"retweet";i:1882871140;s:7:"retweet";i:1879097543;s:7:"retweet";}
+  shorturls: a:7:{s:9:"permalink";s:81:"http://www.nateirwin.net/2008/01/03/moss-2007-creating-and-using-a-site-template/";s:7:"tinyurl";s:25:"http://tinyurl.com/d58y52";s:4:"isgd";s:17:"http://is.gd/CFrz";s:5:"bitly";s:20:"http://bit.ly/1aejNC";s:5:"snipr";s:22:"http://snipr.com/im7kn";s:5:"snurl";s:22:"http://snurl.com/im7kn";s:7:"snipurl";s:24:"http://snipurl.com/im7kn";}
+  _edit_last: "2"
+  tweetbackscheck: "1243090669"
+  tweetcount: "3"
+tags: 
+- Development
+type: post
+status: publish
+---
+I've recently been tasked with setting up a Microsoft Office Sharepoint Server (MOSS) 2007 portal for multiple program areas within the organization that I work for. I've worked with Sharepoint in the past, but have never really had the opportunity to "dive deep" into the technology, so I'm not all that familiar with the inner-workings.
+
+That said, I didn't expect it to be too difficult to setup a single template subsite and then clone the template to create multiple sites with the same look, feel, and functionality. Well, I was wrong. You see, if you don't have access to the server that you're developing for (and I don't), you have to either work with the server admin to get the template put into the server's template collection or use a workaround that I discovered after a bit of playing around in Sharepoint Designer 2007:
+
+1. Develop a Sharepoint, getting it to the point where you'd like to "clone" it.
+
+2. Use Sharepoint Designer 2007 (I'm sure you can do this with other tools as well, but I haven't verified this) to backup the "template" Sharepoint site.
+<blockquote>a. After opening the site in Sharepoint Designer 2007, go to the "Site"&gt;"Administration"&gt;"Backup Web Site..." tool.</blockquote>
+<p align="center"><a href="http://images.nateirwin.net/MOSS2007CreatingandUsingaSiteTemplate_C443/sharepoint1.png"><img style="border: 0px none " src="http://images.nateirwin.net/MOSS2007CreatingandUsingaSiteTemplate_C443/sharepoint1_thumb.png" border="0" alt="sharepoint1" width="382" height="303" /></a></p>
+
+<blockquote>
+<p align="left">b. Click "OK" on the next dialog, choose where you want to save the .cmp (Content Migration Package) and press "Save" in the next dialog, and then wait for the backup to complete.</p>
+</blockquote>
+<p align="left">3. Next go back to the parent site that you want to create the subsite off of and create the new subsite. There are multiple ways to do this. I just use the "Folder List" dialog, right-click on the parent node, and select "New"&gt;"Subsite..." option. In the "New" dialog, just choose to create the subsite based on the "Blank Site" template.</p>
+<p align="left">4. After the subsite is created successfully, Sharepoint Designer 2007 should open it in a new window. Next you simply need to restore the backup that you previously took to this new subsite.</p>
+
+<blockquote>
+<p align="left">a. To do this, go to the "Site"&gt;"Administration"&gt;"Restore Web Site..." tool.</p>
+<p align="left">b. In the explorer dialog, browse to the backup that you created previously and open it. Click "OK" in the "Restore Web Site" dialog and wait for the restore to finish.</p>
+</blockquote>
+<p align="left">And that's it! This solution is definitely a bit of a workaround, but it works well if you don't have access to the template library. If anyone knows of a better way to do this, I'd be interested to hear about it.</p>

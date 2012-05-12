@@ -1,0 +1,25 @@
+--- 
+layout: post
+title: 64-bit Server, ASP.NET 1.1, and ASP.NET 2.0
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+- Technology
+type: post
+status: publish
+---
+
+<div><img src="http://www.nateirwin.net/images/service_unavailable.png" alt="" /></div>
+<div></div>
+<div>I ran into <em>another</em> issue today with my ASP.NET application. This time it was running on a developmentserver with Windows Server 2003 R2 Standard x64. At close of business yesterday, the 2.0 applicationwas running fine. I came back in this morning and tried to access it, however, but found that I got a cryptic "Service Unavailable" message.</div>
+Well, it was obvious that something had changed since I left yesterday, so I viewed the server's system log and found that the Application Pool was unable to start. Great, but why couldn't it start? Well, I dug around some more and found a more meaningful log at: <span style="color: #ff0000;">c:\windows\system32\logfiles\httperr</span>. This log told me that the application was trying to run using ASP.NET 1.1. What? Well, this pointed me to IIS Manager, where I found that ASP.NET 1.1 had been installed (maybe I should've looked there first, but I wanted to learn something this morning). 1.1 had been installed on the machine by a coworker to support another application, not knowing that it would break my application in the process.
+
+No problem; at least I now knew the source of the problem. How to fix it, though?
+
+Well, first we uninstalled ASP.NET 1.1 and the application that it supported, as it wasn't critical that it be installed on this server. I then tried to restart the application, but now got a new error message: "%1 IS NOT A VALID WIN32 APPLICATION." Okay. So, then I switched IIS from 32-bit to 64-bit mode, as it was still running in compatibility mode to support the now defunct ASP.NET 1.1. To switch it, I used the following command: <span style="color: #ff0000;">cscript c:\inetpub\adminscripts\adsutil.vbs SET /w3svc/AppPools/Enable32BitAppOnWin64 False</span><span style="color: #000000;">.</span>
+
+Next, I had to re-register ASP.NET 2.0 with IIS, which is detailed in <a href="http://www.nateirwin.net/2006/10/11/Registering+ASPNET+20+With+IIS+6.aspx">a post</a> that I wrote earlier this month. After that, the application came up fine - no errors at all!
+
+Here's a link to a <a href="http://blogs.msdn.com/david.wang/archive/2006/06/27/HOWTO-Diagnose-One-Cause-of-1-is-not-a-valid-Win32-application-on-IIS6-on-64bit-Windows.aspx" target="_blank">really helpful blog post</a> from David Wang about 32-bit, 64-bit, and IIS.

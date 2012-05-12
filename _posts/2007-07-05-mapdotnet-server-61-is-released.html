@@ -1,0 +1,23 @@
+--- 
+layout: post
+title: MapDotNet Server 6.1 is Released
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- MapDotNet Server
+- Web Mapping
+type: post
+status: publish
+---
+ISC announced on the 2nd that it has released MapDotNet Server 2007 6.1. This version of the mapping platform includes some major enhancements, including support for the newest Virtual Earth Map Control, v5 (which, in and of itself added quite a bit of functionality and hooks into the API, especially in its support for shapes). As I've mentioned several times before, I've been impressed with the quality of the data being served through Virtual Earth, and am expecting that things will only continue to improve (you may have noticed that Virtual Earth just <a href="http://blogs.msdn.com/virtualearth/archive/2007/07/04/you-want-more-better-newer-imagery.aspx" target="_blank">released a major data update</a> in the last couple of days). It also looks like ISC has worked hard in this release to improve performance on their end; they are touting 5-12 times the performance in this release when compared to 6.0. The new version includes <a href="http://support.mapdotnet.com/MDNBlog/Lists/Posts/Post.aspx?ID=16" target="_blank">tile pre-caching</a> in SQL Server and a tile pre-loader utility. Performance of SDE data laid over Virtual Earth wasn't bad in the 6.0 release, but there was definitely a difference in load times, at least on our hardware and geodatabase(s). Hopefully these improvements will make the difference less obvious, although I'm sure that there will always be some latency when compared to data coming from Microsoft's servers.
+
+In addition to these enhancements, ISC has also made some improvements to other parts of the MapDotNet Server product, including:
+<ul>
+	<li>New support for Virtual Earth 3D, including a new template that  allows out-of-the-box 3D functionality</li>
+	<li>Easier connection to ArcSDE</li>
+	<li>Support for <a href="http://www.spatialdb.com/" target="_blank">SpatialDB</a>, a SQL Server 2005 spatial extension</li>
+</ul>
+They also have plans to release an Interactive SDK sometime this month, and it looks like they've made some recent additions to their <a href="http://support.mapdotnet.com/WIKI/Wiki%20Pages/Home.aspx" target="_blank">support WIKI</a>.
+
+All in all, these are all welcome additions, and I'll be playing around with the new version soon.

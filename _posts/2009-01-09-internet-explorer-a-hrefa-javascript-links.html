@@ -1,0 +1,17 @@
+--- 
+layout: post
+title: Internet Explorer  JavaScript Links
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:79:"http://www.nateirwin.net/2009/01/09/internet-explorer-a-hrefa-javascript-links/";s:7:"tinyurl";s:25:"http://tinyurl.com/apynbs";s:4:"isgd";s:17:"http://is.gd/CCwE";s:5:"bitly";s:19:"http://bit.ly/QZH68";s:5:"snipr";s:22:"http://snipr.com/ilsw5";s:5:"snurl";s:22:"http://snurl.com/ilsw5";s:7:"snipurl";s:24:"http://snipurl.com/ilsw5";}
+  _edit_last: "2"
+  tweetbackscheck: "1243107482"
+  tweetcount: "0"
+tags: 
+- Development
+type: post
+status: publish
+---
+<p>Using &lt;a href=””&gt;&lt;/a&gt; links to call JavaScript functions can be a bit trickier than you might think. The issues that I’ve run into are generally Internet Explorer-specific (aren’t they all?). While troubleshooting these issues, I’ve discovered a syntax that seems to solve all of the problems:</p><pre>&lt;a href=”javascript:void(0)” onclick=”yourFunction();return false”&gt;Click Here&lt;/a&gt;</pre>
+<p>Hopefully this helps someone.</p>

@@ -1,0 +1,18 @@
+--- 
+layout: post
+title: "\"The process cannot access the file because it is being used by another process\" - Error when Compiling with Visual Studio"
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+<span class="drop_cap">A</span>nother quick solution to a frustrating problem: I recently started getting an error, "The process cannot access the file because it is being used by another process", when compiling a solution in Visual Studio 2008 on Windows 7. I don't recall encountering this error when running Visual Studio 2008 on Windows XP, although others have reported running into this issue on that configuration, as well.
+
+While debugging the error, I realized that Visual Studio itself (devenv.exe) was locking a debug dll from one project and then trying (and failing) to move it into the "bin" folder of the web project in my solution. Weird.
+
+After some searching, I found that a lot of people recommended running a pre-build step on the project that contained the file lock to rename lock file(s) before trying to move the file(s). Not only did this not seem like a clean solution to me, it also did not solve my problem.
+
+It just so happens that the solution itself is really simple. Right-click on the reference in your web project and click on "Properties". Change "Copy Local" to "False" and then rebuild your solution. This obviously won't work for all cases, but it works for me.

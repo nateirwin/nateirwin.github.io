@@ -1,0 +1,18 @@
+--- 
+layout: post
+title: "ASP.NET Active Directory forms authentication error: \"The directory service is unavailable\""
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+I recently upgraded the internal-NPS version of NPMap to ASP.NET MVC 3, and quickly noticed (thanks to <a href="http://code.google.com/p/elmah/">ELMAH</a>!) that my Active Directory forms authentication was behaving sporadically. Users were able to successfully log on at times, but occasionally a user would not be able to log on because of an HTTP 500 error: "System.Runtime.InteropServices.COMException (0x8007200F): The directory service is unavailable." Another error that occasionally popped up, as well: "System.Runtime.InteropServices.COMException: The server is not operational."
+
+After digging around the interwebs and not finding anything that solved my problem, I finally opened up my Web.config to take a look around, and realized that I had not updated my membership provider configuration to .NET 4. After making this change, the problem went away.
+
+<pre>&lt;add name="AspNetActiveDirectoryMembershipProvider" type="System.Web.Security.ActiveDirectoryMembershipProvider, System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" connectionStringName="ADConnectionString" /></pre>
+
+Lesson learned!

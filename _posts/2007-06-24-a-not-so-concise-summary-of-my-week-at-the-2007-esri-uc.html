@@ -1,0 +1,738 @@
+--- 
+layout: post
+title: A Not-So-Concise Summary of My Week at the 2007 ESRI UC
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:92:"http://www.nateirwin.net/2007/06/24/a-not-so-concise-summary-of-my-week-at-the-2007-esri-uc/";s:7:"tinyurl";s:25:"http://tinyurl.com/chhe24";s:4:"isgd";s:17:"http://is.gd/CFBK";s:5:"bitly";s:19:"http://bit.ly/u4FAD";s:5:"snipr";s:22:"http://snipr.com/im87r";s:5:"snurl";s:22:"http://snurl.com/im87r";s:7:"snipurl";s:24:"http://snipurl.com/im87r";}
+  _edit_last: "2"
+  tweetbackscheck: "1243083821"
+  tweetcount: "0"
+tags: 
+- Cartography
+- Development
+- Services
+- Technology
+- Web Mapping
+type: post
+status: publish
+---
+UPDATE: You can now download this blog post. <a href="http://projects.nateirwin.net/Shared%20Documents/Blog%20Articles/ANotSoConciseSummaryofMyWeekatthe2007ESRIUC.pdf"><img src="http://images.nateirwin.net/acrobat.png" alt="" /></a>
+
+<strong><em>My apologies for the super-long post; I was originally going to break
+this up into multiple posts, but my week at the conference filled up very
+quickly and I couldn't find time to write out all my thoughts and experiences
+and post them daily. To try and facilitate reading of this post, I have,
+however, broken it up by day and by technical workshop. And at the end of the
+post I have written about some miscellaneous tidbits that I discovered over the
+course of the week. I expect that in the coming weeks I'll be writing more
+in-depth about many of the topics that I am able to cover only briefly below, as
+many of the developments have major ramifications for anyone who works with ESRI
+software.</em></strong>
+
+Judging by a <a href="http://www.spatiallyadjusted.com/2007/06/20/esri-2007-user-conference-open-thread/" target="_blank">recent post</a> from an austere colleague, I guess that being a
+participant at the ESRI User Conference (from here on referred to as the
+UC) puts me (and many others - you know who you are) in a position that brings
+an inherent level of responsibility. I'll be honest, though, I wasn't aware of
+these overarching responsibilities when I signed up; my apologies for not
+reporting the <strong><em><span style="text-decoration: underline;">juicy</span></em></strong> details sooner. Fortunately, though, my
+colleagues seem to have adequately filled the void that I unknowingly
+contributed to over this past week.
+
+That said, I walk out of San Diego a week older and with a number of news
+items, tidbits, and rumors - enough, at least, to get me pretty excited. I'm not
+sure that there were any monumental announcements or "WOW!" moments this year (a
+lot of the big announcements were spoiled by Jack's answers to the Questions and
+Answers that were released the week before the UC), but ESRI and some of their
+partners talked about coming developments that will definitely push GIS in a new
+direction over the upcoming year, for good or for worse.
+
+Following are my own personal highlights from this year's UC. Please note
+that I am a .NET developer and self-proclaimed technologist, and am, therefore,
+totally geeky and focused on topics that are of interest to me. I didn't get
+much out of the "Everyone Loves/Needs/Uses GIS" sessions, the plenary talks, or
+the desktop productivity sessions, although overall it was nice, as a colleague
+of mine said, to hear others talking about GIS when having dinner at a random
+restaurant in the Gas Lamp District. I did, however, get a lot out of
+interacting with ESRI developers and the various vendors, and these are the
+moments  that I want to pass on in this write-up.
+
+<strong>Monday, June 18th</strong>
+
+<strong>Plenary</strong>
+
+A good portion of the plenary fit into the "Everyone Loves/Needs/Uses GIS"
+category mentioned above. I'm glad to know how GIS is being used around the
+world, but as a GIS professional I don't have to be sold on the idea of GIS as
+an invaluable tool. The demonstrations and announcements at the end of the
+session caught most of the news, although unfortunately a lot of them fit into
+enhancements that should have either been included with ESRI's 9.2 releases (or
+8.3, 9.0, or 9.1 in some cases) or addressed in service packs - that is, now
+that ESRI is actually releasing new features, not just bug fixes, in its
+patches.
+
+Like I said, most of the highlights were covered in Jack's response to the UC
+Questions and Answers that was released last week, but here are a couple
+of developments that really caught my eye (note that I cover most of these,
+in-depth, in the commentary below and also that there are many more developments
+that didn't make it into the plenary that I cover in-depth below):
+<ul>
+	<li>More Transparency Within ESRI's Support System</li>
+	<li>Release of ArcGIS Server JavaScript and REST APIs</li>
+	<li>Enhancements to ArcGIS Server's Tile Generation Capabilities</li>
+	<li>New Permissions Management Capabilities Added to ArcGIS Server</li>
+	<li>Better Print Support for ArcGIS Server</li>
+	<li>New Mobile Client for ArcGIS Server</li>
+	<li>Support for PostgreSQL in ArcSDE 9.3</li>
+</ul>
+<strong>Tuesday, June 19th</strong>
+
+<strong>ArcPad 7.1 - An Introduction</strong>
+
+I've been working with the 7.1 beta for a couple of months now, and, because
+of this, was excited to hear a bit more from the ArcPad team about the upcoming
+release. First of all, I'll say that ArcPad is improving dramatically. The
+project was pretty stale for awhile, but seems to be picking up development
+momentum (which it really needs). The good news for ESRI is that there isn't
+(and hasn't been) much real competition out there in the GPS software arena, so
+they haven't lost much ground. Actually, it seems like they are - amazingly
+enough - still in front of the small group of GPS software vendors. Sure, many
+users love Terrasync and its easy-to-create forms, but most major organizations
+that use GIS are ESRI shops and need: 1) something that will fit into their
+overall GIS infrastructure (read: enterprise) strategy and 2) software that is
+released and supported by a company that they know will not go under in a year's
+time.
+
+ArcPad 7.1 introduces a new extension for ArcGIS Desktop. They're calling it
+"ArcPad Data Manager" and, unlike ArcPad 6.x's desktop extension, it is
+installed (and, thankfully, un-installed) with ArcPad (so it is
+<strong><em>not</em></strong> installed when ArcGIS Desktop is installed). This
+new tool adds quite a bit of functionality to the check-out/check-in process,
+which is a process that, although it always seems to work well for me in 7.01,
+is always the most difficult part of working with ArcPad for users who don't
+have a lot of technical experience. I can't tell you how much time I've spent
+walking users through the check-out/check-in process (literally over and over),
+even after developing comprehensive step-by-step documentation that shows them
+exactly how to do it. I'm thinking, though, that this new data manager extension
+will solve many of these problems, as the status of checked out data are no
+longer stored locally on a computer. They are, rather, stored within the
+checked-out data themselves, which means that a user can check data out from one
+computer and then check it back in using another computer and it doesn't have to
+live in the same exact directory location to be successfully checked back in. On
+top of this, check-in can now be initiated from within ArcMap, allowing a user
+to browse to the data that need to be checked-in rather than having to make sure
+that the data that need to be checked-in live in the exact same place in the
+directory as the data that were checked-out. Although this may not sound
+earth-shattering, it is a <strong><em>very</em></strong> welcome enhancement
+that will likely save me hours of troubleshooting by telephone.
+
+To describe the new ArcMap extension more fully: When the "ArcPad Data
+Manager" extension checks data out of a geodatabase, the data are now placed in
+a single xml file, with an .axf extension. This allows for all of the data to
+remain in a single file. The .axf format uses SQL Server Compact Edition to
+store its data, which allows for much more to be done with the data in ArcPad.
+
+The biggest enhancement that this new format allows is the support of related
+data within ArcPad. We were shown a demonstration of creating a single geometry
+feature in ArcPad and then collecting attributes that lived in related tables.
+This is obviously a huge development for ArcPad, and is an issue that the
+ArcMobile team doesn't seem to have a clear solution for (more on this in the
+<strong>ArcGIS Mobile - The Road Ahead</strong> and <strong>Developing
+Applications with ArcGIS Server Mobile SDK</strong> sections below). The
+important thing to get across here is that these relationships are supported in
+the data (the .axf file), not in the forms. This should allow for easier
+transition in and out of a geodatabase without having to custom-design
+applications. Another important development is that the check-out and check-in
+tools will now be available in ArcToolbox, allowing for easy scripting of the
+check-out/check-in process with Python. I'm personally hoping that I'll be able
+to make the whole check-out/check-in process completely invisible to our
+organization's mobile users, as - like I mentioned before - this is the biggest
+problem that they run into when working with ArcPad today.
+
+A couple of miscellaneous other enhancements that were discussed in the
+session, in no particular order:
+<ul>
+	<li>On check-out, you can now name the .apm that is created whatever you want.</li>
+	<li>Data that are checked out can now be optionally encrypted and
+password-protected.</li>
+	<li>Forms will no longer be overwritten on check-out, unless specified by the
+user. This means that customized forms can be built to support data collection
+and used without the user having to manually move and overwrite the form that is
+generated on check-out out of the geodatabase.</li>
+	<li>If the geodatabase enforces unique identifiers, this will be supported in
+ArcPad, as well. As a sidenote, it should be easy to generate GUIDs with the
+.NET Compact Framework and SQL Server Compact Edition, so if you use GUIDs a
+lot, it should be simple to implement in the new ArcPad.</li>
+	<li>New editing features introduced.</li>
+	<li>Better GPS height support.</li>
+	<li>The ability to capture features using a traverse method.</li>
+	<li>Better support for cameras.</li>
+	<li>Better search capabilities within ArcPad:
+<ul>
+	<li>The ability to pre-configure query forms within ArcPad Application Builder
+Studio is now included.</li>
+	<li>A more intuitive search interface, including support for basic
+SQL.</li>
+</ul>
+</li>
+	<li>Support for read-only features.</li>
+	<li>Enhancements to label tools.</li>
+	<li>The ability to set a snapping tolerance, per layer, within ArcPad.</li>
+</ul>
+Another question that kept on coming up, over and over, at the UC centered on
+the seeming overlap between the ArcGIS Mobile and ArcPad products. Here's how it
+was described to me: ArcMobile is meant to serve as an easy-to-use client for
+ArcGIS Server. It can connect to servers in real-time and has some GPS
+functionality integrated. It does not, however, support many of the advanced
+features that ArcPad does, including support for connected devices
+(rangefinders, etc.) and will never have as much GPS support and as many
+advanced features as ArcPad. The ArcMobile team is really looking to appeal to a
+specific market, those who use ArcGIS Server and have a need to collect some
+basic data while in the field. To me, ArcPad really shines when there is a need
+to collect complex data into a geodatabase without having to custom design an
+application. ArcMobile seems to be better suited in cases where a very-targeted
+application that communicates with ArcGIS Server is needed and more flexibility
+is desired for developing on the client-side.
+
+For me, I'm interested in both technologies. I love to have choices when
+hashing out the requirements of an application and deciding on a solution, and I
+truly think that my organization will be using both ArcMobile and ArcPad,
+depending on the needs of each specific project.
+
+<strong>ArcGIS Server - The Road Ahead</strong>
+
+There were tons of upcoming enhancements to ArcGIS Server 9.3 announced at
+the UC. Most of these, however, for me fall into the "should've been there at
+9.2" category. I don't want to always be negative, especially when I think that
+ArcGIS Server is a great product that has improved dramatically over the last
+two service packs (even with some of the workarounds that are still required,
+yet-to-be-fixed bugs, and lack of cohesive and comprehensive documentation).
+ESRI needs to realize, though, that they can't continue to release beta products
+as runtime.
+
+One glaring example of this is the documentation for ArcGIS Server 9.2; it
+basically didn't exist when 9.2 was first released and still lacks some critical
+pieces. What's the solution (other than trying to catch up on the documentation
+as soon as possible)? I've got a couple of ideas:
+<ol>
+	<li>Loosen the release cycle, opening it up so that the different product teams
+can release when their product is actually ready. They've done this with ArcGIS
+Explorer (which is another product that should've held off on its initial
+release), and, because of this, the team is on a very aggressive release
+schedule and is able to quickly respond to bugs and feature requests.</li>
+	<li>Open up the beta program to a larger audience. There are obviously problems
+with ESRI's beta process when their initial releases don't perform as
+advertised. Opening up the beta to more real users could dramatically increase
+the amount of feedback coming back to ESRI, allowing them to truly test their
+product before initial release.</li>
+</ol>
+Anyway, I'm not going to solve all of the world's problems today, so enough
+about that and back to the topic at hand: upcoming developments in the ArcGIS
+Server product.
+
+First of all, ESRI announced in the UC Q&amp;A that they realized that ArcGIS
+Server 9.2 shipped without proper documentation (see my rant in the first
+paragraph of this section above), especially for developers. In this session -
+and at a few other times during the UC - they mentioned this again and made it
+clear that they are working hard to improve their online help and documentation.
+This is, of course, very welcome.
+
+Another very welcome development is ESRI's decision to release JavaScript and
+REST APIs for ArcGIS Server at 9.3. This is another development that was first
+announced the week before the UC, and then again at the plenary, and then
+mentioned/discussed several times during the course of the conference. But I
+never got sick of hearing about it. Here are some more details:
+<ul>
+	<li>The REST API will be completely securable, just like any other service that
+is served by ArcGIS Server.</li>
+	<li>The REST API supports querying, geocoding, and geoprocessing.</li>
+	<li>The JavaScript API(s) will allow for easy development and deployment of
+lightweight web applications that consume both ArcGIS Server services and third
+party data services, like data consumed from ESRI ArcWeb Services, Google Maps,
+Mapquest, Microsoft Virtual Earth, and Yahoo! Maps.</li>
+	<li>A token-based authentication system for JavaScript clients is also being
+released.</li>
+</ul>
+Further enhancements that are coming to ArcGIS Server 9.3 follow, in no
+particular order:
+<ul>
+	<li>Enhanced AJAX Support
+<ul>
+	<li>Microsoft's ASP.NET 2.0 AJAX 1.0 extensions will be fully supported in the
+9.3 release of ArcGIS Server. This includes support for Update Panels. With this
+addition, developers now have a choice as to which callback model they use. It
+will still be possible to use the current ASP.NET 2.0 callback implementation
+that is used in 9.2, but I am recommending that all of our applications migrate
+fully to ASP.NET AJAX, as it is a powerful, clean, and easy-to-use
+implementation. As an aside, as many probably already know, it is currently
+possible to use ASP.NET AJAX, but there are a lot of workarounds to get some of
+the ArcGIS Server controls (especially the map control) to work correctly when
+wrapped in an Update Panel.</li>
+	<li>Partial page rendering model supported (comes with ASP.NET 2.0 AJAX
+1.0).</li>
+</ul>
+</li>
+	<li>New security management module will be included in ArcGIS Server Manager.
+This will allow administrators to set up access permissions for both services
+and applications using groups and users. I don't think that roles are supported,
+although I'm not positive about this. Of course, this is all currently doable in
+9.2, but you have to manually configure NTFS permissions - if using Windows
+Integrated or Active Directory forms authentication - and manually make changes
+to the web.config. See the "<strong>Miscellaneous Questions/Answers and Other Tips
+that I Picked Up</strong>" section below for a little tidbit of helpful info that I
+picked up when speaking with the ArcGIS Server development team about
+configuring a web application and associated services to use Windows Integrated
+Authentication.
+<ul>
+	<li>Ability to manage users per application and/or per service.</li>
+	<li>Can ensure that all communication with ArcGIS Server is encrypted (again,
+already doable in 9.2 but supposedly easier in 9.3).</li>
+	<li>As mentioned above, new token based authentication system for JavaScript
+clients.</li>
+	<li>Can work with Windows authentication or use forms authentication and store
+user information in SQL Server database.</li>
+</ul>
+</li>
+	<li>A big development in the open standards arena is that ESRI, with ArcGIS
+Server 9.3, will introduce support for GML, WCS (1.0 and 1.1), and WFS and
+improve its implementation of WMS. <span style="text-decoration: line-through;">Unfortunately, though, for ArcGIS Desktop
+users the Data Interoperability Extension is required to access WFS services.</span> To access WFS in ArcGIS Desktop, you must *install the Data Interoperability Extension (it doesn't have to be licensed/activated).</li>
+	<li>At 9.3, Image Server will become an extension of ArcGIS Server. From what I
+was able to gather, this does not, however, move Image Server from Category B to
+Category A, so licensing for enterprise partners is not necessarily going to
+change with this release. That said, from talking with several ESRI employees,
+it does seem like they are considering eventually moving Image Server to
+Category A. An image service:
+<ul>
+	<li>Can deliver data or pictures.</li>
+	<li>Is, from what they are saying, very efficient at serving WCS and
+WMS.</li>
+</ul>
+</li>
+	<li>Major enhancements to ArcGIS Server tile caches are coming at 9.3. As you
+can tell from earlier posts and comments that I've made on this subject, this is
+an absolute must for my organization. We have had major problems developing tile
+cache for many of our projects that cover large areas and need cache at large
+scales (e.g. half of the world at many scales, the largest being 1:1250).
+Actually, we haven't been successful in generating this particular cache, even
+using several servers for weeks at a time. Well, ESRI says that they've fixed
+many of the tile cache generation problems at 9.3. Here are some of the
+enhancements that will be coming out:
+<ul>
+	<li>Ability to generate tiles that match the tile format for ArcWeb Services,
+Google Maps, and Microsoft Virtual Earth.</li>
+	<li>On-demand tile generation: This enhancement, if it works as advertised, will
+likely fix many of our problems, although it's not the perfect solution for our
+organization. This basically allows you to generate tile cache up front only for
+areas that you foresee users actually zooming into. For areas that may not get
+used as much (or at all), you don't have to generate tiles, but if a user zooms
+into them tiles are generated on-the-fly and then added to the existing cache
+for future users. This is a decent solution, although it's not always easy for
+us to predict where a user's interests lie, and I'm afraid that generation of
+tiles on the fly is going to be horrendously slow.</li>
+	<li>Generate tile cache based on extent of a feature: This is another *very
+welcome enhancement, as it should, theoretically, allow us to more effectively
+partition out and track our tile generation. One of the major problems that we
+currently have is that when cache generation fails for a large cache build
+operation, it is often difficult to discover exactly where it failed and then
+reinitiate the build from that point.</li>
+</ul>
+</li>
+	<li>Some user interface enhancements (for applications built using the wizard in
+ArcGIS Server Manager) coming at 9.3 include:
+<ul>
+	<li>Zoom previous, zoom next buttons with another tool for toggling an overview
+map.</li>
+	<li>Map tips will be able to contain static text, images, links, and JavaScript.</li>
+	<li>A new print task will be available in ArcGIS Server Manager and will include
+the ability to work with map elements.</li>
+</ul>
+</li>
+	<li>Enhancements to the Web ADF will allow developers to take advantage of
+session state.</li>
+</ul>
+Some very exciting news above! I look forward to getting my hands on the new
+release.
+
+<strong>Deploying and Using ArcGIS Explorer </strong>
+
+This technical workshop with Bernie Szukalski presenting ArcGIS Explorer was
+one of the best of the conference for me, if only because it's always nice to
+hear from someone who is excited about the topic that they're presenting. I've
+played around quite a bit with ArcGIS Explorer and have been encouraging our
+organization's GIS users to use and deploy it since the last build (380) was
+released, but it was still great to see some of the tweaks and operations
+(tasks) that the interface supports. It was also good to hear a bit about the
+development environment surrounding ArcGIS Explorer and get some of my questions
+answered by those who work on the project.
+
+The ArcGIS Explorer development team is not constricted to the standard ESRI
+release cycle, so they've already had four releases since the initial release
+with the overall 9.2 release and they plan on releasing a new build (with
+feature enhancements, feature additions, and bug fixes) every two months. The
+next release is expected within the next couple of weeks.
+
+As this was more a "show me your product" type of session, I didn't get much
+in the way of technical news from it. I did, however, get more in the
+<strong>Extending ArcGIS Explorer Using the ArcGIS Explorer SDK</strong>
+session, which is covered below.
+
+<strong>Wednesday, June 20th</strong>
+
+<strong>How to Develop Rich, Web 2.0 Style Flash Mapping Applications Using ArcWeb
+Services</strong>
+
+I wasn't expecting to get too much out of this technical workshop, as, I'll
+be honest, I haven't paid much attention to ArcWeb Services as it has really
+come of age over the last year or so. Well, I'll tell you sheepishly now that I
+was very pleasantly surprised. ArcWeb Services seems to be another valuable tool
+in the expanding web map industry, and I'll be experimenting with it more
+shortly.
+
+One of the main reasons that I want to spend some time working with ArcWeb
+Services, other than the product itself, is that it was mentioned in this
+session that ArcWeb Services and ArcGIS Server will likely be merged at some
+point. There are many similarities between the two, including, with the upcoming
+9.3 release of ArcGIS Server, the support of JavaScript and REST, and the merge
+seems pretty logical to me. It seems that most of what ESRI is releasing (ArcGIS
+Explorer, ArcGIS Online, ArcMobile, ArcGIS Web Services, etc.) and spending most
+of their money on are technologies that either currently fit into ArcGIS Server
+or will likely fit into ArcGIS Server in the near future. Is this bad news for
+ArcIMS? Well, ESRI says that they're going to continue to support it, but why
+would you want to stick with a product that wasn't being actively developed?
+
+ArcWeb Services 2.0 is currently in beta 1 and can be accessed via the Flex
+or JavaScript APIs. Beta 2 is expected to be released at the end of July, and
+will include some major feature additions, including support for consumption of
+ArcGIS Server services, ArcIMS services, and GeoRSS. In the near future, ArcWeb
+Services will also support WFS, WMS, and more formats and the use of
+geoprocessing tasks.
+
+Some benefits that I can definitely see to using ArcWeb Services and its
+APIs:
+<ul>
+	<li>Support for 13 projections, all available client-side.</li>
+	<li>Access to loads of data for thematic mapping.</li>
+	<li>The ability to upload your own data to ESRI servers and then consume them in
+an ArcWeb Services application.</li>
+	<li>Support for vector printing - this is a biggie that ArcGIS Server doesn't
+seem to get.</li>
+</ul>
+To test drive ArcWeb Services yourself, go to the <a href="http://www1.arcwebservices.com/v2006/evaluate.jsp" target="_blank">ArcWeb
+Services site</a> and sign in with your ESRI global login. You will then be able
+to apply for a free 90 day trial which will give you access to the APIs and
+underlying data and services. After the 90-day trial, cost is calculated based
+on a per transaction model (somewhere around $1250 for 100,000 credits).
+
+Here are some other resources that may be helpful in your evaluation:
+<ul>
+	<li><a href="http://www1.arcwebservices.com/v2006/labs/awx2_lab.do" target="_blank">ArcWeb Explorer 2.0 Lab</a></li>
+	<li><a href="http://edn.esri.com/index.cfm?fa=conferences.gateway" target="_blank">2007 Developer Summit Presentations</a></li>
+</ul>
+<strong>Designing, Deploying, and Using Cached Map Services</strong>
+
+I sneaked in on the last part of this technical workshop, as when I showed up
+initially there was a sign on the door that told me the session was full. Looks
+like others are having difficulty building cache too, huh (note that you can see
+some of my specific gripes about building tile cache in the <strong>ArcGIS Server -
+The Road Ahead</strong> section above)? We've had to learn most of the lessons the
+hard way, so I was hoping that this session would help us avoid further costly
+mistakes.
+
+From what I was able to catch, it seemed like a pretty productive session,
+with lots of tips and insights coming from the ArcGIS Server team. I couldn't
+help but think, though, how much time, energy, and money ESRI could save their
+customers by getting these tips out in the form of online help or blog posts.
+Seriously, though, if ESRI is committed to helping their customers build and
+maintain an enterprise GIS, shouldn't they make their knowledge on how to make
+their software work correctly publicly and readily available?
+
+Here are the tips that I caught in the short time that I was in the session:
+<ul>
+	<li>ArcGIS Online uses multiple tile servers, all of which have local .mxds that
+are accessing local data (stored in file geodatabases).</li>
+	<li>Once you build a cache, you can get rid of your original data, as it's no
+longer needed or used by a service.</li>
+	<li>If using the "generate cache" command, zoom into the extent that you want to
+generate cache for, set the max scale, and then start the cache build.</li>
+	<li>There is a new blog post with a Python script to help in building cache
+coming out on the <a href="http://serverx.esri.com/ESRIBlogs/blogs/arcgisserver/default.aspx" target="_blank">ArcGIS Server team blog</a> this coming week.</li>
+	<li>Enhancements to tile cache generation at 9.3 will not "break" existing
+caches, they will, however, allow you to build cache more efficiently.</li>
+</ul>
+<strong>Extending ArcGIS Explorer Using the ArcGIS Explorer SDK</strong>
+
+This session had some pretty good demonstrations on creating custom tasks for
+ArcGIS Explorer included, although it was really more valuable as just a deeper
+introduction into what ArcGIS Explorer is meant to do and how it works. The
+session started out introducing the basics of an .nmf file, which is an xml file
+that ArcGIS Explorer uses to store <strong><em>everything</em></strong>. Being
+xml, .nmf files can easily be programmatically created and edited, and can
+contain everything from layers (including symbology, etc.) to ArcGIS Explorer
+tasks. They can basically contain as little or as much information as you want,
+and, since they are just xml, editing .nmf files is an easy way for users to
+create "custom" ArcGIS Explorer applications without any programming at all.
+
+If you want to further extend an ArcGIS Explorer application, though, you are
+going to have to develop custom tasks. Tasks are designed to be very
+lightweight. They serve as a client-side interface to gather input from users,
+present this information back to them, and interact with other tasks, if needed.
+The bulk of a task's processing work gets done on the server.
+
+To help developers design custom tasks, ESRI has released an API that allows
+developers to interact with ArcGIS Explorer. Note that the SDK is .NET only.
+
+Here are some tips for those of you who are developing tasks for ArcGIS
+Explorer:
+<ul>
+	<li>
+<ul>
+	<li>As drawing lots of results takes time, set visible to "False" to begin. This
+dramatically improves the overall user experience.</li>
+	<li>Currently, the polygon property does not have area. This is because of
+difficulties with WGS84 and 3D.</li>
+	<li>ArcGIS Explorer returns hidden layers, so make sure that you check for these
+when iterating through layers.</li>
+	<li>You can override "OnIdle" to bring real time updates of data. There are
+currently no events exposed in the API to do this, but it is possible.</li>
+	<li>Result::Description does honor HTML tags, which means that you can use CSS,
+JavaScript, etc. in the description.</li>
+</ul>
+</li>
+</ul>
+One more development that is coming with the next build of ArcGIS Explorer is
+exposure of <a href="http://en.wikipedia.org/wiki/OpenGL" target="_blank">OpenGL</a>, which should allow for lots of exciting things to
+come.
+
+<strong>Thursday, June 21st</strong>
+
+<strong>ArcGIS Mobile - The Road Ahead</strong>
+
+I wasn't able to make it to the 2007 ESRI Developer Summit, so I missed quite
+a bit of news on the ArcGIS Mobile front. Because of this, I was especially
+excited to hear more information about ESRI's plans for the SDK. Most of the
+session's time, however, was spent on the new ArcGIS Mobile client (it looks
+like they're calling it "ArcGIS Mobile Editor", although don't quote me on
+that). I was a little disappointed by this, but it was interesting to see some
+of the demo apps that they put together for the new client, as most of the
+functionality that was demonstrated is available now with the existing 9.2 SDK.
+After the session, I was told that there should not be any major changes to the
+SDK (other than additions) from 9.2 to 9.3, so there shouldn't be much work
+involved when migrating to 9.3.
+
+As for the SDK, there are some enhancements coming at 9.3:
+<ul>
+	<li>Support for more base layers, including large, non-edit vector datasets and
+tiled ArcGIS Server map services.</li>
+	<li>More street routing and navigation functionality exposed.</li>
+	<li>An updated geometry and sketch model, including making it easier to create
+features with GPS (this can be done with the 9.2 SDK, but it is difficult).</li>
+	<li>Better standalone and related tables integration. It was not clear how they
+are going to deal with related data, although I did ask.</li>
+	<li>Support for Windows Mobile 6.0 and Linux Mobile Data Web Service.</li>
+</ul>
+Like I mentioned, the majority of the session was spent on the upcoming
+ArcGIS Mobile Editor. Here are some miscellaneous features that were discussed
+and demonstrated:
+<ul>
+	<li>Target release date: January 2008, along with the rest of the 9.3 release.</li>
+	<li>The client is targeting Windows Mobile devices.</li>
+	<li>Disconnected, occasionally connected, and always connected use cases will be
+supported.</li>
+	<li>Will not support related tables in initial release.</li>
+	<li>The team has really focused on usability and the user interface shows this.
+It is very simplistic, without any icons at all (it uses text in place of
+icons). It was interesting that they mentioned looking to the iPod
+for inspiration when building the user interface.</li>
+	<li>Allows users to both collect and update features.</li>
+	<li>Has full GPS editing capabilities.</li>
+	<li>Can synchronize directly with ArcGIS Server with virtually any kind of
+connection - including a satellite phone connection, WiFi, CDMA/GSM, and wired
+connection - which allows for real-time tracking of either a GPS device (via the
+tracklog) or field work completed.</li>
+	<li>Feature search functionality and ability to connect to web service to
+search, as well.</li>
+	<li>Release of a new module for ArcGIS Server Manager which allows for
+development and deployment of ArcGIS Mobile services and applications.</li>
+	<li>When a mobile service is accessed by ArcGIS Mobile Editor, geodatabase
+subtypes and domains are automatically brought with it onto the device.</li>
+	<li>Uses local caching for "non-operational" data (data that are not being
+edited). These should not be sent over wireless, but, rather, loaded onto the
+device.</li>
+	<li>Compressed vector layers are supported for static viewing.</li>
+	<li>ArcGIS Online will soon have services specifically designed for consumption
+by ArcMobile applications, including: StreetMap, satellite imagery, and
+topopgraphic data.</li>
+	<li>Wireless synchronization can be tweaked to fit specific cases (e.g.
+synchronize when a connection is available, synchronize when a WiFi hotspot is
+available, or automatic synchronization in real-time).</li>
+</ul>
+<strong>Managing Distributed Data with Geodatabase Replication</strong>
+
+This session, although it covered quite a bit of material that was review for
+me, did help quite a bit. At my organization, we had a couple of problems early
+on with replication that have now been solved. Overall, from my experience
+geodatabase replication seems to work fairly well, and it sounds like there are
+quite a few improvements coming in 9.3 that will make it even more solid.
+
+Again, I'm just going to list a few of the highlights from this session, as a
+lot of the session was just reviewing the fundamentals of using geodatabase
+replication:
+<ul>
+	<li>No version is needed on a simple child replica. Having a version will only
+decrease performance of the geodatabase and the replica.</li>
+	<li>With the current implementation of geodatabase replication, metadata are
+copied over when the first replica operation is run. After that, metadata
+changes are not reflected in the replica. This may change in future releases,
+although the enhancement is not currently slated for the 9.3 release.</li>
+	<li>There are tools that allow you to apply most kinds of schema changes across
+replicas. Applying schema changes is a two step process:
+<ol>
+	<li>Compare replica geodatabases directly in a connected environment.</li>
+	<li>Export XML and then import to apply changes to geodatabase that needs the
+schema changes.</li>
+</ol>
+</li>
+	<li>Geodatabase replication can be integrated into larger application through
+APIs. There are two APIs, one for coarse-grained control (GeoDataServer object
+model), the other for more fine-grained control (Pre-ArcGIS 9.2 object model
+that works only on geodatabases that live on the Local Area Network).</li>
+	<li>Enhancements coming at 9.3:
+<ul>
+	<li>Replication will be extended to allow one way replication to file and
+personal geodatabases.</li>
+	<li>Better support for synchronization of large (greater than 1 GB) delta files.</li>
+	<li>Improved logging for easier troubleshooting of issues.</li>
+</ul>
+</li>
+</ul>
+Lastly, at the end of the session it was announced that a whitepaper, titled
+"Managing Distributed Data" will be available on the <a href="http://support.esri.com/" target="_blank">ESRI Support site</a> soon.
+
+<strong>Developing Applications with ArcGIS Server Mobile SDK</strong>
+
+This was another session that I didn't get a lot out of. Maybe I was just
+getting tired? Here are a few random notes:
+
+Overview of building mobile applications for accessing ArcGIS Server
+services:
+<ol>
+	<li>Build your geodatabase.</li>
+	<li>Author a mobile map.</li>
+	<li>Publish your map as a mobile service.</li>
+	<li>Design mobile application.</li>
+	<li>Deploy mobile solution.</li>
+	<li>Synchronize mobile solution.</li>
+</ol>
+Tips for developing mobile applications for accessing ArcGIS Server services:
+<ul>
+	<li>Use MapCache Generator tool on desktop to generate mobile map cache.</li>
+	<li>Use Request_Completed event to monitor synchronization requests.</li>
+	<li>Use the State and Notifications Broker API and be smart about how connected
+you are (Microsoft.WindowsMobile.Status).</li>
+</ul>
+<strong>Miscellaneous Questions/Answers and Other Tips that I Picked Up</strong>
+
+So, as all of you who have been to the UC know, a lot of what you learn comes
+outside of the official workshops and technical sessions. The vendor area holds
+a plethora of resources in the form of technical expertise - especially for
+developers - that are available to help troubleshoot specific issues and field
+questions, and you can always learn something when talking to colleagues. Here
+are some miscellaneous anecdotes that I discovered during my time here in San
+Diego. Where appropriate, I've given credit to the originator of the
+information:
+
+ArcGIS Explorer
+<ul>
+	<li>Can an .nmf be placed on a file server and <strong><em>not be downloaded/cached
+locally</em></strong> when a user opens it from his/her workstation?
+<ul>
+	<li>It depends on the browser behavior. ESRI hasn't really looked into this, but
+they are going to and will come out with some guidance/recommendations on how to
+make various browsers handle .nmf files in this way. If your organization uses
+Internet Explorer, this can likely be set by group policy.</li>
+</ul>
+</li>
+	<li>Have any formal tests been done to help gauge the bandwidth cost of using
+ArcGIS Explorer on a corporate network?
+<ul>
+	<li>No formal tests have been done, but because of the way that ArcGIS Explorer
+separates data into layers (which is a good thing, right?), it probably consumes
+more bandwidth than Google Earth. ArcGIS Explorer is designed to be a broadband
+application and will, therefore, not run with less than 100 kb/s bandwidth. For
+a good experience, there should be at least 200 kb/s of available bandwidth per
+user.</li>
+</ul>
+</li>
+</ul>
+ArcGIS Server Performance
+<ul>
+	<li>Generating Tile Cache
+<ul>
+	<li>Just a tidbit of information: to generate tile cache for the globes that are
+served through ArcGIS Online, ESRI used three quad CPU servers to build each of
+the caches. It took them two weeks to build each cache.</li>
+	<li>When generating tile cache for use in ArcGIS Explorer, it is possible (and
+recommended) to generate 2D cache and then associate it with a globe. Draping
+will happen on the fly, and this allows for cache to be generated much faster
+and with much less overall processing.</li>
+</ul>
+</li>
+	<li>Using Multiple DNS Entries to Serve ArcGIS Server Tile Cache
+<ul>
+	<li>Lately, I've been working hard on improving performance of some of our web
+applications. One tried and true method that web developers live by is
+registering multiple DNS entries to serve out resources (CSS, Images,
+JavaScript, etc.), as this helps in getting around HTTP 1.1's two connections
+per-browser limit. I haven't been able to make this work for our tile cache yet,
+so I posed the question to one of ArcGIS Server's developers. His idea was to
+specify the names of the servers in the code and then use JavaScript to cycle
+through them on each image request. We then went over to discuss it with the
+product lead who told me that a blog post will be out in the next couple of
+weeks that will detail how to set this up.</li>
+</ul>
+</li>
+</ul>
+ArcGIS Server Security
+<ul>
+	<li>At 9.2, it isn't possible to use Windows Integrated pass-through
+authentication from an ASP.NET ArcGIS Server application to a database server
+to, for example, limit edit access to a service based on an Active Directory
+logon. There are ways, however, to work around this and basically get the same
+thing. <em>Note that what follows isn't pretty</em>:
+<ul>
+	<li>You have to place the service in a directory that has NTFS permissions set
+on it and make some modifications to the web.config. If a user that is not
+allowed access to the service goes to the web application, they will not see the
+service.</li>
+	<li>In this way, you can 1) create two different services that access the same
+SDE data (one for editing, one for viewing) and 2) restrict access to the
+services using NTFS permissions and modifications to the web.config. After doing
+this, the user will see only the service that they have access to in the
+application.</li>
+	<li>However, in addition to this you have to programmatically hide the "Edit"
+task that displays in the web application if a user does not have edit access to
+any services (and, if you want to make it even more complicated, you have to
+create and programmatically hide or display custom edit tasks per Active
+Directory group if you have multiple services that are editable by different
+groups of users).</li>
+</ul>
+</li>
+</ul>
+Web Map Optimization (thanks Roland!)
+<ul>
+	<li>Cartographic representations of data draw faster in web maps than
+explicitly-defined symbology representations.</li>
+	<li>It is good practice to convert .bmp to .emf before publishing maps. There is
+a style set, titled "ESRI Optimized Style File" that is available for use. This
+set contains styles that have been designed specifically for display on the web.</li>
+	<li>Where possible, it is good practice to simplify your geometries before
+serving them through a web map application. For example, the "Simplify Polygon"
+command honors topologies while generalizing the geometry of a polygon feature
+class.</li>
+	<li>When building a map that is going to be served through ArcGIS Server, define
+your scales initially and then group data that display at specific scales
+(scale-specific rendering) into group layers. ESRI has defined its standard
+scales, and loads their "StandardScales.txt" into each of their .mxd projects
+before doing anything else.</li>
+</ul>

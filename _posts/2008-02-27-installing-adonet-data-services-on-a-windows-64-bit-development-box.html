@@ -1,0 +1,62 @@
+--- 
+layout: post
+title: Installing ADO.NET Data Services on a Windows 64-bit Development Box
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:104:"http://www.nateirwin.net/2008/02/27/installing-adonet-data-services-on-a-windows-64-bit-development-box/";s:7:"tinyurl";s:25:"http://tinyurl.com/cmreh6";s:4:"isgd";s:17:"http://is.gd/CFf7";s:5:"bitly";s:20:"http://bit.ly/16Oo8G";s:5:"snipr";s:22:"http://snipr.com/im6nw";s:5:"snurl";s:22:"http://snurl.com/im6nw";s:7:"snipurl";s:24:"http://snipurl.com/im6nw";}
+  _edit_last: "2"
+  tweetbackscheck: "1243111226"
+  tweetcount: "0"
+tags: 
+- Services
+type: post
+status: publish
+---
+I've been meaning to play around with Microsoft's new ADO.NET Data Service stuff (formerly known as "Astoria") for some time now, but couldn't find the time until today. When I <a href="/MicrosoftCodenameQuotAstoriaquot.aspx" target="_blank">last blogged about it</a>, the technology was still in a Community Technology Preview. Since then, however, it has matured, is now packaged with the ASP.NET 3.5 Extensions CTP, and will undoubtedly be included in a future service pack or release of the .Net Framework. Until then, though, you have to walk a difficult road to get it installed and working as, like a lot of Microsoft's "unofficial/unsupported side projects", it isn't just a single install to get it up and running. It's, rather, a series of installs followed by obscure IIS configuration changes followed by pulling your hair out followed by (finally) some ADO.Net bliss.
+
+Here are the steps to get your development machine setup to work on ADO.Net Data Services. These instructions apply to a 64-bit Windows XP SP2 installation. The steps may vary for other versions of Windows, but I'm pretty sure that most of them will apply in most cases.
+<ul>
+	<li>First of all, Visual Studio 2008 is a prerequisite for developing ADO.Net Data Services. You can use any version, including Visual Web Developer Express.</li>
+	<li>Next you need to download and install the <a href="http://www.google.com/url?sa=t&amp;ct=res&amp;cd=1&amp;url=http%3A%2F%2Fwww.asp.net%2Fdownloads%2F3.5-extensions%2F&amp;ei=8bbER7PBCZPiepvRvIIO&amp;usg=AFQjCNHze_I2Nv6XUlZaSQYTCTRLm9O8Dg&amp;sig2=bqlhlokFPTozRN_a1y15ow" target="_blank">ASP.Net 3.5 Extensions CTP</a>. If you're on a 64-bit operating system, you may have to manually copy the System.Data.Entity and System.Data.Entity.Design .dlls from your GAC to your .Net v3.5 directory (I had to). A bit more detail:
+<ul>
+	<li>For some reason, these two dlls don't seem to install correctly when you run the ASP.Net 3.5 Extensions CTP installer. To solve this:
+<ul>
+	<li>Click "Start&gt;Run" and then paste the paths below into the "Open:" dialog and hit enter:
+<ul>
+	<li>C:\Windows\assembly\GAC_MSIL\System.Data.Entity\3.5.0.0__b77a5c561934e089</li>
+	<li>C:\Windows\assembly\GAC_MSIL\System.Data.Entity.Design\3.5.0.0__b77a5c561934e089</li>
+</ul>
+</li>
+	<li>From each of the now open directories, drag and drop the single .dll into the following directory: C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5.</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li>Next you need to download and install the <a href="http://go.microsoft.com/fwlink/?LinkID=104985" target="_blank">XML Editor QFE</a> and the <a href="http://www.microsoft.com/downloads/details.aspx?FamilyId=D8AE4404-8E05-41FC-94C8-C73D9E238F82&amp;displaylang=en" target="_blank">ADO.Net Entity Framework Tools Dec 07 CTP</a>, in order.</li>
+	<li>And now you should be ready to develop ADO.Net Data Services! There's a great <a href="http://quickstarts.asp.net/3-5-extensions/adonetdataservice/CreatingADONETDataServices.aspx" target="_blank">walkthrough</a> available on the ASP.Net 3.5 "Quick Starts" site.</li>
+</ul>
+After you've created your data service on your local dev machine, you're probably going to want to deploy it to a dev server, right? Well, I did. And, of course, I ran into another issue that required quite a bit of Googling and cursing to solve. After deploying the application and pointing a Virtual Directory at it, I received the following error message when browsing to the .svc in Internet Explorer:
+
+"A name was started with an invalid character. Error processing resource"
+
+Well, what is this? I found lots of others asking that very same question, and finally stumbled onto a solution in the <a href="http://forums.microsoft.com/MSDN/ShowPost.aspx?PostID=2594537&amp;SiteID=1" target="_blank">MSDN forums</a>. I'll outline the steps here, as much for my own sanity if I run into this problem again on another server as to help others. These steps apply for IIS 6. If you're on IIS 7, here's a quick tip: make sure that you make the directory an application and not just a Virtual Directory...
+<ul>
+	<li>First of all, make sure that you have the ASP.Net 3.5 Extensions CTP installed on the server. This should be obvious, I know, but it wouldn't be the first time...</li>
+	<li>Next, you'll need to manually add a script mapping for the .svc extension to your application's properties in IIS Manager:
+<ul>
+	<li>Open IIS Manager.</li>
+	<li>Right-click on your application and choose "Properties".</li>
+	<li>On the "Virtual Directory" tab, click on the "Configuration..." button.</li>
+	<li>On the "Mappings" tab, make sure that .svc isn't already present in the "Application extensions" section. If it isn't, click on the "Add..." button.</li>
+	<li>Click on the "Browse..." button and browse to and select C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\aspnet_isapi.dll.</li>
+	<li>Back on the "Add/Edit Application Extension Mapping" dialog, type ".svc" in the "Extension:" textbox and click "OK".</li>
+	<li>Click "OK" two more times to get out of the application properties.</li>
+</ul>
+</li>
+</ul>
+Theoretically none of this should be necessary, as IIS's script mappings are <strong><em>supposed</em></strong> to be updated whenever a new version of the .Net Framework is installed on the machine. However, I found that this didn't happen in my case (I was, again, doing this on 64-bit machine (Windows Server 2003), so maybe it is another funky 64-bit thing). I also found that running ServiceModelReg.exe, which is supposed to WCF-enable IIS, didn't work either.
+
+So after you do all of this (and I honestly hope that you had a much easier time than I did) you're good to go.
+
+I'll post about my actual development experience with ADO.Net Data Services in a separate post. But I'll put in this teaser: You can do some really cool stuff with these extensions!

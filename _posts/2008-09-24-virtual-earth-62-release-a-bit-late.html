@@ -1,0 +1,28 @@
+--- 
+layout: post
+title: Virtual Earth 6.2 Release a Bit Late
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Virtual Earth
+- Web Mapping
+type: post
+status: publish
+---
+I wrote about the 6.2 release of Virtual Earth on September 10th, saying that it was due to be released on September 22nd. Well, it’s now the 24th and we still haven’t seen the new code. There are signs, however, that it’s on the way, including a document on MSDN (you can get to it by going to the Virtual Earth Interactive SDK -- <a title="http://dev.live.com/virtualearth/sdk/" href="http://dev.live.com/virtualearth/sdk/">http://dev.live.com/virtualearth/sdk/</a> -- and clicking on the “What’s new in the latest release” link).
+<p align="center"><img style="border: 0px none " title="image" src="http://images.nateirwin.net/VirtualEarth6.2ReleaseaBitLate_884E/image.png" border="0" alt="image" width="177" height="49" /></p>
+
+The document has more information on the coming release, including the following, copied and pasted from the document (and yes, those links to MSDN do currently work):
+<ul>
+	<li><strong>Pushpin clustering</strong>. Use the <a href="http://msdn.microsoft.com/en-us/library/cc966930%28ide%29.aspx">VEShapeLayer.SetClusteringConfiguration Method</a> to set how to display and cluster overlapping pushpins for better shape display at higher altitudes.</li>
+	<li><strong>Hints for route instructions</strong>. Help your users find route turns with hints about nearby landmarks and intersections using the <a href="http://msdn.microsoft.com/en-us/library/cc966723%28ide%29.aspx">VERouteItineraryItem.Hints Property</a>.</li>
+	<li><strong>Imagery metadata</strong>. Retrieve information about imagery using the <a href="http://msdn.microsoft.com/en-us/library/cc966714%28ide%29.aspx">VEMap.GetImageryMetadata Method</a>.</li>
+	<li><strong>Base map disabling</strong>. Use the Virtual Earth Mercator projection in non-mapping applications by turning off the base map with the <a href="http://msdn.microsoft.com/en-us/library/cc966724%28ide%29.aspx">VEMapOptions.LoadBaseTiles Property</a>. You can use the <a href="http://msdn.microsoft.com/en-us/library/cc980906%28ide%29.aspx">VEMap.HideScalebar Method</a> as well.</li>
+	<li><strong>Support for other languages</strong>. Retrieve maps with labels in French, German, Italian, and Spanish from Virtual Earth. See the <a href="http://msdn.microsoft.com/en-us/library/cc469974%28ide%29.aspx">Returning Localized Results</a> topic for a list of supported culture strings.</li>
+	<li><strong>3D model import</strong>. Import 3D model data files into a shape layer using the <a href="http://msdn.microsoft.com/en-us/library/cc966728%28ide%29.aspx">VEMap.Import3DModel Method</a>. Interact with these models as you would any shape.</li>
+	<li><strong>Updated interactive SDK</strong>. See the new functionality of the Virtual Earth map control demonstrated in the updated <a href="http://dev.live.com/virtualearth/sdk/">Virtual Earth Interactive SDK</a>.</li>
+</ul>
+I also received an email from Microsoft yesterday that said that the release has been delayed and that they will send out an update on the status sometime today. I’ll make sure that this post gets updated when I receive the email.
+
+UPDATE: The new release is now out (9/25/2008 at 7:45 AM Mountain Time).

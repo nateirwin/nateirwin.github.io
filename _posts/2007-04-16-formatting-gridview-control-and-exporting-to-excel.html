@@ -1,0 +1,93 @@
+--- 
+layout: post
+title: Formatting GridView Control and Exporting to Excel
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:87:"http://www.nateirwin.net/2007/04/16/formatting-gridview-control-and-exporting-to-excel/";s:7:"tinyurl";s:25:"http://tinyurl.com/brx9tm";s:4:"isgd";s:17:"http://is.gd/CHNf";s:5:"bitly";s:19:"http://bit.ly/jt5y7";s:5:"snipr";s:22:"http://snipr.com/imk08";s:5:"snurl";s:22:"http://snurl.com/imk08";s:7:"snipurl";s:24:"http://snipurl.com/imk08";}
+  _edit_last: "2"
+  tweetbackscheck: "1243097058"
+  tweetcount: "0"
+tags: 
+- Development
+type: post
+status: publish
+---
+For organizations that have adopted Microsoft Office as their standard office suite, working with Office formats (Access, Excel, and Word) in web applications is often a necessity. Users are familiar and comfortable with Office, and with added support for Excel spreadsheets in ArcGIS Desktop 9.2 exporting to Excel from database controls (GridView, DetailsView, etc.) is a great way to make your data more accessible to GIS users.
+
+My group provides access to several organization-wide databases through our enterprise GIS intranet web portal, and we wanted to allow users to query out data and then export the data to an Excel spreadsheet. They would then be able to bring the spreadsheet into ArcMap and link it with their existing spatial data. Looking at the larger picture, this is a great - albeit not that elegant - way to tie disparate systems together and allow data developers to error-check their data by providing crosswalks between databases.
+
+Although exporting the contents of an ASP.NET 2.0 GridView control is simple, I ran into a couple of issues right off the bat:
+<ul>
+	<li>With paging enabled on my GridView control (which is a necessity for our web application), when the contents of the GridView were rendered in Excel the page links at the bottom were preserved and passed into the spreadsheet.</li>
+	<li>With sorting enabled on my GridView control (which is, again, a necessity for our web application), the column headers were passed as hyperlinks into the Excel spreadsheet. When they were clicked on an error message displayed.</li>
+</ul>
+Thankfully these problems were easily solved. As you'll see in the code below, the solution simply involved turning paging and sorting off temporarily and then turning it back on after the "Export to Excel" is completed.
+
+Note a couple of caveats:
+<ol>
+	<li>This will only work for exports of 65,000 or less records. Even though you can get up to 65,000 records returned, be aware that there is a performance hit on the server. It is a good idea to build the interface so that users have to first query out records before exporting to Excel.</li>
+	<li>I have tested this in Internet Explorer 7.0, Mozilla Firefox 2.0, and Opera 9.0 with both Office 2003 and Office 2007. When opening the exported .xls with Excel 2007, the following warning comes up:</li>
+</ol>
+<img src="http://www.nateirwin.net/images/excelexporterror.png" alt="" />
+<blockquote>When you click on the "Yes" button, the spreadsheet opens fine. This is not much of an issue for our organization, as we are still using Office 2003 and likely will be for at least another year. I found a <a href="http://forums.asp.net/thread/1560113.aspx" target="_blank">reference to this problem</a> in the ASP.NET forums, but was unable to find a solution. If anyone runs into a solution, please <a href="http://www.nateirwin.net/ContactForm.aspx" target="_blank">let me know</a>.</blockquote>
+With those caveats in mind, here's the code:
+
+<strong>Sorry that the code formatting below is messed up. I'll try to get it fixed soon!</strong>
+
+<strong>ASPX</strong> - Assuming that you are have a valid SqlDataSource set up<strong>:</strong>
+<div id="overflow">
+<pre>"btnExport" runat=<span class="str">"server"</span> OnClick=<span class="str">"btnExport_Click"</span> Text=<span class="str">"Export to Excel"</span> /&gt;</pre>
+<pre>"GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" PageSize="50"  BorderColor="Black" BorderStyle="Solid" BorderWidth="1px"&gt;
+     "#5D7B9D" Font-Bold=<span class="str">"True"</span> ForeColor=<span class="str">"White"</span> /&gt;
+
+          "DataField1" HeaderText=<span class="str">"Data Field 1"</span> SortExpression=<span class="str">"DataField1"</span> /&gt;
+          "DataField2" HeaderText=<span class="str">"Data Field 2"</span> SortExpression=<span class="str">"DataField2"</span> /&gt;
+          "DataField3" HeaderText=<span class="str">"Data Field 3" </span>SortExpression=<span class="str">"DataField3"</span> /&gt;
+
+     "#F7F6F3" ForeColor=<span class="str">"#333333"</span> /&gt;
+     "#999999" /&gt;
+
+"#E2DED6" Font-Bold=<span class="str">"True"</span> ForeColor=<span class="str">"#333333"</span> /&gt;
+
+"#284775" ForeColor=<span class="str">"White"</span> HorizontalAlign=<span class="str">"Center"</span> /&gt;
+     "#5D7B9D" Font-Bold=<span class="str">"True"</span> ForeColor=<span class="str">"White"</span> /&gt;
+     "White" ForeColor=<span class="str">"#284775"</span> /&gt;</pre>
+</div>
+<strong>Code-Behind:</strong>
+<div id="overflow">
+<pre class="csharpcode"><span class="kwrd">public</span> <span class="kwrd">partial</span> <span class="kwrd">class</span> ExporttoExcel : System.Web.UI.Page
+{
+    protected void btnExport_Click(object sender, EventArgs e)
+    {
+        GridView1.AllowPaging = false;
+        GridView1.AllowSorting = false;
+        GridView1.DataBind();
+
+        Response.Clear();
+        Response.AddHeader("content-disposition", "attachment;filename=ExcelSpreadsheet.xls");
+        Response.Charset = "";
+        Response.ContentType = "application/vnd.xls";
+
+        StringWriter stringWrite = new StringWriter();
+        HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
+
+        GridView1.RenderControl(htmlWrite);
+
+        Response.Write(stringWrite.ToString());
+        Response.End();
+
+        GridView1.AllowPaging = true;
+        GridView1.AllowSorting = true;
+        GridView1.DataBind();
+    }
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+
+    }
+}
+</pre>
+</div>
+The code is pretty straightforward. On the <span style="color: #ff0000;">btnExport_Click</span><span style="color: #000000;"> event, paging and sorting are turned off on GridView1. Next, the content type is set and passed to the browser as HTML and the download is initiated. After the transfer is completed, paging and sorting are turned back on. Finally, <span style="color: #ff0000;">VerifyRenderingInServerForm</span> is overridden, confirming that an HtmlForm control is rendered for the server control at run time.</span>
+
+Hope this helps...

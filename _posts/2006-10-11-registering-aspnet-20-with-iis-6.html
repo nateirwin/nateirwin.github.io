@@ -1,0 +1,22 @@
+--- 
+layout: post
+title: Registering ASP.NET 2.0 with IIS 6
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+<div><img src="http://www.nateirwin.net/images/register_asp.net.png" alt="" /></div>
+<div>I have spent a lot of time lately working on an ASP.NET site for our company intranet. Up until this point, I've used Visual Studio's built-in ASP.NET "Development Server" to develop the site on my local workstation. The development has gotten to the point, though, that the site needs to be moved to an actual IIS server. So, I made sure that IIS was installed, Active Server Pages were enabled, and permissions were set up correctly. I then moved the site over, restarted the website for good measure, and expected to be able to browse the site immediately.</div>
+However, I ran into an issue that I hadn't seen before. I could open html pages, but couldn't open any ASP pages, even though ASP was set up correctly. After browsing through some web forums and such, I found that if the .NET framework is installed before IIS is enabled, you have to manually register ASP.NET with IIS. Sounds like a pain in the ass, right? Well, luckily Microsoft has provided a utility to do it for you.
+
+From the command line, browse to:
+
+<span style="color: #ff0000;">C:</span>\Windows\Microsoft.NET\Framework<span style="color: #ff0000;">64</span>\<span style="color: #ff0000;">vx.x.xxxxx</span><span style="color: #000000;">\ and run aspnet_regiis.exe -i</span>
+
+Next, open up the IIS Manager, click on "Web Service Extensions", and enable the ASP.NET version that you're running.
+
+<em><span style="font-size: xx-small;">Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B00005B4N1/nateirwinnet-20">Karl Denson - Dance Lesson #2</a>...</span></em>

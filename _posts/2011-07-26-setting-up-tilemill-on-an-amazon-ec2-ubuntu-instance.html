@@ -1,0 +1,190 @@
+--- 
+layout: post
+title: Setting up TileMill on an Amazon EC2 Ubuntu instance
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Technology
+- Web Mapping
+type: post
+status: publish
+---
+The <a href="http://maps.nps.gov">NPMap team</a> has been utilizing TileMill more and more over the last couple of months to develop tile sets for our web maps. Why TileMill? The tiles are good looking, and when we deploy them to our <a href="http://tiles.mapbox.com/nps/">hosted TileStream</a> we get interactivity and tile compositing out-of-the-box. This really helps enhance the 1) usability and 2) performance of our web maps, and these are two things we don't compromise on. Plus we really love the simplicity of the TileMill/TileStream solution. It isn't a fit for all of our projects, but it is perfect for smaller, more targeted projects that are aimed more at users who know nothing about GIS. And this is the type of user that happens to make up the bulk of our user base at this point.
+
+The thing is, the NPS, like most federal agencies, is a Windows-only shop. We do have a few Macs scattered about, but for everyone else the only easy way (currently) to get TileMill up and running on a Windows box is to setup an <a href="http://developmentseed.org/blog/2011/jul/11/announcing-virtual-machine-tilemill">Ubuntu virtual machine</a>. We've had mixed success with this approach, mostly because we keep on bumping up against hardware limitations. In addition to this problem, we also have a bunch of tile build tasks that need to run for weeks and sometimes months at a time. It makes a lot more sense to run those in a controlled environment on dedicated infrastructure in the cloud. Our Windows boxes tend to mysteriously reboot themselves on seemingly-random and entirely too frequent patch days, so it is impossible to ensure that an operating system is going to stay up and running for weeks or months at a time.
+
+I've been looking into ways to remedy these problems, and thought that Amazon EC2 sounded like a possible solution. I've dabbled with EC2 a bit in the past, but have never really dug in deep. This seemed like the perfect opportunity to get my hands dirty.
+
+Below are the steps I took to get TileMill up and running on an Amazon EC2 Ubuntu instance. I did the Amazon EC2 setup and the initial Ubuntu configuration from a Mac OS X machine. Please note that I make absolutely no guarantees about the quality of the information below. Most of the steps were taken from other sources, and I have credited the sources multiple times below. I do not plan on keeping these instructions up-to-date as things change, although I may, as much for myself and my team as for others. Bottom line: Your mileage may vary! This is meant to be a learning resource, not a comprehensive guide to Amazon EC2 and TileMill on Ubuntu.
+<h2>Create an Amazon EC2 Ubuntu instance</h2>
+First you need to get an Amazon EC2 instance up and running. Luckily Amazon has made this quite simple.
+<ol>
+	<li><a href="http://www.amazon.com/gp/aws/registration/registration-form.html">Setup an Amazon Web Services account</a> and log in to the Amazon Web Services (AWS) Management Console at <a href="https://console.aws.amazon.com">https://console.aws.amazon.com</a>.</li>
+	<li>Find the latest canonical release of Ubuntu Desktop (here's a list of all the latest releases: <a href="http://uec-images.ubuntu.com/">http://uec-images.ubuntu.com/</a> and here is the release I installed: <a href="http://uec-images.ubuntu.com/natty/current/">http://uec-images.ubuntu.com/natty/current/</a>) and click on the "EBS" version of the "AMI" URL that you want to install (here is the link to the 32-bit Ubuntu 11.04 release I installed: <a href="https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-9df9abd8">https://console.aws.amazon.com/ec2/home?region=us-west-1#launchAmi=ami-9df9abd8</a>). These links are underneath the "Amazon EC2 Published AMIs" section. Why Ubuntu Desktop and not Server? Ubuntu Server does not support a graphical user interface, which is a must for running TileMill. Clicking on the URL will open up the AWS Management Console and start the "New instance" wizard.</li>
+	<li>Step through the "New instance" wizard, selecting the configuration points for your new EC2 instance. I kept most of the defaults, but did change a few things:
+<ol>
+	<li>I changed the "Instance Type" to "ct1.medium". I tried this installation initially on a "tiny" instance, and watched the instance run out of memory three times while trying to install Mapnik 2. I suggest going with something a bit beefier.</li>
+	<li>I chose my existing keypair. If you don't yet have a keypair, you'll need to create one and make sure it is stored in a secure place.</li>
+	<li>I created a new security group and added a rule to allow SSH (port 22) through.</li>
+</ol>
+</li>
+	<li>At the end of the wizard, click "Launch" to fire up your new instance.</li>
+</ol>
+<h2>Setup your new instance</h2>
+Note: These steps are slightly modified from the steps laid out here: <a href="http://michaelhallsmoore.com/blog/Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way">http://michaelhallsmoore.com/blog/Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way</a>. All credit goes to the author of that ridiculously-thorough (in a good way) blog post! I have updated a few out-of-date sections and added some commentary to help out Linux newbies like myself.
+
+Next, you want to SSH into your new instance. You'll use the keypair you configured when setting up the EC2 instance. First, however, you may need to change the permissions on your .pem file from 644 to 400:
+<pre>chmod 400 /path/to/keypair.pem</pre>
+Now you can SSH into your new instance using the "Public DNS" for your instance. You can get to this DNS by selecting the running instance in the AWS Management Console:
+<pre>ssh -i /path/to/keypair.pem ubuntu@ec2-***-***-***-***.computer-1.amazonaws.com</pre>
+You'll notice the "ubuntu" at the front. All Ubuntu canonical releases come pre-configured with an "ubuntu" user with no password set. We'll be using this user until we get to the point where we create new users.
+
+Now we need to update Ubuntu, and we'll also install <a href="http://www.gnu.org/software/emacs/">emacs</a> to help us with an upcoming installation step:
+<pre>sudo apt-get update</pre>
+<pre>sudo apt-get upgrade</pre>
+<pre>sudo apt-get install build-essential emacs23</pre>
+Here's a helpful link to some Emacs hotkeys: <a href="https://help.ubuntu.com/community/EmacsHowto">https://help.ubuntu.com/community/EmacsHowto</a>.
+
+Next, add a new user:
+<pre>sudo adduser myuser</pre>
+You'll have to give the user a password, re-type the password, and then enter some basic information about the user. You can skip over the telephone number, etc. steps by hitting enter.
+
+Once your user is created, you can give it sudo privileges:
+<pre>sudo visudo</pre>
+Add the following line below the "ubuntu" user:
+<pre>myuser ALL=(ALL) ALL</pre>
+Then hit "Control-x" to exit, making sure that you click "y" to save before exiting.
+
+If you want to be able to login with the password you just setup, and not just with your keypair, you'll need to modify the SSH daemon configuration:
+<pre>sudo emacs /etc/ssh/sshd_config</pre>
+Change "PasswordAuthentication" to "yes", then save and exit by hitting "Ctrl-x Ctrl-s" then "Ctrl-x Ctrl-c". Now restart the SSH daemon:
+<pre>sudo /etc/init.d/ssh restart</pre>
+<h2>Install Ubuntu Desktop</h2>
+Note: These steps are taken pretty much verbatim from here: <a href="http://michaelhallsmoore.com/blog/Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way">http://michaelhallsmoore.com/blog/Desktop-Ubuntu-in-Amazon-EC2-The-Right-Way</a>. All credit goes to the author!
+
+Now it is time to install Ubuntu's Desktop (warning: the last command will likely take somewhere between five and fifteen minutes to run):
+<pre>export DEBIAN_FRONTEND=noninteractive</pre>
+<pre>sudo -E apt-get update</pre>
+<pre>sudo -E apt-get install -y ubuntu-desktop</pre>
+<h2>Install FreeNX Server</h2>
+Note: These steps come from the Ubuntu help documentation: <a href="https://help.ubuntu.com/community/FreeNX">https://help.ubuntu.com/community/FreeNX</a>, although the wget operation was added.
+
+FreeNX is the "remote desktop" piece that will allow you to connect to the server and start a session on top of the GUI:
+<pre>sudo add-apt-repository ppa:freenx-team</pre>
+<pre>sudo sed -i 's/natty/lucid/g' /etc/apt/sources.list.d/freenx-team-ppa-natty.list</pre>
+<pre>sudo apt-get update</pre>
+<pre>sudo apt-get install freenx</pre>
+<pre>wget https://bugs.launchpad.net/freenx-server/+bug/576359/+attachment/1378450/+files/nxsetup.tar.gz</pre>
+<pre>tar -xvf nxsetup.tar.gz</pre>
+<pre>sudo cp nxsetup /usr/lib/nx/nxsetup</pre>
+<pre>sudo /usr/lib/nx/nxsetup --install</pre>
+After you run the last command, you'll be asked if "you want to create your own custom KeyPair". Type "n" to answer no.
+
+Now your EC2 Ubuntu instance is ready. But how do you connect?
+<h2>Installing the NX Client</h2>
+Go to the <a href="http://www.nomachine.com/download.php">No Machine download page</a> and download the installer for the platform you're on. Once it is installed, the rest is pretty straightforward. Just name your session, put the Public DNS of your EC2 instance in the connection box, choose the GUI you want to use (KDE or GNOME) and then enter the username/password that you setup earlier to log on to the machine. You should soon see a full Ubuntu desktop.
+
+Now that you're logged in to Ubuntu, you may want to make a keyboard shortcut configuration change in Ubuntu. If you find that typing "d" while using Ubuntu minimizes all windows and takes you back to your desktop, here's how you fix it:
+<ol>
+	<li>Go to "System" &gt; "Preferences" &gt; "Keyboard Shortcuts".</li>
+	<li>In the "Window Management" section, find the entry that says "Hide all normal windows and set focus to the desktop".</li>
+	<li>Click on the "Shortcut" field and change it to something else by typing a new shortcut.</li>
+</ol>
+Note: This keyboard shortcut tip was taken from here: <a href="http://superuser.com/questions/220164/how-to-stop-the-d-key-from-minimizing-all-windows-in-ubuntu-10-10-when-connecte/220705#220705">http://superuser.com/questions/220164/how-to-stop-the-d-key-from-minimizing-all-windows-in-ubuntu-10-10-when-connecte/220705#220705</a>.
+<h2>Install TileMill dependencies</h2>
+Note: These instructions are taken from the TileMill installation instructions included with the latest check out from the TileMill GitHub repository: <a href="https://github.com/mapbox/tilemill">https://github.com/mapbox/tilemill</a>.
+
+Open up a Terminal in Ubuntu by going to "Applications" &gt; "Accessories" &gt; "Terminal", copy and paste this entire block into Terminal, and hit enter:
+<pre>sudo apt-get install -y g++ cpp \<br>
+libboost-filesystem1.42-dev \<br>
+libboost-program-options1.42-dev \<br>
+libboost-python1.42-dev libboost-regex1.42-dev \<br>
+libboost-system1.42-dev libboost-thread1.42-dev \<br>
+python-dev libxml2 libxml2-dev \<br>
+libfreetype6 libfreetype6-dev \<br>
+libjpeg62 libjpeg62-dev \<br>
+libltdl7 libltdl-dev \<br>
+libproj-dev libproj0 \<br>
+libpng12-0 libpng12-dev \<br>
+libtiff4 libtiff4-dev libtiffxx0c2 \<br>
+libcairo2 libcairo2-dev python-cairo python-cairo-dev \<br>
+libcairomm-1.0-1 libcairomm-1.0-dev \<br>
+ttf-unifont ttf-dejavu ttf-dejavu-core ttf-dejavu-extra \<br>
+subversion build-essential python-nose</pre>
+This will install the Mapnik dependencies. Next you need to install the Mapnik plugin dependencies:
+<pre>sudo apt-get install libgdal1-dev python-gdal \<br>
+postgresql-8.4 postgresql-server-dev-8.4 postgresql-contrib-8.4 postgresql-8.4-postgis \<br>
+libsqlite3-0 libsqlite3-dev</pre>
+And the TileMill dependencies:
+<pre>sudo apt-get install curl</pre>
+Now install Mapnik from source:
+<pre>svn checkout -r 3030 http://svn.mapnik.org/trunk mapnik2</pre>
+<pre>cd mapnik2</pre>
+<pre>python scons/scons.py configure</pre>
+<pre>python scons/scons.py</pre>
+<pre>sudo python scons/scons.py install</pre>
+<h2>Making a decision</h2>
+Now it is time to make a decision. If you want to run the very latest TileMill code, you'll need to install Git, check the code out, install a few more dependencies, and then get TileMill up and running. If, however, you are happy running the last release of TileMill, you only have a few steps left to go. Running the latest code can give you access to interesting new features before they make it into an official release, but it can also introduce interesting new bugs into. My suggestion? If you want to utilize a specific new feature that hasn't yet made it into an official release, grab the code from Git (start below at the "Install Git" section). Otherwise stick with the last major release (start below at "Download and install TileMill").
+<h2>Download and install TileMill</h2>
+Go to http://tilemill.com and download the latest release (0.3.3 at the time of writing). Unpack the archive to a directory called "tilemill", we'll say onto your Ubuntu desktop. Then:
+<pre>cd ~/Desktop/tilemill</pre>
+<pre>./ndistro</pre>
+<pre>./tilemill.js</pre>
+Now you should be able to browse to TileMill in FireFox at http://localhost:8889.
+
+If you are happy sticking with major releases of TileMill, there is no reason for you to follow the rest of the steps below. You're done!
+<h2>Install Git</h2>
+Note: These instructions are taken from the GitHub help: <a href="http://help.github.com/mac-set-up-git/">http://help.github.com/mac-set-up-git/</a>.
+
+First of all, sign up for a GitHub account if you don't already have one: <a href="https://github.com/signup">https://github.com/signup</a>.
+
+Next, we need to install Git:
+<pre>sudo apt-get install git-core git-gui git-doc</pre>
+Now we'll set up our SSH keys. These will be used to connect to GitHub. First we'll check to see if we already have SSH keys. If they exist, we'll back them up and move them into a new folder:
+<pre>cd ~/.ssh</pre>
+<pre>ls</pre>
+<pre>mkdir key_backup</pre>
+<pre>cp id_rsa* key_backup</pre>
+<pre>rm id_rsa*</pre>
+If the ~/.ssh directory did not exist in the previous step, create it. Otherwise you can skip to the next step.
+<pre>mkdir ~/.ssh</pre>
+<pre><span style="font-family: monospace; white-space: pre;">chmod 700 ~/.ssh</span></pre>
+Next, we need to generate an RSA key so you can do key-based SSH logins into GitHub. The email you enter in the following command should be the primary email that you have associated with your GitHub account:
+<pre>ssh-keygen -t rsa -C "your_email@youremail.com"</pre>
+You'll see the following:
+<pre>Generating public/private rsa key pair.</pre>
+<pre>Enter file in which to save the key (/home/b/.ssh/id_rsa) :</pre>
+<pre>Enter passphrase (empty for no passphrase) :</pre>
+<pre>Enter same passphrase again :</pre>
+<pre>Your identification has been saved in /home/b/.ssh/id_rsa.</pre>
+<pre>Your public key has been saved in /home/b/.ssh/id_rsa.pub.</pre>
+Hit enter to advance through each step. You can leave the first question blank, but you should enter a passphrase for security purposes. Make sure you make note of this password.
+
+Now you need to log in to GitHub and enter your passphrase. Log in to GitHub and go to "Account Settings", click "SSH Public Keys", and click "Add another public key". Next, in Ubuntu, click on "Places" &gt; "Home Folder" and press "Ctrl-H" to show the hidden folders. Open up the ".ssh" folder and open "id_rsa.pub" with a text editor (right-click on it). Copy the exact contents of the file to the "Key" field in your GitHub profile, give it a title, and hit "Add key". Now test out the SSH to GitHub:
+<pre>ssh -T git@github.com</pre>
+Next set your GitHub username and email:
+<pre>git config --global user.name "Firstname Lastname"</pre>
+<pre>git config --global user.email "your_email@youremail.com"</pre>
+<h2>Install more TileMill dependencies: Node and npm</h2>
+Note: These instructions are taken verbatim, with one minor change to fix a URL problem with the node GitHub repository, from the TileMill installation instructions checked out from the TileMill GitHub repository at <a href="https://github.com/mapbox/tilemill">https://github.com/mapbox/tilemill</a>:
+
+First install Node:
+<pre>git clone --depth 1 https://github.com/joyent/node.git</pre>
+<pre>cd node</pre>
+<pre>git checkout v0.4.9</pre>
+<pre>export JOBS=2</pre>
+<pre>mkdir ~/local</pre>
+<pre>./configure --prefix=$HOME/local/node</pre>
+<pre>make</pre>
+<pre>make install</pre>
+<pre>echo 'export PATH=$HOME/local/node/bin:$PATH' &gt;&gt; ~/.profile</pre>
+<pre>source ~/.profile</pre>
+Then install npm:
+<pre>curl http://npmjs.org/install.sh | sh</pre>
+<h2>Install and start TileMill</h2>
+Note: These instructions are also taken verbatim from the TileMill installation instructions checked out from the TileMill GitHub repository at <a href="https://github.com/mapbox/tilemill">https://github.com/mapbox/tilemill</a>:
+
+<pre>npm install -g tilemill</pre>
+<pre>tilemill</pre>
+Now you should be able to browse to TileMill in FireFox at http://localhost:8889.

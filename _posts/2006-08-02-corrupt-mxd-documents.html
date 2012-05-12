@@ -1,0 +1,20 @@
+--- 
+layout: post
+title: Corrupt .MXD Documents
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Technology
+type: post
+status: publish
+---
+<span style="font-size: x-small;"><span style="font-family: Verdana;">We've all experienced it; you put hours of work into getting an ArcMap project just the way you want it - perfecting the layout and symbology, manipulating the legend properties, tweaking the extent settings - then you go to open it a couple of days later and you get the dreaded "corrupted .mxd" error message. Well, there is still hope. Here are a couple of tips on recovering corrupted .mxd files and preventing your .mxd files from becoming corrupted in the first place.</span></span>
+
+<span style="font-size: x-small;"><span style="font-family: Verdana;">Most .mxd files become corrupted because of ArcMap's thumbnail image feature. This feature automatically creates a thumbnail of your map document when you save it and allows for you to preview the document using ArcCatalog's preview window. If you find a lot of your .mxd files becoming corrupted, it may help to turn this feature off:
+</span></span>
+<ol>
+	<li>In ArcMap, click on "File" and select "Map Properties"</li>
+	<li>Uncheck the box next to "Save thumbnail image with map"</li>
+</ol>
+If one of your map documents is already corrupted, you can use ESRI's MXD Doctor, a utility that is installed with ArcGIS' Developer Tools, to try and recover it. <a href="http://edndoc.esri.com/arcobjects/9.0/ArcGISDevHelp/DeveloperTools/MXDDoctor.htm" target="_blank">Full documentation</a> on how to use this utility is available on ESRI's Developer Network.

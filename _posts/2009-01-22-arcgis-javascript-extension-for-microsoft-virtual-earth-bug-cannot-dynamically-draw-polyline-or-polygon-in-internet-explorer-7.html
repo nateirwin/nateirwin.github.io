@@ -1,0 +1,67 @@
+--- 
+layout: post
+title: "ArcGIS JavaScript Extension for Microsoft Virtual Earth Bug: Cannot Dynamically Draw Polyline or Polygon in Internet Explorer 7"
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:163:"http://www.nateirwin.net/2009/01/22/arcgis-javascript-extension-for-microsoft-virtual-earth-bug-cannot-dynamically-draw-polyline-or-polygon-in-internet-explorer-7/";s:7:"tinyurl";s:25:"http://tinyurl.com/96gady";s:4:"isgd";s:17:"http://is.gd/CCbk";s:5:"bitly";s:19:"http://bit.ly/nhMCm";s:5:"snipr";s:22:"http://snipr.com/ilr00";s:5:"snurl";s:22:"http://snurl.com/ilr00";s:7:"snipurl";s:24:"http://snipurl.com/ilr00";}
+  _edit_last: "2"
+  tweetbackscheck: "1243104821"
+  tweetcount: "0"
+tags: 
+- Design
+- Virtual Earth
+- Web Mapping
+type: post
+status: publish
+---
+UPDATE: This was a bug. I reported it to ESRI, and they have fixed it in the latest release (1.3) of Virtual Earth JavaScript extension. Funny, I'm not sure if anyone is even using the extension, as there was a major lack of response about this issue in the ESRI forums. Are you using it? If so, let me know in the comments. I'm curious.
+
+UPDATE2: Here's a link to the release post on the ArcGIS Server Development blog: <a href="http://blogs.esri.com/Dev/blogs/arcgisserver/archive/2009/03/02/ArcGIS-JavaScript-API-version-1.3-released.aspx" target="_blank">http://blogs.esri.com/Dev/blogs/arcgisserver/archive/2009/03/02/ArcGIS-JavaScript-API-version-1.3-released.aspx</a>. And the ONLY change for the 1.3 release of the Virtual Earth connector: "Version 1.3 of the ArcGIS JavaScript Extension for Microsoft Virtual Earth fixes a display issue when drawing VE shapes on top of ArcGIS Server map layers in Internet Explorer."
+
+I’ve been wrestling with this one for a little while now, but only today found the time to put together a simple demonstration of what I think is a bug in the ArcGIS JavaScript Extension for Microsoft Virtual Earth. Take the following code:
+<pre>
+var latLngs = [];
+var map = new VEMap('map');
+
+function onClick(e) {
+  map.DeleteAllShapes();
+  latLngs.push(map.PixelToLatLong(new VEPixel(e.mapX, e.mapY)));
+
+  if (latLngs.length &gt; 1) {
+    // I'm not hiding the marker, so you'll be able to see that the line does indeed get drawn.
+    // It just doesn't display.
+    map.AddShape(new VEShape(VEShapeType.Polyline, latLngs));
+  }
+}
+function ready() {
+  map.AttachEvent('onclick', onClick);
+  map.LoadMap(new VELatLong(35, -85), 5, VEMapStyle.Aerial);
+
+  // Adding in an ArcGIS Server REST service, as this triggers the bug.
+  // If you comment this out, the polyline will draw correctly in IE 7.
+  var agisve_services = new ESRI.ArcGIS.VE.ArcGISLayerFactory();
+
+  agisve_services.CreateLayer('http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Portland/ESRI_LandBase_WebMercator/MapServer', 'Portland', function(tileSourceSpec, resourceInfo) {
+    tileSourceSpec.Opacity = 0.50;
+    map.AddTileLayer(tileSourceSpec, true);
+  });
+
+  // This just shows you that a polyline will draw correctly in IE7.
+  map.AddShape(new VEShape(VEShapeType.Polyline, [
+    new VELatLong(36, -80),
+    new VELatLong(36, -95)
+  ]));
+}
+</pre>
+Pretty simple stuff. If you look at this in any browser other than IE7, things will work correctly. You’ll see that a polyline is drawn on page load. Then, when you click around on the map, a new polyline is drawn using the locations that you clicked on. If you look at this in IE7, however, you will notice that the initial polyline is drawn on page load, but the “dynamically drawn” polyline is not displayed when you click around on the map.
+
+Now, onto the most important part: If you comment out the code that adds an ArcGIS Server REST service to the map, the line draws correctly in IE7. Try it. Comment out:
+<pre>
+var agisve_services = new ESRI.ArcGIS.VE.ArcGISLayerFactory();
+agisve_services.CreateLayer('http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Portland/ESRI_LandBase_WebMercator/MapServer', 'NPSUnits', function(tileSourceSpec, resourceInfo) {
+  tileSourceSpec.Opacity = 0.50;
+  map.AddTileLayer(tileSourceSpec, true);
+});
+</pre>
+I’m not sure what’s going on here, but I’m determined to find out.

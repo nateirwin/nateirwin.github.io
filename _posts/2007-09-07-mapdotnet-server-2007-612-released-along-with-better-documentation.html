@@ -1,0 +1,20 @@
+--- 
+layout: post
+title: MapDotNet Server 2007 6.1.2 Released Along with Better Documentation
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- MapDotNet Server
+- Web Mapping
+type: post
+status: publish
+---
+Less than a month after the 6.1.1 release, ISC announced yesterday the release of MapDotNet Server 2007 6.1.2. I love it when development teams embrace the "release early, release often" approach. This is the approach that the ArcGIS Explorer team has taken, and look how much their product has improved in the (relatively) short time that it has been out. According to the release notes, 6.1.1 is a maintenance release, but there are two critical improvements related to ArcSDE support that merit mention. Quoted from the release notes:
+<ul>
+	<li>"Substantially improved rendering speeds with ArcSDE. This is especially the case in large multi-processor web garden deployments where the MDNS services are less likely to be processor-bound. Substantially improved SDE connection pooling resulted in upwards of 10 times the rendering performance in our tests. This was especially noticeable when ArcSDE is installed on a separate server from the MDNS web services."</li>
+	<li>"Improved locking support for ArcSDE where large numbers of spatial queries/edits/transforms and map renderings are occurring simultaneously. The ArcSDE ESRI client connector is not thread safe and under heavy load faults were encountered. This has been resolved through better locking in MDNS."</li>
+</ul>
+As I mentioned in a <a href="http://www.nateirwin.net/MapDotNetServer61IsReleased.aspx" target="_blank">previous post</a>, performance in general increased many-fold with the addition of SQL Server tile caching support and the tile over-fetching capabilities in the 6.1 release. And now that the performance of data stored in SDE (where just about all of our data are stored) is supposed to improve even more dramatically with this release, I'm looking forward to seeing the difference.
+
+And on a slightly different - but just as important - note, if you check out the <a href="http://www.mapdotnet.com/Pages/index.aspx" target="_blank">MapDotNet Server website</a>, you'll notice that a lot has changed over the last couple of months. The <a href="http://www.mapdotnet.com/Pages/tutorial.aspx" target="_blank">Interactive SDK</a> now has ten examples that you can both preview and download. In addition to this, the Wiki has some new content (especially of interest are the <a href="http://www.mapdotnet.com/wiki/Wiki%20Pages/Virtual%20Earth%20Extended%20Template.aspx" target="_blank">Virtual Earth extended template</a> and the <a href="http://www.mapdotnet.com/wiki/Wiki%20Pages/Performance%20Tuning.aspx" target="_blank">Performance Tuning</a> entries). Kudos to the MapDotNet Server team for these improvements. That said, there are still a lot of improvements that need to be made, but it seems that they are moving quickly in the right direction.

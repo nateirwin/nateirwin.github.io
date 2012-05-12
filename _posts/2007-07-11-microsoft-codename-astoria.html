@@ -1,0 +1,44 @@
+--- 
+layout: post
+title: Microsoft Codename "Astoria"
+published: true
+meta: 
+  _edit_last: "2"
+  _oembed_734b472c9460205d7647ae55bbde20a2: "{{unknown}}"
+  _oembed_ab9f37d135411bff330b1148c294c473: "{{unknown}}"
+  _oembed_8c02cd3b704de6e1924691d47d7b4fc0: "{{unknown}}"
+tags: 
+- Services
+type: post
+status: publish
+---
+<strong>Brief Introduction</strong>
+
+Microsoft's <a href="http://blogs.msdn.com/adonet/" target="_blank">ADO.NET team</a> recently released a new project, as a Community Technology Preview (CTP), through <a href="http://labs.live.com/" target="_blank">Microsoft's Live Labs</a>. The project, codenamed "Astoria", is a technology that allows developers to easily build and deploy data services (either on their own servers or to Microsoft's hosted "Astoria Online Service") that are accessible to applications through HTTP requests. This idea is not necessarily new - there are other ways to build a web services interface - but the ability to easily build a data service for SQL Server that is accessible through HTTP is definitely groundbreaking.
+
+As the "Astoria" site preaches: this type of service is especially useful for AJAX-based applications that work hard on improving the user experience, through the use of Flash or Silverlight. Once an "Astoria" data service is published, you can query the underlying data structure by passing parameters in the URI. For example (and this is taken from the "Astoria" <a href="http://astoria.mslivelabs.com/Overview.doc" target="_blank">Overview document</a> that is available on the Live Labs website):
+
+To access all customers in a database:
+
+http://myserver/data.svc/Customers
+
+To access a customer whose key is "ALFKI":
+
+http://myserver/data.svc/Customers[ALFKI]
+
+To find all orders that are associated with a customer whose key is "ALFKI":
+
+http://myserver/data.svc/Customers[ALFKI]/Orders
+
+And so on, so forth. You can get <strong><em>much</em></strong> more focused than the above examples. You can drilldown into related data, filter out records, sort records, and even page records.  You get the picture, right? It really is a powerful way to interact with a database.
+
+How does "Astoria" make it so simple? Well, when you build an "Astoria" data service with Visual Studio (and, by the way, you need Visual Studio "Orcas"/2008 beta 1 to install the "Astoria" framework and build these types of data services) you build an Entity Data Model (EDM). "Astoria" then uses this model to wade through the underlying database and figure out how data are related. It can <em><strong>then</strong></em> use this simplified information to serve the data and make them accessible through the RESTful interface. "Astoria" can currently represent data in XML, JSON, and (as Pablo Castro, Microsoft's ADO.NET technical lead, mentions in a really great presentation that he gave at MIX 2007) *<span style="text-decoration: underline;">very</span> experimentally in RDF+XML. XML support is probably the most accepting, but JSON is, of course, perfect for use with AJAX applications.
+
+<strong>Helpful/Interesting Resources</strong>
+
+I find "Astoria", and the underlying concept of taking complex data and making it broadly accessible intriguing. Again, I understand that this is not new territory. SOAP and other web services are a more powerful way of accessing data, but I see "Astoria"'s restful interface meeting the needs of many. The ability to easily publish a database and make it accessible to the web is something that will allow many developers to build richer (and lighter-weight) web (and mapping!) applications.
+<ul>
+	<li><a href="http://astoria.mslivelabs.com" target="_blank">Project "Astoria" Homepage</a></li>
+	<li><a href="http://216.94.10.61/mix07/silverlight/default.html?title=XD006%20-%20Accessing%20Data%20Services%20in%20the%20Cloud&amp;speakers=Pablo%20Castro&amp;presentationCode=XD006&amp;source=XD006.wmv" target="_blank">Pablo Castro's "Astoria" Presentation at Mix 2007</a></li>
+	<li><a href="http://channel9.msdn.com/shows/Microsoft_Conversations_with_Jon_Udell" target="_blank">John Udell's "A Conversation with Pablo Castro about Astoria's RESTful Data Services"</a></li>
+</ul>

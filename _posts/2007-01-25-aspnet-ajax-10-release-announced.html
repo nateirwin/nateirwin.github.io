@@ -1,0 +1,26 @@
+--- 
+layout: post
+title: ASP.NET AJAX 1.0 Release Announced
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+From <a href="http://weblogs.asp.net/scottgu/default.aspx" target="_blank">ScottGu</a>'s <a href="http://weblogs.asp.net/scottgu/archive/2007/01/23/asp-net-ajax-1-0-released.aspx" target="_blank">blog</a>: "ASP.NET AJAX is available for free, and can be used with ASP.NET 2.0 and VS 2005.  It is a fully supported Microsoft product, and is backed by a standard 10 year Microsoft support license (with Microsoft Product Support available via phone 24 hours a day x 7 days a week)."
+
+Also exciting is that the new release of the AJAX Control Toolkit - a set of free, shared-source controls for ASP.NET - has four new controls, including the Calendar Extender, Masked Edit Extender, Tab Container, and Auto Complete Extender. From the looks of it, development on the Control Toolkit will continue even after this final 1.0 release. You can download the Control Toolkit from <a href="http://www.codeplex.com/AtlasControlToolkit" target="_blank">CodePlex</a>.
+
+So, this seems to be the process for near-future development on the AJAX project (even though they have apparently already started work on the ASP.NET AJAX 2.0):
+<ul>
+	<li>Bleeding-edge controls are released through the "Future" CTP, available for download at the</li>
+<a href="http://ajax.asp.net" target="_blank">ASP.NET AJAX site</a>
+	<li>After these controls are tested, they make it into the major release of the Control Toolkit</li>
+</ul>
+Another important tip that Scott mentions in the release announcement: If you've worked with pre-release versions of ASP.NET AJAX in Visual Studio, it's a good idea to delete the cached Visual Studio schema files for control markup. This will ensure that Intellisense is properly working in the Visual Studio environment. To do this:
+<ul>
+	<li>"With Windows XP you do this by deleting all files in this directory: <strong>c:\Document and Settings\[User]\Application Data\Microsoft\VisualStudio\8.0\ReflectedSchemas</strong></li>
+	<li>With Windows Vista you do this by deleting all files in this directory: <strong>c:\Users\[User]\AppData\Roaming\Microsoft\VisualStudio\8.0\ReflectedSchemas"</strong></li>
+</ul>

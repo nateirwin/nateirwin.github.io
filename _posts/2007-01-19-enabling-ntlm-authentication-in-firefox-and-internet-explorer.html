@@ -1,0 +1,73 @@
+--- 
+layout: post
+title: Enabling NTLM Authentication in Firefox and Internet Explorer
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:98:"http://www.nateirwin.net/2007/01/19/enabling-ntlm-authentication-in-firefox-and-internet-explorer/";s:7:"tinyurl";s:25:"http://tinyurl.com/a9r28a";s:4:"isgd";s:17:"http://is.gd/CIrG";s:5:"bitly";s:19:"http://bit.ly/WrHZD";s:5:"snipr";s:22:"http://snipr.com/imode";s:5:"snurl";s:22:"http://snurl.com/imode";s:7:"snipurl";s:24:"http://snipurl.com/imode";}
+  _edit_last: "2"
+  tweetbackscheck: "1243103455"
+  tweetcount: "0"
+tags: 
+- Technology
+type: post
+status: publish
+---
+This tip is useful for organizations who are standardized on Microsoft technologies (Active Directory, IIS, and ASP.NET) and need to provide minimal-intrusion authentication for their <strong><em>internal</em></strong> web applications. I was stumped for a long time on this one. Here's the scenario:
+
+All of my ASP.NET applications - at this point - are internal to the organization that I work for. We are a strictly Microsoft shop, and, because of this, I always leverage Active Directory in everyway possible. Well, this is great from my (a developer's) perspective, as it means that I don't have to build and maintain a login system. However, I recently started getting feedback from users across the country saying that they were being challenged with a login screen when they accessed the applications. This was okay, as they could still get in using their Active Directory accounts, but sometimes they had to append the domain to the beginning of their name, and it all became kind of a pain.
+
+We are a diverse organization, in that we have many different network configurations. Some of our users are on high-quality T1 connections, while others are still on intermittent - at best - connections. Because of this disparity, I initially blamed the login problem on different network configurations (firewalls, distance to domain controller, etc.), but after doing a bit more research I found that the problem was actually browser related.
+
+By the way, the Internet Explorer setting can also be implemented via group policy (thanks to Chris, James, and Marilyn for helping me figure this one out). Look in the registry at:
+<blockquote>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains</blockquote>
+So, here are the steps you need to take to enable NTLM pass-through authentication in Internet Explorer (6 &amp; 7) and Firefox (2):
+
+<strong></strong>
+<h4><span style="font-family: Verdana; font-size: medium;"><strong>Internet Explorer</strong></span></h4>
+Note: These instructions apply to both IE 6 and IE 7, although there may be slight differences in the screenshots below.
+
+Note2: For some reason, some of the entries that are added to the <em>Local intranet</em> zone seem to be persistent. You'll delete them in the interface, close all the windows out, come back and they'll reappear. The only way I found to permanently get rid of them was to manually delete the registry entry located at the location cited just above this section.
+
+1. In Internet Explorer, click on <em>Tools </em>and select <em>Internet Options </em>(see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step1.png" alt="" /></div>
+<strong></strong>
+
+2. Next, click on the <em>Security</em> tab at the top of the <em>Internet Options</em> window (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step2.png" alt="" /></div>
+<strong></strong>
+
+3. Once the contents of the <em>Security</em> tab are displayed, highlight <em>Local intranet</em> and click on the <em>Sites</em> button (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step3.png" alt="" /></div>
+<strong></strong>
+
+4. In the <em>Local intranet</em> dialog that pops up, make sure that the last three boxes are checked and click on the <em>Advanced</em> button (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step3.5.png" alt="" /></div>
+<strong></strong>
+
+5. In the next dialog, type the following into the <em>Add this website to the zone:</em> textbox: <strong><em>http://www.yourdomain.org</em></strong> and click on the <em>Add</em> button (see screenshot below)…
+
+Note: If you’d like to enable Active Directory pass-through authentication for all the sites on a domain, type the following into the <em>Add this website to the zone:</em> textbox: <strong><em>http://*.yourdomain.org</em></strong>.
+<div><img src="http://www.nateirwin.net/images/activedirectorypost1.png" alt="" /></div>
+<strong></strong>
+
+<strong></strong>
+<h3><span style="font-family: Verdana; font-size: medium;">Mozilla Firefox</span></h3>
+Note: These instructions have been tested on Firefox 2.0.0.1.
+
+Note2: Information first encountered here: <a href="http://ackbarr.xoops.org" target="_blank">http://ackbarr.xoops.org</a>.
+
+1. In the address bar of your Firefox browser window, type the following: <strong><em>about:config</em></strong> and press <em>Enter</em> (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/firefox2step1.png" alt="" /></div>
+<strong></strong>
+
+2. In the configuration page that displays, scroll down to the following entry: <strong><em>network.automatic-ntlm-auth.trusted-uris</em></strong> and double-click on it (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/firefox2step2.png" alt="" /></div>
+<strong></strong>
+
+3. In the <em>Enter string value</em> that pops up, type <strong><em>http://www.yourdomain.org</em></strong> into the textbox and click <em>OK</em> (see screenshot below)…
+
+Note: If you’d like to enable Active Directory pass-through
+authentication for all of the sites on a domain, type the following
+into the textbox: <strong><em>.yourdomain.org</em></strong>.
+<p align="center"><img src="http://www.nateirwin.net/images/activedirectorypost2.png" alt="" /></p>

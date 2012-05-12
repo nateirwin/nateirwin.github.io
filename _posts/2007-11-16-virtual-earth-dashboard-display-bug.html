@@ -1,0 +1,27 @@
+--- 
+layout: post
+title: Virtual Earth Dashboard Display Bug
+published: true
+meta: 
+  twittercomments: a:0:{}
+  shorturls: a:7:{s:9:"permalink";s:72:"http://www.nateirwin.net/2007/11/16/virtual-earth-dashboard-display-bug/";s:7:"tinyurl";s:25:"http://tinyurl.com/cuy62f";s:4:"isgd";s:17:"http://is.gd/CET8";s:5:"bitly";s:19:"http://bit.ly/Z6iIb";s:5:"snipr";s:22:"http://snipr.com/im4wn";s:5:"snurl";s:22:"http://snurl.com/im4wn";s:7:"snipurl";s:24:"http://snipurl.com/im4wn";}
+  _edit_last: "2"
+  tweetbackscheck: "1243079234"
+  tweetcount: "0"
+tags: 
+- Virtual Earth
+- Web Mapping
+type: post
+status: publish
+---
+Here's a quick tip that I uncovered today while working with V6 of the Virtual Earth map control: If you notice that your application's Virtual Earth dashboard appears funky with the "Road", "Aerial", and "Hybrid" choices displaying below the actual dashboard (as seen in the first screenshot below), you've probably set a font-size on the body of your web page. This is what's causing the text to wrap below the actual control.
+
+The fix is simple: Define the preferred font-size on something other than the  tag of your page. If you can't do this for some reason, you should also be able to dig a bit into Virtual Earth's CSS classes using a tool like Firebug, find the default font-size for the dashboard, and set your Virtual Earth map div with this default font-size. Just make sure that you use the !important designation to make sure that your styles get applied. I haven't tried this approach, but it *should work (famous last words, right?).
+
+I strongly suggest, though, moving your font definitions from the  to something more "controlled", such as your paragraph
+
+tag; this will save you from a lot of headaches in the future.
+<p align="center"><strong>Before</strong></p>
+<p align="center"><a href="http://images.nateirwin.net/VirtualEarthDashboardDisplayBug_104BC/virtualearth_dashboard_bug.png"><img style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" src="http://images.nateirwin.net/VirtualEarthDashboardDisplayBug_104BC/virtualearth_dashboard_bug_thumb.png" border="0" alt="virtualearth_dashboard_bug" width="302" height="149" /></a></p>
+<p align="center"><strong>After</strong></p>
+<p align="center"><a href="http://images.nateirwin.net/VirtualEarthDashboardDisplayBug_104BC/virtualearth_dashboard_bug2.png"><img style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px" src="http://images.nateirwin.net/VirtualEarthDashboardDisplayBug_104BC/virtualearth_dashboard_bug2_thumb.png" border="0" alt="virtualearth_dashboard_bug2" width="379" height="147" /></a></p>

@@ -1,0 +1,26 @@
+--- 
+layout: post
+title: Connecting ASP.NET to a Named SQL Server Instance
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Database
+- SQL Server
+type: post
+status: publish
+---
+This may be obvious to most, but being new to ASP.NET - and relatively new to programming in general - I found it difficult to connect my ASP.NET application to a SQL Server instance. Looking at the available documentation, connecting should be easy. You simply create a connectionStrings element in your application's web.config file and point it to the right server and database, right?
+
+Well, yeah, but only after clearing out the default inherited connection settings. Out of the box, ASP.NET points to a SQL Server 2005 instance named, of course, SQLEXPRESS. If you don't have a SQLEXPRESS instance running on your server, you have to either change the machine.config file located at
+
+<span style="color: #ff0000;">SystemDrive</span>\WINDOWS\MICROSOFT.NET\Framework<span style="color: #ff0000;">XX</span>\v<span style="color: #ff0000;">X.X.XXXXX</span>\CONFIG
+
+or clear out the inherited connection settings using the clear element and then add in your own connection settings to the web.config file in your web application. Here's the code to clear out the inherited connection settings and connect your application to another - local - SQL Server database:
+
+name="LocalSqlServer"
+connectionString="data source=.\<span style="color: #ff0000;">YourSQLServerInstance</span>;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|<span style="color: #ff0000;">YourDatabase.mdf</span>;User Instance=true"
+providerName="System.Data.SqlClient"
+/&gt;
+
+After you specify the correct connection settings, you should be able to use your SQL Server database to store your application's data.

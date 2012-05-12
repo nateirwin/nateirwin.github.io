@@ -1,0 +1,17 @@
+--- 
+layout: post
+title: Serving .exe Files with IIS 6
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Development
+type: post
+status: publish
+---
+A short pointer: IIS 6 will - by design - only serve .exe files if the following conditions are met:
+<ol>
+	<li>The directory that is serving the executable(s) must <strong>NOT</strong> have "Scripts and Executables" permission</li>
+	<li>The .exe MIME type must be registered with IIS (it is registered, by default)</li>
+</ol>
+I'm writing this because I've been through this issue before, but forgot about the "Scripts and Executables" permission - one of those 'duh' moments. Maybe this will help someone else remember.

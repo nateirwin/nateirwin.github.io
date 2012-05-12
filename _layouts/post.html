@@ -1,5 +1,58 @@
----
-layout: default
----
-{% include JB/setup %}
-{% include themes/twitter/post.html %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body style="padding:0;">
+    {% include nav.html %}
+    <div id="wrapper">
+      <div id="main" class="container">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;padding-top:60px;">
+            <h1>
+              {{ page.title }}
+            </h1>
+            <span class="meta">
+              Posted on {{ page.date | date_to_string }}
+            </span>
+            <div class="tw_button">
+              <a href="https://twitter.com/share" class="twitter-share-button" data-via="nateirwin">Tweet</a>
+            </div>
+            {{ content }}
+
+
+
+
+            <!--
+            <div class="navbar-inner" style="background-color:#F6F7BD;border-top:solid 3px #E6AC27;">
+              <div class="container">
+                <div style="text-align:center;">
+                  <ul class="pager">
+                  {% if page.previous %}
+                    <li class="btn prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}" style="background-color:#80BCA3;">&larr; Previous</a></li>
+                  {% else %}
+                    <li class="btn prev disabled"><a>&larr; Previous</a></li>
+                  {% endif %}
+                  {% if page.next %}
+                    <li class="btn next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+                  {% else %}
+                    <li class="btn next disabled"><a>Next &rarr;</a>
+                  {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          -->
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include footer-sticky.html %}
+    {% include foot.html %}
+  </body>
+</html>

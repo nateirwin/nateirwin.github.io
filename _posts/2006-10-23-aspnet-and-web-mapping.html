@@ -1,0 +1,23 @@
+--- 
+layout: post
+title: ASP.NET and Web Mapping
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Web Mapping
+type: post
+status: publish
+---
+As is obvious from my recent posts, for the last several months I've been working extensively with ASP.NET 2.0. From this experience, I've really come to appreciate the power and flexibility that the .NET Framework offers (and please realize that this is hard for me to say, as I've long been a proponent of all things non-Microsoft). I've especially been impressed when developing on a strictly .NET platform. The seamless integration between Active Directory, ASP.NET, IIS, SQL Server, and, of course, Visual Studio makes developing applications straightforward and nearly painless.
+
+The database controls for ASP.NET 2.0 are, in my opinion, some of the most powerful and valuable controls available. For example, the DetailsView and GridView controls are an easy way to open up a database to multiple users. Using the controls, you can make a database viewable and editable (including the addition of new records and deletion of unwanted records) and write less than twenty lines of code in the process. There is even built-in support for some basic "reconciliation" of the database to check for changes to the same record before submitting updates back to it, along with the ability to add some client-side validation to the insert/update forms. The big question for us GIS sorts, though, is how easy is it to integrate these types of controls - and this level of functionality - into geospatial web apps?
+
+In the past, this would have likely been done through an ArcIMS application. Anyone that's worked with ArcIMS knows, though, that developing an ArcIMS application isn't exactly what you call sustainable; basically, it's better to avoid ArcIMS altogether if possible. Have you ever seen an ArcIMS application that <span style="text-decoration: underline;">works efficiently</span>, <span style="text-decoration: underline;">looks good</span>, and <span style="text-decoration: underline;">serves its purpose well</span>? Well, to be honest, I have too - but they are few and far between. I could tell, though, by looking at these dispersed gems that (likely expensive) third-party products were used and lots of time and effort went into developing the interface.
+
+On to today, and the question that's currently picking at my brain: I've just started really experimenting with ArcGIS Server 9.2, and - to be honest - I'm about hooked already. Talk about an easy way to publish services (KML, Map, WMS, etc.) to the net! And with ArcGIS Explorer coming out soon, as well, it looks like we might actually have a way to present these services in a solid, customizable, and easy-to-use interface. One thing I haven't tested yet, though, is the ability of ArcGIS Server 's mapping services to be extended into a truly customized and powerful web application (think along the lines of an ArcIMS application, but with much more functionality and end-user interaction/control). With the .NET support, I'm sure it can't be too difficult. Again, this is one of those topics that I'm going to have to explore further and report back with more details later on in the process.
+
+Note: I found <a href="http://www.amazon.com/exec/obidos/ASIN/1418018759/nateirwinnet-20" target="_blank">one book</a> about ASP.NET and ArcGIS Server on Amazon, but, after reading the lone review, I'm not sure I'm going to bite.
+
+<span style="font-size: xx-small;"><em>Listening to </em></span><a href="http://www.amazon.com/exec/obidos/ASIN/B0002EQ7E2/nateirwinnet-20" target="_blank"><span style="font-size: xx-small;"><em>Paul Simon - Graceland</em></span></a><em><span style="font-size: xx-small;">...</span>
+<span style="font-size: xx-small;">My Nose is In </span></em><a href="http://www.amazon.com/exec/obidos/ASIN/0679760849/nateirwinnet-20" target="_blank"><span style="font-size: xx-small;"><em>Cormac McCarthy - The Crossing</em></span></a><span style="font-size: xx-small;"><em>...</em></span>

@@ -1,0 +1,24 @@
+--- 
+layout: post
+title: A Few Nifty Corners 'Gotchas'
+published: true
+meta: 
+  _edit_last: "2"
+tags: 
+- Design
+- Development
+type: post
+status: publish
+---
+<p align="center"><img src="http://www.nateirwin.net/images/niftycorners.png" alt="" /></p>
+
+I'm sure most of you who, like me, hate using tables in your web design already know about Alessandro Fulciniti's wonderful Nifty Corners. If you don't, a quick summary (or you can find all the information you need at the <a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">creator's website</a>): Nifty Corners is a set of javascripts and some associated css that, when combined, allow you to round corners of divs and other css elements. While the ability to round corners has been around for quite some time, before Nifty Corners you had to use images or extra - very bulky - markup to get the desired effect.
+
+I've worked with Nifty Corners on several design projects, and it seems like everytime I use them I forget to double-check a few things and it takes me longer than it should to get them working. Well, to save my sanity during future projects and to hopefully help some other poor, forgetful soul out there, here are the common 'gotchas' that I always run into when using Nifty Corners:
+<ul>
+	<li>Always, always, always double-check the paths of your .css and .js files. If you have to separate the niftyCorners.css file from the two javascript files, you'll have to change the path that's referenced in the niftyCube.js "AddCSS" function.</li>
+	<li>You don't have to add the niftyCorners.css to your webpage (although it <strong><em>is necessary</em></strong>), this is all done in the javascript.</li>
+	<li>It is easy - and probably a good idea - to combine the two .js files into a single javascript. To do this, simply cut and paste the contents of the niftyLayout.js script into the top of the niftyCube.js script.</li>
+	<li>Rather than initiating the javascript with a "window.onload" event, I like to call the initiating function from the  event. Personal preference, I guess, but this allows me to use "windows.onload" for something else without having to implement the workaround presented on the <a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">Nifty Corners website</a>.</li>
+</ul>
+If you follow these tips, you can have beautiful rounded corners through the use of a single .js script and with *very* minimal configuration. Note that this entry is not meant to be a complete walkthrough for using Nifty Corners on your site; the <a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">Nifty Corners website</a> has tons of examples that you can reference. This is just intended to help those who run into difficulty when implementing the technique.
