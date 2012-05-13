@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "Link: Happiness Takes (a little) magic"
+title: "Happiness Takes (a little) magic"
 meta: 
   title_url: http://thewirecutter.com/2012/01/happiness-takes-a-little-magic/
 tags: 
