@@ -14,7 +14,7 @@ title: Web mapping, technology, and life
       Posted on {{ post.date | date_to_string }}
     </span>
     <div class="tw_button">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ post.url }}" data-via="nateirwin">Tweet</a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ BASE_PATH }}{{ post.url }}" data-via="nateirwin">Tweet</a>
     </div>
     {{ post.content }}
     <hr>
