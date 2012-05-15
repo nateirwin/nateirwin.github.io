@@ -10,3 +10,5 @@ I've worked in a variety of roles for the [U.S. National Park Service](http://ww
 I spend my time outside of work enjoying [beautiful Colorado](http://fuckyeahcolorado.tumblr.com/). My other interests include trail running, playing soccer, snow skiing, listening to live music, and messing around with new technologies.
 
 I am not looking for work opportunities, but feel free to get in touch if you want to chat or catch up: nate at nateirwin.net. You can also find me on [Twitter](http://twitter.com/nateirwin) and [GitHub](http://github.com/nateirwin).
+
+And lastly, I hope it goes without saying, but I'm going to say it anyways: All content on this site is written by me as an individual, and does not represent the views or opinions of my employer, the National Park Service, or any other company I'm doing work for.
