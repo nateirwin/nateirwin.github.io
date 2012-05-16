@@ -6,7 +6,7 @@ title: Web mapping, technology, and life
 {% for post in site.posts limit:3 %}
   <div class="span12 post">
     <h1>
-      <a href="{{ BASE_PATH }}{{ post.url }}">
+      <a href="{{ post.url }}">
         {{ post.title }}
       </a>
     </h1>
@@ -14,7 +14,7 @@ title: Web mapping, technology, and life
       Posted on {{ post.date | date_to_string }}
     </span>
     <div class="tw_button">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ BASE_PATH }}{{ post.url }}" data-via="nateirwin">Tweet</a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://nateirwin.net{{ post.url }}" data-via="nateirwin">Tweet</a>
     </div>
     {{ post.content }}
     <hr>
