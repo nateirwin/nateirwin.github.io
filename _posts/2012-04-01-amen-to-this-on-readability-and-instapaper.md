@@ -2,7 +2,7 @@
 layout: post
 title: Amen to this (on Readability and Instapaper)
 tags: 
-- Technology
+  - Technology
 ---
 
 Anil Dash in ["Readability, Instapaper, the Network, and the Price We Pay"](http://dashes.com/anil/2012/04/readability-instapaper-the-network-and-the-price-we-pay.html):
