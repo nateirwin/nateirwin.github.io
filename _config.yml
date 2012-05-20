@@ -5,3 +5,4 @@ pygments: true
 title : nateirwin.net
 production_url : http://nateirwin.github.com
 markdown: kramdown
+baseurl: http://nateirwin.net
