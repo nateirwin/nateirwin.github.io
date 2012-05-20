@@ -1,5 +1,9 @@
 ---
 layout: main
+sitemap:
+  priority: 1.0
+  changefreq: daily
+  lastmod: 2012-05-20T09:45:19-06:00
 title: Web mapping, technology, and life
 ---
 
