@@ -236,6 +236,9 @@ img {
 .post {
   position: relative
 }
+    .post p a {
+      color: #BF4D28;
+    }
     .post img {
       border: solid 1px #DDDDDD;
       max-width: 100%;
