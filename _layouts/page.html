@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% include head.html %}
+    {% include head-upper.html %}
+    {% include head-lower.html %}
   </head>
-  <body style="padding:0;">
+  <body>
     {% include nav.html %}
     <div id="wrapper">
-      <div id="main" class="container">
+      <div id="main" class="container" style="padding-top:60px;">
         <div class="row">
-          <div class="span12" style="padding-top:60px;">
+          <div class="span12">
             {{ content }}
           </div>
         </div>

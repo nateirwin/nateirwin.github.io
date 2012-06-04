@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% include head.html %}
+    {% include head-upper.html %}
+    {% include head-lower.html %}
     <!--[if !IE 7]>
       <style type="text/css">
         #wrapper {display:table;height:100%}
       </style>
     <![endif]-->
+
+    
   </head>
-  <body style="padding:0;">
+  <body>
     {% include nav.html %}
     <div id="wrapper">
-      <div id="main" class="container">
+      <div id="main" class="container padding-top">
         <div class="row">
-          <div class="span12 post" style="margin-bottom:50px;padding-top:60px;">
+          <div class="span12 post" style="margin-bottom:50px;">
             <h1>
               {{ page.title }}
             </h1>

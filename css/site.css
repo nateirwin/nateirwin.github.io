@@ -16,8 +16,9 @@ html {
 
 footer {
   background-color: #333;
+  clear: both;
   color: white;
-  padding: 15px;
+  height: 45px;
 }
 
 ::-moz-selection {
@@ -29,27 +30,80 @@ footer {
   color: #fff;
 }
 
+footer #copyright {
+  float: left;
+}
+
+@media (min-width: 1200px) {
+  .padding-top {
+    padding-top: 60px;
+  }
+}
+@media (min-width: 980px) {
+  .padding-top {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #follow-twitter {
+    display: none;
+  }
+  footer .container {
+    text-align: center;
+  }
+  footer #copyright {
+    float: none;
+  }
+}
+/*
+@media (min-width: 768px) {
+  #sticky {
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media (min-width: 480px) {
+  #sticky {
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+*/
+
 /* Sticky Footer */
 #wrapper {
   min-height: 100%;
 }
 #main {
   overflow: auto;
-  padding-bottom: 75px;
+  padding-bottom: 45px;
 }
+    #main p a {
+      color: #BF4D28;
+    }
 #sticky {
   position: relative;
-  margin-top: -75px;
-  height: 45px;
-  clear: both;
-}
+  margin-top: -45px;
+} 
 /*Opera Fix*/
 body:before {
-  content: "";
-  height: 100%;
-  float: left;
-  width: 0;
-  margin-top: -32767px;/
+  content:"";
+  height:100%;
+  float:left;
+  width:0;
+  margin-top:-32767px;/
+}
+/* not required for sticky footer; just pushes hero down a bit */
+.wrapper > .container {
+  padding-top: 60px;
 }
 
 a:focus {
@@ -260,23 +314,4 @@ img {
 }
 .left {
   float: left
-}
-
-@media (max-width: 480px) { 
-  body, p, li {
-    font-size: 14px;
-    line-height: 22px;
-  }
-  pre {
-    font-size: 12px;
-    line-height: 20px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-  h2 {
-    font-size: 18px;
-    line-height: 20px;
-  }
 }
