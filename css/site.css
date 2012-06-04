@@ -44,7 +44,6 @@ footer #copyright {
     padding-top: 60px;
   }
 }
-
 @media (max-width: 768px) {
   footer {
     margin: 0 -20px;
@@ -61,21 +60,55 @@ footer #copyright {
     float: none;
   }
 }
+
+#paging a {
+  display: block;
+  position: fixed;
+  top: 50%;
+}
+  #paging a.previous {
+    border-radius:0px 5px 5px 0px;
+    left: 0px;
+  }
+  #paging a.next {
+    border-radius:5px 0px 0px 5px;
+    right:0px;
+  }
+
 /*
-@media (min-width: 768px) {
-  #sticky {
-    margin: 0 -20px;
-    padding-left: 20px;
-    padding-right: 20px;
+.pager a {
+  position:fixed;
+  top:50%;
+  margin-top:-30px;
+  width:20px;
+  height:20px;
+  padding:20px 5px;
+  display:block;
+  text-align:center;
+  background:#d0e8f0;
+  color:#fff;
+  transition:background-color .25s;
+  -moz-transition:background-color .25s;
+  -webkit-transition:background-color .25s;
   }
-}
-@media (min-width: 480px) {
-  #sticky {
-    margin: 0 -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
+  .pager a.prev {
+    left:0px;
+    border-radius:0px 5px 5px 0px;
+    }
+  .pager a.next {
+    
+    }
+    .pager a:hover { background-color:#d22; }
+
+  .pager .icon {
+    display:block;
+    width:20px;
+    height:20px;
+    overflow:hidden;
+    text-indent:-9999px;
+    background:url(../images/sprite.png) -260px 0px no-repeat;
+    }
+    .pager .next .icon { background-position:-280px 0px; }
 */
 
 /* Sticky Footer */

@@ -1,10 +1,6 @@
 ---
 layout: page
-sitemap:
-  priority: 0.2
-  changefreq: monthly
-  lastmod: 2012-05-20T09:49:35-06:00
-title: About
+title: Archive
 ---
 
 # Archive
@@ -22,6 +18,6 @@ title: About
       {% endif %}
     {% endunless %}
 
-    <li>{{ post.date | date:"%b" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
