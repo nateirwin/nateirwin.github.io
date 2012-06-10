@@ -22,11 +22,11 @@ footer {
 }
 
 ::-moz-selection {
-  background: #333;
+  background: #BF4D28;
   color: #fff;
 }
 ::selection {
-  background: #333;
+  background: #BF4D28;
   color: #fff;
 }
 
@@ -119,9 +119,6 @@ footer #copyright {
   overflow: auto;
   padding-bottom: 45px;
 }
-    #main p a {
-      color: #BF4D28;
-    }
 #sticky {
   position: relative;
   margin-top: -45px;
@@ -179,7 +176,7 @@ li {
 a {
   font-weight: inherit;
   line-height: inherit;
-  color: #655643;
+  color: #BF4D28;
   text-decoration: none;
 }
 a:hover {
@@ -188,6 +185,9 @@ a:hover {
 }
 p {
   margin-bottom: 14px
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #655643;
 }
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
@@ -323,9 +323,6 @@ img {
 .post {
   position: relative
 }
-    .post p a {
-      color: #BF4D28;
-    }
     .post img {
       border: solid 1px #DDDDDD;
       max-width: 100%;

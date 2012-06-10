@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "CSS font stack"
+title: CSS font stack
 meta: 
   title_url: http://cssfontstack.com/
 tags: []

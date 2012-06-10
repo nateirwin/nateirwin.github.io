@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "NASA Map of US\xC2\xA0Trees"
+title: NASA map of US\xC2\xA0trees
 title_url: http://earthobservatory.nasa.gov/Features/ForestCarbon/page4.php
 ---
 

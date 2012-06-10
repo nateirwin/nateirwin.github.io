@@ -6,7 +6,7 @@ tags:
   - Cartography
   - Design
   - Web Mapping
-title: "TileMill 0.6.0 released"
+title: TileMill 0.6.0 released
 ---
 
 The stuff I'm most excited about:

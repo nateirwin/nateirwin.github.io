@@ -1,6 +1,6 @@
 ---
 layout: 'post'
-title: Beautiful Tornado Map
+title: Beautiful tornado map
 ---
 
 A beautiful map from IDV Solutions of the last fifty-six years of U.S. tornado tracks. From the [introductory blog post](http://uxblog.idvsolutions.com/2012/06/zazzle-print-tornado-tracks.html):

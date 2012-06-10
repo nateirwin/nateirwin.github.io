@@ -24,15 +24,51 @@ title: Web mapping, technology, and life
     <hr>
   </div>
 {% endfor %}
-{% for post in site.posts limit:9 offset:3 %}
-  <div class="span4">
-    <h2>
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h2>
-    <span class="meta">
-      {{ post.date | date_to_string }}
-    </span>
+
+<div class="span12">
+  <div class="row-fluid">
+  {% for post in site.posts limit:3 offset:3 %}
+    <div class="span4">
+      <h2>
+        <a href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+      <span class="meta">
+        {{ post.date | date_to_string }}
+      </span>
+      {{ post.content | truncatewords: 30 | strip_html }}
+    </div>
+  {% endfor %}
   </div>
-{% endfor %}
+  <div class="row-fluid">
+  {% for post in site.posts limit:3 offset:6 %}
+    <div class="span4">
+      <h2>
+        <a href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+      <span class="meta">
+        {{ post.date | date_to_string }}
+      </span>
+      {{ post.content | truncatewords: 30 | strip_html }}
+    </div>
+  {% endfor %}
+  </div>
+  <div class="row-fluid">
+  {% for post in site.posts limit:3 offset:9 %}
+    <div class="span4">
+      <h2>
+        <a href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+      <span class="meta">
+        {{ post.date | date_to_string }}
+      </span>
+      {{ post.content | truncatewords: 30 | strip_html }}
+    </div>
+  {% endfor %}
+  </div>
+</div>
