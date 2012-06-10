@@ -22,6 +22,11 @@ title: Web mapping, technology, and life
       <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://nateirwin.net{{ post.url }}" data-via="nateirwin">Tweet</a>
     </div>
     {{ post.content }}
+    {% if post.via and post.viaurl %}
+      <p>
+        (Via <a href="{{post.viaurl}}">{{post.via}}</a>)
+      </p>
+    {% endif %}
     <hr>
   </div>
 </div>

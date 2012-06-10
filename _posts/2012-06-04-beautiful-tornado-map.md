@@ -1,6 +1,8 @@
 ---
 layout: 'post'
 title: Beautiful tornado map
+via: Nicholas Felton
+viaurl: http://feltron.tumblr.com/post/24405436108/explore-blog-56-years-of-tornado
 ---
 
 A beautiful map from IDV Solutions of the last fifty-six years of U.S. tornado tracks. From the [introductory blog post](http://uxblog.idvsolutions.com/2012/06/zazzle-print-tornado-tracks.html):
@@ -11,5 +13,3 @@ Here it is broken out by scale.</blockquote>
 <img src="/img/tornado-tracks.jpg" alt="U.S. Tornado Tracks" title="tornado-tracks.jpg" style="display:block;margin-left:auto;margin-right:auto;" />
 
 You can see the interactive version on [visual.ly](http://visual.ly/tornado-tracks).
-
-(Via [Nicholas Felton](http://feltron.tumblr.com/post/24405436108/explore-blog-56-years-of-tornado).)

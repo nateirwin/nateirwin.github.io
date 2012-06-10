@@ -25,6 +25,11 @@
               <a href="https://twitter.com/share" class="twitter-share-button" data-via="nateirwin">Tweet</a>
             </div>
             {{ content }}
+            {% if page.via and page.viaurl %}
+              <p>
+                (Via <a href="{{page.viaurl}}">{{page.via}}</a>)
+              </p>
+            {% endif %}
             {% if page.previous.url or page.next.url %}
               <hr>
               <div style="text-align:center;">
