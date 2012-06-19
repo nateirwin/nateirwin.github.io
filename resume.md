@@ -16,17 +16,13 @@ title: Résumé
       Developer, designer, and geogeek
     </h1>
     <p>
-      I am passionate about creating simple and beautiful information-driven interfaces for the web. I enjoy helping others tell their stories, and making information more widely available and accessible through the use of flexible, standards-based designs and innovative techniques.
+      I am passionate about creating simple and beautiful information-driven interfaces for the web. I enjoy helping others tell their stories and making information more widely available and accessible through the use of flexible, standards-based designs and the application of innovative technologies and techniques.
     </p>
     <p>
-      You may also want to check out my <a href="http://stackoverflow.com/users/27540/nate">Stack Overflow</a> and <a href="http://github.com/nateirwin">GitHub</a> profiles.
-      <!--
-      Simple, yet beautiful
-      Traditional cartography
-      Web standards
-      Usable and accessible
-      I love bringing information and traditional cartography into the 21st century via innovative web technicques.
-      -->
+      My newest interests include information-design and the intersection of traditional cartography and the web. I am especially interested in doing more work outside of the world of geospatial, although I'll always have a soft spot for maps.
+    </p>
+    <p>
+      You may also want to check out my <a href="/">personal blog</a>, the <a href="http://www.nps.gov/npmap/blog">NPMap blog</a>, and my <a href="http://stackoverflow.com/users/27540/nate">Stack Overflow</a> and <a href="http://github.com/nateirwin">GitHub</a> profiles.
     </p>
   </div>
 </div>
@@ -40,20 +36,26 @@ title: Résumé
       September 2006 - Present
     </h3>
     <p>
-      My first couple of years with the National Park Service were spent as a jack of all trades. I took on a variety of challenges, including the coordination of enterprise GIS for the service's national office and project management for several high-profile projects. Since 2008, I have focused on leading the NPMap team, which builds web maps for National Park Service parks, programs, and partners.
+      My first couple of years with the National Park Service were spent as a jack of all trades. I took on a variety of challenges, including the coordination of enterprise GIS for the service's national office and project management for several high-profile projects. Since 2009, I have focused on leading the NPMap team, which builds web maps for National Park Service parks, programs, and partners.
     </p>
     <p>
       Highlights:
     </p>
     <ul>
       <li>
-        Developed and released the <a href="http://www.nps.gov/npmap/support/npmap-library.html">NPMap library</a>, a JavaScript abstraction library that wraps functionality and a basic API around a number of open source and proprietary web mapping libraries.
+        Led the NPMap team, a team of four cartographers, developers, designers, and data managers that focuses on building web maps for the National Park Service.
       </li>
       <li>
-        Developed over a hundred web maps, from simple embeddedable widgets to advanced fullscreen interfaces, for different National Park Service entities using the NPMap library.
+        Developed and released the <a href="http://www.nps.gov/npmap/support/npmap-library.html">NPMap library</a>, a JavaScript abstraction library that wraps functionality and a basic API around a number of open source and proprietary web mapping libraries. The NPMap team is currently walking through the process of open sourcing the library.
       </li>
       <li>
-        Coordinated web mapping activities across the National Park Service.
+        Built over a hundred web maps, from simple embedded maps to advanced fullscreen interfaces, for different National Park Service entities using the NPMap library. Served as the project manager and lead developer on all of these projects.
+      </li>
+      <li>
+        Coordinated web mapping activities across the National Park Service, including the establishment and maintenance of enterprise license agreements with MapBox, Esri, Bing, and Google for servicewide usage of their mapping services. Also looked for ways to make it easier for NPS employees and partners to build and deploy web maps with custom geospatial data to NPS web pages. The NPMap team is currently developing two systems, a places of interest system and a web map wizard, to support this effort.
+      </li>
+      <li>
+        Presented at multiple internal-NPS and public conferences, including George Wright Society in 2011 and FOSS4G North America in 2012. Will also be presenting at this year's NACIS conference in October.
       </li>
     </ul>
     <h3>
@@ -68,10 +70,10 @@ title: Résumé
     </p>
     <ul>
       <li>
-        One
+        Worked on a small startup team to build out a product called "whereyougonnabe". This product integrated with users' calendars and social networks, and alerted them when they were going to be close to their friends and family. Developed and maintained a fully-working system, but eventually pulled the plug after the economy crashed.
       </li>
       <li>
-        Two
+        Helped build enterprise class web mapping systems for Ubisense and Steel Tower Data. These systems fully-integrated into existing company/customer databases and processes, and helped them better manage their information and respond to customer needs.
       </li>
     </ul>
   </div>
@@ -103,20 +105,12 @@ title: Résumé
         3.7 GPA
       </li>
     </ul>
-  </div>
-</div>
-<div class="row-fluid">
-  <div class="span12">
     <h2>
       Skills
     </h2>
-  </div>
-</div>
-<div class="row-fluid">
-  <div class="span3">
-    <p>
-      Professional
-    </p>
+    <h3>
+      Professional:
+    </h3>
     <ul>
       <li>
         Independent worker
@@ -127,12 +121,13 @@ title: Résumé
       <li>
         Motivated and ambitious
       </li>
+      <li>
+        Detail-oriented
+      </li>
     </ul>
-  </div>
-  <div class="span3">
-    <p>
-      Development
-    </p>
+    <h3>
+      Development:
+    </h3>
     <ul>
       <li>
         C#, PHP, and node.js
@@ -147,14 +142,15 @@ title: Résumé
         ARIA and Section 508
       </li>
       <li>
-        Open source JavaScript libraries
+        JavaScript libraries
+      </li>
+      <li>
+        XML and JSON
       </li>
     </ul>
-  </div>
-  <div class="span3">
-    <p>
-      Design
-    </p>
+    <h3>
+      Design:
+    </h3>
     <ul>
       <li>
         Adobe Photoshop and Illustrator
@@ -162,21 +158,16 @@ title: Résumé
       <li>
         Inkscape
       </li>
-      <li>
-        Acorn
-      </li>
     </ul>
-  </div>
-  <div class="span3">
-    <p>
-      Geospatial
-    </p>
+    <h3>
+      Geospatial:
+    </h3>
     <ul>
       <li>
         ArcGIS Desktop, ArcSDE, and ArcGIS Server
       </li>
       <li>
-        PostGIS
+        PostGIS and SpatiaLite
       </li>
       <li>
         TileMill (w/Carto) and TileStream
@@ -187,6 +178,9 @@ title: Résumé
       <li>
         Quantum GIS
       </li>
+      <li>
+        GeoJSON and KML
+      </li>
     </ul>
   </div>
 </div>
@@ -196,40 +190,40 @@ title: Résumé
       Portfolio
     </h2>
     <ul class="thumbnails">
-      <li class="span3">
+      <li class="span4">
         <div class="thumbnail">
           <a href="http://www.nps.gov/npmap">
-            <img src="http://placehold.it/260x180" alt="NPMap Website">
+            <img src="img/npmap-website.jpg" alt="NPMap Website">
           </a>
           <h3>NPMap Website</h3>
           <p>
-            Re-designed the NPMap team website. The new design fits into the National Park Service look-and-feel, and includes a number of different components, including a gallery, support docs, and a blog. The website is built using a technology called Jekyll, which is a set of Ruby scripts that generate static HTML from Markdown using templates and functions.
+            Re-designed the NPMap team website. The new design fits into the National Park Service look-and-feel, and includes a number of different components, including a gallery, support docs, and a blog. The website is built using a technology called Jekyll, which is a set of Ruby scripts that generate static HTML from Markdown using templates, functions, and plugins.
           </p>
         </div>
       </li>
-      <li class="span3">
+      <li class="span4">
         <div class="thumbnail">
           <a href="http://www.nps.gov/planyourvisit/civilwar">
-            <img src="http://placehold.it/260x180" alt="Plan Your Visit">
+            <img src="img/plan-your-visit.jpg" alt="Plan Your Visit">
           </a>
           <h3>
             Plan Your Visit
           </h3>
           <p>
-            Built a full-screen Plan Your Visit experience for nps.gov from scratch. The initial version was built to help celebrate the Civil War Sesquicentennial, but I kept the architecture flexible so it can be easily extended for other National Park Service subjects and parks. The web map is built on the <a href="http://www.nps.gov/npmap/support/npmap-library.html">NPMap library</a>, and it pulls data in from minified Json files that are created hourly by a console application. Using this innovative technique, I was able to get the initial load down to < 1MB. Pretty impressive given the map tiles and JavaScript resources that are required by the map.
+            Built a full-screen Plan Your Visit experience for nps.gov from scratch. The initial version was built to help the National Park Service celebrate the Civil War Sesquicentennial, but we kept the architecture flexible and we are about to extend the scope to parks and other subjects. The web map is built on the <a href="http://www.nps.gov/npmap/support/npmap-library.html">NPMap library</a>, and it pulls data in from minified JSON files created hourly by a console application and cached in the NPS content delivery network. Using this innovative technique, we were able to get the initial load to less than 1MB. Pretty impressive given the map tiles and JavaScript resources required by the map.
           </p>
         </div>
       </li>
-      <li class="span3">
+      <li class="span4">
         <div class="thumbnail">
           <a href="http://www.nps.gov/colorado">
-            <img src="http://placehold.it/260x180" alt="State Pages">
+            <img src="img/state-pages.jpg" alt="State Pages">
           </a>
           <h3>
             State Pages
           </h3>
           <p>
-            The NPMap team was asked to help re-design the <a href="http://www.nps.gov">nps.gov</a> state pages. The previous version of the pages had simple image maps with hardcoded links to each state's NPS sites. The redesigned pages have fully interactive maps that consume data from a live web service. The data are clustered dynamically on the server, ...
+            The NPMap team was asked to help re-design the <a href="http://www.nps.gov">nps.gov</a> state pages. The previous version of the pages had simple image maps with hardcoded links to each state's NPS sites. The redesigned pages have fully interactive maps that consume data from a web service. The overlay data are served as vector tiles, and are clustered dynamically on the server then cached aggressively on both the client and server. This approach allows us to maintain great performance while still pulling data from a dynamic database of over 100,000 records.
           </p>
         </div>
       </li>
