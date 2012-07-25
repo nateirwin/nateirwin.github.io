@@ -224,7 +224,7 @@ h1 small {
 }
 ul, ol {
   padding: 0;
-  margin: 0 0 14px;
+  margin: 0 0 14px 45px;
 }
 ul {
   list-style: disc
