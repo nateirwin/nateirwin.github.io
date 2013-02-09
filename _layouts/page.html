@@ -3,11 +3,26 @@
   <head>
     {% include head-upper.html %}
     {% include head-lower.html %}
+    <style>
+      #main {
+        padding-top: 60px;
+      }
+      @media (max-width: 979px) {
+        #main {
+          padding-top: 0;
+        }
+      }
+      @media (max-width: 767px) {
+        #main {
+          padding-top: 0;
+        }
+      }
+    </style>
   </head>
   <body>
     {% include nav.html %}
     <div id="wrapper">
-      <div id="main" class="container" style="padding-top:60px;">
+      <div id="main" class="container">
         <div class="row">
           <div class="span12">
             {{ content }}

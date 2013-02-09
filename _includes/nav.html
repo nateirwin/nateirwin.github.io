@@ -9,8 +9,16 @@
       <a class="brand" href="/">nateirwin.net</a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/archive.html">Archive</a></li>
+          {% if page.title == 'About' %}
+          <li class="active"><a href="about.html">About</a></li>
+          {% else %}
+          <li><a href="about.html">About</a></li>
+          {% endif %}
+          {% if page.title == 'Archive' %}
+          <li class="active"><a href="archive.html">Archive</a></li>
+          {% else %}
+          <li><a href="archive.html">Archive</a></li>
+          {% endif %}
           <li><a href="http://life.nateirwin.net">Life</a></li>
         </ul>
       </div>
