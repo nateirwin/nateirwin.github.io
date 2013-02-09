@@ -1,0 +1,23 @@
+How I saved my VMware Fusion virtual machine
+
+I'm posting this here because I've had a hard time finding good information on this topic on the web. Hopefully this mind dump will help someone out there, but I want to make sure one thing is clear: I take no responsibility for the timeliness or accuracy of this information. In other words, USE AT YOUR OWN RISK! I will not be keeping this post up-to-date, and I sure hope that VMware enhances their documentation and/or makes this whole process easier in the future. Now, on to the problem at hand.
+
+
+VMDK
+
+
+I first noticed a problem with my Windows 7 VM earlier today when I started to see error messages telling me the hard drive I stored my VM virtual hard drive (VHD) on was out of space and that VMware needed to shut the virtual machine down. Simple, right? Just take a look at the drive to see what is taking up all the space and clear out some space. Not so fast! After digging through my hard drive, I realized that the VHD itself was the culprit! The operating system running inside of VMware itself told me that it was taking up about 30GB of space, but the VHD on my Mac's hard drive was over 120GB. If this had been two years ago when I was still using SATA drives, this wouldn't have been much of a problem, but now that I'm using SSD drives on all my machines, I've had to start worrying about space again.
+
+So what was the problem? It seems that VMware Fusion's "snapshot" capability creates a bunch of massive files. This isn't in and of itself a problem. The problem is VMware Fusion then does not deal with these files correctly, especially if you are running low on hard drive space. It is almost like a self-perpetuating problem (pretty sadistic, really): You start to run into issues because your hard drive is full, and all of the resolutions to these issues require having free hard drive space. It is really pretty dumb that VMware doesn't do a better job:
+
+1) Managing snapshots
+2) Warning you when you are running out of space *before you get into a bind
+
+Commence the frantic Google search (I forgot to note that this all happened in the middle of a busy workday when I had about a hundred other things to do). The search was successful in that it turned up hundreds, if not thousands, of results from other frantic people looking for answers to this problem. It was not successful, however, in presenting a cogent solution to my problem. The best information I found was in the VMware Fusion documentation itself **link** and on the support forums. Most of the solutions, however, either didn't work with pre-allocated VHDs or required having a large amount of free space on the local hard drive or hooking up a massive external hard drive to the machine and then using the vmwaredisk tool to recombine all of the snapshots
+
+
+
+The moral of the story? I've decided not to use snapshots at all, and just to keep all my files backed up at all times. I was only storing one snapshot and running "Auto-Protect" once a day. Plus, it doesn't hurt to reinstall Windows every now and then to clear out all the junk that builds up.
+
+
+Switch from pre-allocated so you can use "Clean up"?
