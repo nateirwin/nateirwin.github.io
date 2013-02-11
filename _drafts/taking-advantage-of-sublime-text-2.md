@@ -3,6 +3,8 @@ layout: post
 title: Taking advantage of Sublime Text 2
 ---
 
+I'm in love with [Sublime Text 2](http://www.sublimetext.com/). I'm a longtime TextMate user, but I now use Sublime Text 2 for everything I do. It has even replaced another longtime favorite, Espresso.
+
 ## Install Sublime Package Control
 
 1. Press <code>Ctrl `</code> to open the Sublime Text 2 console
