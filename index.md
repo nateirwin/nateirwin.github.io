@@ -13,9 +13,6 @@ layout: main
     <span class="meta">
       Posted on {{ post.date | date_to_string }}
     </span>
-    <div class="tw_button">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://nateirwin.net{{ post.url }}" data-via="nateirwin">Tweet</a>
-    </div>
     {{ post.content }}
     {% if post.via and post.viaurl %}
       <p>
