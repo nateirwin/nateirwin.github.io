@@ -6,7 +6,7 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>nateirwin.net</title>
   <link href="http://nateirwin.net/atom.xml" rel="self" />
-  <link href="http://nateirwin.net"/>
+  <link href="http://nateirwin.net/"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>http://nateirwin.net/</id>
   <author>
@@ -16,9 +16,6 @@ layout: nil
   {% for post in site.posts limit:5 %}
   <entry>
     <title>{{ post.title }}</title>
-    <author>
-      <name>Nate Irwin</name>
-    </author>
     <link href="http://nateirwin.net{{ post.url }}"/>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <id>http://nateirwin.net{{ post.url }}</id>
