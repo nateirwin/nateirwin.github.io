@@ -1,4 +1,4 @@
-permalink: /blog/:title.html
+permalink: /:title.html
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile"]
 auto: false
 pygments: true
