@@ -1,7 +1,5 @@
+exclude: ["README.md"]
 permalink: /:title.html
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile"]
-auto: false
+production_url : http://nateirwin.net
 pygments: true
-title : nateirwin.net
-production_url : http://nateirwin.github.com
-markdown: kramdown
+title: nateirwin.net

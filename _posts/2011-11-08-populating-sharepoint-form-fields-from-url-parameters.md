@@ -18,20 +18,19 @@ Here are the exact steps taken:
 3. Click within the "ContentWebEditor" web part and click on "Edit HTML Source" under the "Editing Tools &gt; Format Text &gt; HTML" menu item.
 4. Copy and paste the following snippet into your page. Note: I'm using jQuery here, as we use it in pretty much all of our products. You can very easily do this without the jQuery dependency.
 
-<pre>
-&lt;script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;
-    $(document).ready(function() {
+    &lt;script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      $(document).ready(function() {
         var query = window.location.search.replace('?', '').split('&amp;');
 
         for (var i = 0; i &lt; query.length; i++) {
-            var p = query[i].split('=');
-            
-            $('input[title="' + p[0] + '"]').val(p[1]);
-        }>
-    });
-&lt;/script&gt;
-</pre>
+          var p = query[i].split('=');
+          
+          $('input[title="' + p[0] + '"]').val(p[1]);
+        }
+      });
+    &lt;/script&gt;
 
-This script loads jQuery (if you already have it loaded into your web page, you obviously don't need to load it again here), grabs the query parameters from the URL, iterates through them, looking for HTML inputs with the *exact same title as the parameter name, and sets the value of a matched input to the value of the parameter.
-So, if I had a form located at <code>http://mysharepointsite/Lists/DataAction/NewForm.aspx</code>, I could pass parameters in like this: <code>http://mysharepointsite/Lists/DataAction/NewForm.aspx?Parameter1=Test1&amp;Parameter2=Test2</code>. The JavaScript would iterate through the parameters, and set the value of inputs with a title of "Parameter1" or "Parameter2" with the appropriate values.
+This script loads jQuery (if you already have it loaded into your web page, you obviously don't need to load it again here), grabs the query parameters from the URL, iterates through them, looking for HTML inputs with the exact same title as the parameter name, and sets the value of a matched input to the value of the parameter.
+
+So, if I had a form located at `http://mysharepointsite/Lists/DataAction/NewForm.aspx`, I could pass parameters in like this: `http://mysharepointsite/Lists/DataAction/NewForm.aspx?Parameter1=Test1&amp;Parameter2=Test2`. The JavaScript would iterate through the parameters, and set the value of inputs with a title of "Parameter1" or "Parameter2" with the appropriate values.

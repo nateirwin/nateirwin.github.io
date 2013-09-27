@@ -1,9 +1,5 @@
 ---
 layout: page
-sitemap:
-  priority: 0.2
-  changefreq: monthly
-  lastmod: 2013-02-09T09:49:35-06:00
 title: About
 ---
 
