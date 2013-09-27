@@ -2,7 +2,7 @@
 layout: nil
 ---
 
-<?xml version="1.0" encoding="US-ASCII"?>
+<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>nateirwin.net</title>
   <link href="http://nateirwin.net/atom.xml" rel="self" />
@@ -21,7 +21,7 @@ layout: nil
     </author>
     <link href="http://nateirwin.net{{ post.url }}"/>
     <updated>{{ post.date | date_to_xmlschema }}</updated>
-    <id>{{ post.id }}</id>
+    <id>http://nateirwin.net{{ post.url }}</id>
     <content type="html">{{ post.content | xml_escape }}</content>
   </entry>
   {% endfor %}
