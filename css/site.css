@@ -1,7 +1,6 @@
 html, body {
   height: 100%;
 }
-
 img, object {
   max-width: 100%
 }
@@ -166,9 +165,10 @@ body {
   background-color: #fff;
 }
 body, p {
-  font-family: "Cantarell", sans-serif;
-  font-size: 14px;
-  line-height: 28px;
+  font-family: "freight-sans-pro",sans-serif;
+  /*font-family: "Cantarell", sans-serif;*/
+  font-size: 18px;
+  line-height: 30px;
 }
 li {
   line-height: 28px
