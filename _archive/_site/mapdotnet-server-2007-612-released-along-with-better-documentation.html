@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>MapDotNet Server 2007 6.1.2 Released Along with Better Documentation | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              MapDotNet Server 2007 6.1.2 Released Along with Better Documentation
+            </h1>
+            <span class="meta">
+              Posted on 07 Sep 2007
+            </span>
+            Less than a month after the 6.1.1 release, ISC announced yesterday the release of MapDotNet Server 2007 6.1.2. I love it when development teams embrace the "release early, release often" approach. This is the approach that the ArcGIS Explorer team has taken, and look how much their product has improved in the (relatively) short time that it has been out. According to the release notes, 6.1.1 is a maintenance release, but there are two critical improvements related to ArcSDE support that merit mention. Quoted from the release notes:
+<ul>
+	<li>"Substantially improved rendering speeds with ArcSDE. This is especially the case in large multi-processor web garden deployments where the MDNS services are less likely to be processor-bound. Substantially improved SDE connection pooling resulted in upwards of 10 times the rendering performance in our tests. This was especially noticeable when ArcSDE is installed on a separate server from the MDNS web services."</li>
+	<li>"Improved locking support for ArcSDE where large numbers of spatial queries/edits/transforms and map renderings are occurring simultaneously. The ArcSDE ESRI client connector is not thread safe and under heavy load faults were encountered. This has been resolved through better locking in MDNS."</li>
+</ul>
+As I mentioned in a <a href="http://www.nateirwin.net/MapDotNetServer61IsReleased.aspx" target="_blank">previous post</a>, performance in general increased many-fold with the addition of SQL Server tile caching support and the tile over-fetching capabilities in the 6.1 release. And now that the performance of data stored in SDE (where just about all of our data are stored) is supposed to improve even more dramatically with this release, I'm looking forward to seeing the difference.
+
+And on a slightly different - but just as important - note, if you check out the <a href="http://www.mapdotnet.com/Pages/index.aspx" target="_blank">MapDotNet Server website</a>, you'll notice that a lot has changed over the last couple of months. The <a href="http://www.mapdotnet.com/Pages/tutorial.aspx" target="_blank">Interactive SDK</a> now has ten examples that you can both preview and download. In addition to this, the Wiki has some new content (especially of interest are the <a href="http://www.mapdotnet.com/wiki/Wiki%20Pages/Virtual%20Earth%20Extended%20Template.aspx" target="_blank">Virtual Earth extended template</a> and the <a href="http://www.mapdotnet.com/wiki/Wiki%20Pages/Performance%20Tuning.aspx" target="_blank">Performance Tuning</a> entries). Kudos to the MapDotNet Server team for these improvements. That said, there are still a lot of improvements that need to be made, but it seems that they are moving quickly in the right direction.
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/web-mapping-offerings-compared-apis-reviewed-post-3a-arcweb-services.html" title="Previous Post: Web Mapping Offerings Compared (APIs Reviewed - Post 3a - ArcWeb Services)">&laquo; Web Mapping Offerings Compared (APIs Reviewed - Post 3a - ArcWeb Services)</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/amazon-s3-as-a-backup-solution.html" title="next Post: Amazon S3 as a Backup Solution">Amazon S3 as a Backup Solution &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

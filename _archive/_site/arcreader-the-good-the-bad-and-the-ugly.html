@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>ArcReader: The Good, the Bad, and the Ugly | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              ArcReader: The Good, the Bad, and the Ugly
+            </h1>
+            <span class="meta">
+              Posted on 09 Aug 2006
+            </span>
+            <span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">I've been working with ArcReader a lot lately, using it as a simple client access interface to connect intranet users to an enterprise GIS built on ArcSDE 9.1 and Microsoft SQL Server 2005. Generally speaking, I've been happy with the product and the publisher extension (which allows you to publish map documents to ArcReader-accessible .pmf files). I have, however, discovered many shortcomings in the application. This entry outlines both the strengths and weaknesses of ArcReader, as I see it, specifically when using it to access data served over a network (Local Area (LAN) or Wide Area (WAN)).</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;"><em>Strengths</em></span>
+<ul> <span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">
+	<li>Simple way to publish data quickly.</li>
+	<li>Has an accessible user interface that is easy to learn.</li>
+	<li>Provides a no risk read-only interface to your GIS - this eliminates the need to worry about forgetting to add the data into ArcMap from a SDE geodatabase as a non-editing user.</li>
+	<li>As long as joins and relates are applied before the .pmf file is created, all necessary attribute fields are searchable - even if related tables have not been explicitly added to the .pmf.</li>
+	<li>Can drill down into related (via a geodatabase relationship class) feature class and stand-alone tables using the identify tool, even if the related tables are not explicitly added to the .pmf and the relationship only exists in the geodatabase and hasn't been established in the ArcMap project.</li>
+	<li>Capability of using both data and landscape views, meaning that you can make sure that all printed products meet your guidelines and standards.</li>
+	<li>If accessing data that are stored in a spatial data engine (sde) or served via web services, the end user will always have the best data. This helps reduce the need to send out "updated" datasets or .pmf projects.</li>
+	<li><span style="text-decoration: line-through;">Custom macros can be used to extend the abilities of your application.</span> <span style="color: #ff0000;">(Corrected in comment below. Thanks!)</span></li>
+</span></ul>
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;"><em>Weaknesses</em></span>
+<ul>
+	<li>
+<ul> <span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">
+	<li>Question: why not just set the default path of the .art to the location of the .pmf?</li>
+	<li>Note: I have just read that this issue is being addressed in the impending 9.2 release. You will be able to package .art files with .pmf files when publishing the project.</li>
+</span></ul>
+<ul> <span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">
+	<li>Question: Why not have the fields listed in the order that they are presented in the table schema, as this is the order defined by the data owner?</li>
+	<li>Note: A workaround, although it should be more efficient than this: While performing an identify in ArcReader, you can right-click in the right-hand side of the identify box and unselect "Sort Fields". This will turn off the automatic sort. Why is this turned on by default?</li>
+</span></ul>
+</li>
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">
+	<li>I haven't yet tried to create custom ArcReader applications, but the ArcReader Configuration tool is very limiting.</li>
+	<li>If using an ArcReader Template (.art) file to customize an ArcReader application using the ArcReader Configuration tool, it is difficult and very cumbersome to link the .art file with the .pmf file.</li>
+</span> <span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">
+	<li>Cannot add non-spatial tables to ArcReader application (the workaround is to, like mentioned above, explicitly apply joins and relates before the map file is published).</li>
+	<li>Cannot query feature classes or tables that are linked via a geodatabase relationship class (unless you perform the joins in the ArcMap project before publishing to a .pmf file. Even then you have to either hide extraneous fields before you publish the map document or settle for a bloated, confusing attribute table).</li>
+	<li>During an identify, attribute field names are sorted in alphabetical order.</li>
+</span></ul>
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">Overall, ArcReader is a nice packaged solution. It allows for greater accessibility to an organization's GIS, and is easy to use - for both the administrator and the end user. You can customize some aspects of an application using the ArcReader Configuration tool, but will need to create a fully customized ArcReader project to gain access to advanced customization options.</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">With the release of ArcGIS Explorer scheduled for later this calendar year, it will be interesting to see where ESRI takes ArcReader in the 9.2 release. My prediction: ArcReader will always have its "niche" as an easy-to-use and deploy client access solution. As more advanced applications come along - whether traditional or web-based - ESRI will have to continue to fine-tune the ArcReader interface and open it up to simpler customization by administrators.</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: xx-small;">Note: ArcReader is available for the Linux, Solaris, and Windows platforms and is available for <a href="http://www.esri.com/software/arcgis/arcreader/download.html" target="_blank">download at the ESRI</a> site.</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: xx-small;"><em>Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B00009MGQ4/nateirwinnet-20" target="_blank">Christopher O'Riley - True Love Waits: Christopher O'Riley Plays Radiohead</a></em>...</span>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/corrupt-mxd-documents.html" title="Previous Post: Corrupt .MXD Documents">&laquo; Corrupt .MXD Documents</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/application-launchers-save-yourself-some-time.html" title="next Post: Application Launchers - Save Yourself Some Time!">Application Launchers - Save Yourself Some Time! &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

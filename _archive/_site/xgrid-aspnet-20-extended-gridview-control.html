@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>XGrid: ASP.NET 2.0 Extended GridView Control | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              XGrid: ASP.NET 2.0 Extended GridView Control
+            </h1>
+            <span class="meta">
+              Posted on 18 Apr 2007
+            </span>
+            I was trying to overcome one of the shortfalls in ASP.NET 2.0's built-in controls today and stumbled on a gem: an extended GridView control that was built by <a href="http://bhaidar.net" target="_blank">Bilal Haidar</a>.
+
+The problem I ran into came up when I defined a fixed height for a GridView control. If you don't define a fixed height, the GridView dynamically changes its height when you page/sort, etc. This can obviously be a design problem, so I definitely like to avoid it. The thing is, if you go ahead and define a fixed height and then page to a view with only a couple of rows, the rows that do exist expand in height to fill up to the defined height. This can also be a major design problem.
+
+Well, the search for a solution led me to XGrid.
+
+First of all, and most importantly, this is not a completely rewritten control; it, rather, extends on the core capabilities of ASP.NET 2.0's GridView control. There are lots of custom Grid controls out there, including Telerik's AJAX-enabled r.a.d.grid and ComponentArt's Grid for ASP.net, but most of them are rewritten from scratch.
+
+Here's a highlight [at least for me] of the added features; a <a href="http://aspalliance.com/946" target="_blank">complete list</a> of the XGrid control's features is available at <a href="http://aspalliance.com" target="_blank">ASPAlliance.com</a>:
+<ul>
+	<li>Single row and double row click events</li>
+	<li>Context menu for each row</li>
+	<li>GridView height fixed when number of rows is less than fixed height</li>
+	<li>Built-in filter textbox</li>
+</ul>
+You can download the new control from the following link: <a href="http://authors.aspalliance.com/bhaidar/946.zip">http://authors.aspalliance.com/bhaidar/946.zip</a>. To install, grab the CustomControls.dll from the bin directory, put it in your site's bin directory, and add the controls to your toolbox in Visual Studio.
+
+Happy gridding!
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/serving-exe-files-with-iis-6.html" title="Previous Post: Serving .exe Files with IIS 6">&laquo; Serving .exe Files with IIS 6</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/connecting-mapdotnet-server-2007-to-arcsde-92.html" title="next Post: Connecting MapDotNet Server 2007 to ArcSDE 9.2">Connecting MapDotNet Server 2007 to ArcSDE 9.2 &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

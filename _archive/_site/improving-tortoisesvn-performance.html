@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Improving TortoiseSVN Performance | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Improving TortoiseSVN Performance
+            </h1>
+            <span class="meta">
+              Posted on 15 Apr 2008
+            </span>
+            I've been having some serious TortoiseSVN performance issues lately, including 30-45 second system freezes when using Windows Explorer to navigate through my system directories, so I decided to try and dig in a bit to figure out what was going on. Here's what I found:
+
+A lot of TortoiseSVN's overhead comes from the TSVNCache process. This process is responsible for tracking changes in versioned files and displaying status information back to the user through the Windows Shell. Unfortunately, it seems that the TSVNCache process is a bit of a resource hog and doesn't work as efficiently as one would hope.
+
+Here are some tips to help alleviate the issues. After implementing these two "fixes", my performance issues went away:
+
+Set the TSVNCache.exe process to a lower priority:
+<ul>
+	<li>Open up the Windows Task Manager (Ctrl-Alt-Del then press "Task Manager" button).</li>
+	<li>Under the "Processes" tab, sort by "Image Name" and then right-click on "TSVNCache.exe".</li>
+	<li>Hover over "Set Priority" and select "Low".</li>
+</ul>
+Turn off Icon Overlays, other than where they are explicitly needed (e.g. the directory where your repositories are located):
+<ul>
+	<li>Open up the TortoiseSVN settings dialog (on XP, Start &gt; All Programs &gt; TortoiseSVN &gt; Settings (32 and/or 64 bit)).</li>
+	<li>Click on "Icon Overlays" in the settings tree on the left-hand side of the dialog.</li>
+	<li>Check the "Show overlays and context menu only in explorer" box.</li>
+</ul>
+<p align="center"><img id="id" style="border-width: 0px" src="http://images.nateirwin.net/ImprovingTortoiseSVNPerformance_9685/tortoisePerformance2.png" border="0" alt="tortoisePerformance2" width="575" height="73" /></p>
+
+Narrow the icon overlays down to only your Subversion directories using the "Exclude paths:" and "Include paths:" dialogs at the bottom. Here are my settings:
+<p align="center"><a href="http://images.nateirwin.net/ImprovingTortoiseSVNPerformance_9685/tortoisePerformance1.png"><img id="id" style="border-width: 0px" src="http://images.nateirwin.net/ImprovingTortoiseSVNPerformance_9685/tortoisePerformance1_thumb.png" border="0" alt="tortoisePerformance1" width="554" height="289" /></a></p>
+<p align="left">Here's where I found most of the information: <a title="http://www.nabble.com/Disable-TSVNCache.exe-to-minimize-disk-IO--to2385446.html" href="http://www.nabble.com/Disable-TSVNCache.exe-to-minimize-disk-IO--to2385446.html">http://www.nabble.com/Disable-TSVNCache.exe-to-minimize-disk-IO--to2385446.html</a>.</p>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/virtual-earth-61-brings-more-features.html" title="Previous Post: Virtual Earth 6.1 Brings More Features">&laquo; Virtual Earth 6.1 Brings More Features</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/live-mesh.html" title="next Post: Live Mesh">Live Mesh &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

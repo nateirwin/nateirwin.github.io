@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>ESRI White Paper - 'An Overview of Distributing Data with Geodatabases' | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              ESRI White Paper - 'An Overview of Distributing Data with Geodatabases'
+            </h1>
+            <span class="meta">
+              Posted on 18 Jul 2007
+            </span>
+            This past week, ESRI released several new white papers. The one that I'm most interested in is "<a href="http://downloads.esri.com/support/whitepapers/other_/ArcGISServer_Distributed_Install_061407.pdf" target="_blank">An Overview of Distributing Data with Geodatabases</a>". This is the white paper that was <a href="http://www.nateirwin.net/A+NotSoConcise+Summary+Of+My+Week+At+The+2007+ESRI+UC.aspx" target="_blank">promised</a> during the "Managing Distributed Data with Geodatabase Replication" session at the ESRI 2007 UC.
+
+The first several pages are full of the now obligatory replication/synchronization diagrams which, while maybe helpful to some, I've seen at least a hundred times now. The post then, however, goes into the guts of the different techniques, including geodatabase replication, DBMS replication, and simple copying and loading of data. Here's a quick summary of each technique:
+<ul>
+	<li><span style="text-decoration: underline;">Geodatabase replication</span> replicates data from a source (parent) geodatabase to a destination (child) geodatabase and creates the infrastructure to allow for tracking and synchronization of changes. Geodatabase replication is fairly powerful; it allows parameters to be defined that restrict the data that are replicated. At 9.2, geodatabase replication can only occur on SDE geodatabases, but at 9.3 SDE geodatabases will be able replicate one-way with a file or personal geodatabase. There are different types of replicas, including check-out/check-in, one-way, and two-way.</li>
+</ul>
+<blockquote>Developers can work with replicas through the GeoDatabaseDistributed ArcObjects library components. If you just need coarse-grained access to the geodatabase, you can use the GeodataServer object model. If you need more fine-grained access, however, you will want to use some of the older ArcObjects object models which allow you more capabilities but restricts you to working with geodatabases that live on your Local Area Network.
+
+Geodatabase synchronization can be automated using the synchronize changes geoprocessing tool (create a Python script, call it from a script (.bat or otherwise), and schedule it using Windows scheduler).
+
+In cases where large amounts of data are stored in a geodatabase and need to be moved to a remote office and synchronized, it may be best to detach the database from the parent, send it to the child (mail it, etc.), and then reattach it. You can then use the 'register with existing data' tool to create the replica.</blockquote>
+<ul>
+	<li><span style="text-decoration: underline;">DBMS replication</span> is good for replicating an entire geodatabase to a read-only geodatabase in a connected system. Therefore, this is a good option for load balancing and fail over. The major limitation is the inability to choose what gets replicated.</li>
+</ul>
+<blockquote>To setup and use DBMS replication, you must first understand how a geodatabase interacts with its underlying database.</blockquote>
+<ul>
+	<li><span style="text-decoration: underline;">Data copying and loading</span> is the "low-tech" way of setting up replication between multiple geodatabases. There are multiple geoprocessing tools available to help automate and schedule this process. Using this method, however, there is not a great way to verify data integrity during the replication. You can write your own code to avoid redundancy, but this is a lot of work compared to just using one of the other replication techniques.</li>
+</ul>
+This white paper didn't go as in-depth as I was hoping for. It does, however, tie the concepts together, and it contains links to other helpful resources. We've been using one-way replication successfully for a while now, and are looking to setup several two-way replicas with some remote offices here shortly. I'm sure you'll hear back from me about our experiences.
+
+Here are a couple of other resources to help you learn more about distributed geodatabases. The technical brief is especially useful:
+<ul>
+	<li>Link to the "<a href="http://downloads.esri.com/support/whitepapers/other_/ArcGISServer_Distributed_Install_061407.pdf" target="_blank">An Overview of Distributing Data with Geodatabases</a>" white paper</li>
+	<li>ESRI's "Geodatabase Replication: An Overview" Podcast (<a href="http://www.esri.com/news/podcasts/transcripts/geodatabasereplication_anoverview.pdf" target="_blank">link to transcript</a>)</li>
+	<li>ESRI Systems Integration Technical Brief: "<a href="http://www.esri.com/news/podcasts/transcripts/geodatabasereplication_anoverview.pdf" target="_blank">ArcSDE Geodatabase Replication Overview</a>"</li>
+</ul>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/arcgis-92-service-pack-3-issues-addressed-released.html" title="Previous Post: ArcGIS 9.2 Service Pack 3 Issues Addressed Released">&laquo; ArcGIS 9.2 Service Pack 3 Issues Addressed Released</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/improving-a-web-applications-page-load-time-and-responsiveness.html" title="next Post: Improving a Web Application's Page Load Time and Responsiveness">Improving a Web Application's Page Load Time and Responsiveness &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

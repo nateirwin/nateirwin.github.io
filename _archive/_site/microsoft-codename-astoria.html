@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Microsoft Codename "Astoria" | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Microsoft Codename "Astoria"
+            </h1>
+            <span class="meta">
+              Posted on 11 Jul 2007
+            </span>
+            <strong>Brief Introduction</strong>
+
+Microsoft's <a href="http://blogs.msdn.com/adonet/" target="_blank">ADO.NET team</a> recently released a new project, as a Community Technology Preview (CTP), through <a href="http://labs.live.com/" target="_blank">Microsoft's Live Labs</a>. The project, codenamed "Astoria", is a technology that allows developers to easily build and deploy data services (either on their own servers or to Microsoft's hosted "Astoria Online Service") that are accessible to applications through HTTP requests. This idea is not necessarily new - there are other ways to build a web services interface - but the ability to easily build a data service for SQL Server that is accessible through HTTP is definitely groundbreaking.
+
+As the "Astoria" site preaches: this type of service is especially useful for AJAX-based applications that work hard on improving the user experience, through the use of Flash or Silverlight. Once an "Astoria" data service is published, you can query the underlying data structure by passing parameters in the URI. For example (and this is taken from the "Astoria" <a href="http://astoria.mslivelabs.com/Overview.doc" target="_blank">Overview document</a> that is available on the Live Labs website):
+
+To access all customers in a database:
+
+http://myserver/data.svc/Customers
+
+To access a customer whose key is "ALFKI":
+
+http://myserver/data.svc/Customers[ALFKI]
+
+To find all orders that are associated with a customer whose key is "ALFKI":
+
+http://myserver/data.svc/Customers[ALFKI]/Orders
+
+And so on, so forth. You can get <strong><em>much</em></strong> more focused than the above examples. You can drilldown into related data, filter out records, sort records, and even page records.  You get the picture, right? It really is a powerful way to interact with a database.
+
+How does "Astoria" make it so simple? Well, when you build an "Astoria" data service with Visual Studio (and, by the way, you need Visual Studio "Orcas"/2008 beta 1 to install the "Astoria" framework and build these types of data services) you build an Entity Data Model (EDM). "Astoria" then uses this model to wade through the underlying database and figure out how data are related. It can <em><strong>then</strong></em> use this simplified information to serve the data and make them accessible through the RESTful interface. "Astoria" can currently represent data in XML, JSON, and (as Pablo Castro, Microsoft's ADO.NET technical lead, mentions in a really great presentation that he gave at MIX 2007) *<span style="text-decoration: underline;">very</span> experimentally in RDF+XML. XML support is probably the most accepting, but JSON is, of course, perfect for use with AJAX applications.
+
+<strong>Helpful/Interesting Resources</strong>
+
+I find "Astoria", and the underlying concept of taking complex data and making it broadly accessible intriguing. Again, I understand that this is not new territory. SOAP and other web services are a more powerful way of accessing data, but I see "Astoria"'s restful interface meeting the needs of many. The ability to easily publish a database and make it accessible to the web is something that will allow many developers to build richer (and lighter-weight) web (and mapping!) applications.
+<ul>
+	<li><a href="http://astoria.mslivelabs.com" target="_blank">Project "Astoria" Homepage</a></li>
+	<li><a href="http://216.94.10.61/mix07/silverlight/default.html?title=XD006%20-%20Accessing%20Data%20Services%20in%20the%20Cloud&amp;speakers=Pablo%20Castro&amp;presentationCode=XD006&amp;source=XD006.wmv" target="_blank">Pablo Castro's "Astoria" Presentation at Mix 2007</a></li>
+	<li><a href="http://channel9.msdn.com/shows/Microsoft_Conversations_with_Jon_Udell" target="_blank">John Udell's "A Conversation with Pablo Castro about Astoria's RESTful Data Services"</a></li>
+</ul>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/windows-server-2008s-server-core-functionality.html" title="Previous Post: Windows Server 2008's "Server Core" Functionality">&laquo; Windows Server 2008's "Server Core" Functionality</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/web-mapping-offerings-compared-post-2-what-im-looking-for-in-an-api.html" title="next Post: Web Mapping Offerings Compared (Post 2 - What I'm Looking For in an API)">Web Mapping Offerings Compared (Post 2 - What I'm Looking For in an API) &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

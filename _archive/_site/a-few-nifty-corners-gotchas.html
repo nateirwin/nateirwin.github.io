@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>A Few Nifty Corners 'Gotchas' | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              A Few Nifty Corners 'Gotchas'
+            </h1>
+            <span class="meta">
+              Posted on 19 May 2007
+            </span>
+            <p align="center"><img src="http://www.nateirwin.net/images/niftycorners.png" alt="" /></p>
+
+I'm sure most of you who, like me, hate using tables in your web design already know about Alessandro Fulciniti's wonderful Nifty Corners. If you don't, a quick summary (or you can find all the information you need at the <a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">creator's website</a>): Nifty Corners is a set of javascripts and some associated css that, when combined, allow you to round corners of divs and other css elements. While the ability to round corners has been around for quite some time, before Nifty Corners you had to use images or extra - very bulky - markup to get the desired effect.
+
+I've worked with Nifty Corners on several design projects, and it seems like everytime I use them I forget to double-check a few things and it takes me longer than it should to get them working. Well, to save my sanity during future projects and to hopefully help some other poor, forgetful soul out there, here are the common 'gotchas' that I always run into when using Nifty Corners:
+<ul>
+	<li>Always, always, always double-check the paths of your .css and .js files. If you have to separate the niftyCorners.css file from the two javascript files, you'll have to change the path that's referenced in the niftyCube.js "AddCSS" function.</li>
+	<li>You don't have to add the niftyCorners.css to your webpage (although it <strong><em>is necessary</em></strong>), this is all done in the javascript.</li>
+	<li>It is easy - and probably a good idea - to combine the two .js files into a single javascript. To do this, simply cut and paste the contents of the niftyLayout.js script into the top of the niftyCube.js script.</li>
+	<li>Rather than initiating the javascript with a "window.onload" event, I like to call the initiating function from the  event. Personal preference, I guess, but this allows me to use "windows.onload" for something else without having to implement the workaround presented on the <a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">Nifty Corners website</a>.</li>
+</ul>
+If you follow these tips, you can have beautiful rounded corners through the use of a single .js script and with *very* minimal configuration. Note that this entry is not meant to be a complete walkthrough for using Nifty Corners on your site; the <a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">Nifty Corners website</a> has tons of examples that you can reference. This is just intended to help those who run into difficulty when implementing the technique.
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/connecting-mapdotnet-server-2007-to-arcsde-92.html" title="Previous Post: Connecting MapDotNet Server 2007 to ArcSDE 9.2">&laquo; Connecting MapDotNet Server 2007 to ArcSDE 9.2</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/1-800-goog-411.html" title="next Post: 1-800-GOOG-411">1-800-GOOG-411 &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

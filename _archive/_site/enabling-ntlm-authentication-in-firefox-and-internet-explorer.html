@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Enabling NTLM Authentication in Firefox and Internet Explorer | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Enabling NTLM Authentication in Firefox and Internet Explorer
+            </h1>
+            <span class="meta">
+              Posted on 19 Jan 2007
+            </span>
+            This tip is useful for organizations who are standardized on Microsoft technologies (Active Directory, IIS, and ASP.NET) and need to provide minimal-intrusion authentication for their <strong><em>internal</em></strong> web applications. I was stumped for a long time on this one. Here's the scenario:
+
+All of my ASP.NET applications - at this point - are internal to the organization that I work for. We are a strictly Microsoft shop, and, because of this, I always leverage Active Directory in everyway possible. Well, this is great from my (a developer's) perspective, as it means that I don't have to build and maintain a login system. However, I recently started getting feedback from users across the country saying that they were being challenged with a login screen when they accessed the applications. This was okay, as they could still get in using their Active Directory accounts, but sometimes they had to append the domain to the beginning of their name, and it all became kind of a pain.
+
+We are a diverse organization, in that we have many different network configurations. Some of our users are on high-quality T1 connections, while others are still on intermittent - at best - connections. Because of this disparity, I initially blamed the login problem on different network configurations (firewalls, distance to domain controller, etc.), but after doing a bit more research I found that the problem was actually browser related.
+
+By the way, the Internet Explorer setting can also be implemented via group policy (thanks to Chris, James, and Marilyn for helping me figure this one out). Look in the registry at:
+<blockquote>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains</blockquote>
+So, here are the steps you need to take to enable NTLM pass-through authentication in Internet Explorer (6 &amp; 7) and Firefox (2):
+
+<strong></strong>
+<h4><span style="font-family: Verdana; font-size: medium;"><strong>Internet Explorer</strong></span></h4>
+Note: These instructions apply to both IE 6 and IE 7, although there may be slight differences in the screenshots below.
+
+Note2: For some reason, some of the entries that are added to the <em>Local intranet</em> zone seem to be persistent. You'll delete them in the interface, close all the windows out, come back and they'll reappear. The only way I found to permanently get rid of them was to manually delete the registry entry located at the location cited just above this section.
+
+1. In Internet Explorer, click on <em>Tools </em>and select <em>Internet Options </em>(see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step1.png" alt="" /></div>
+<strong></strong>
+
+2. Next, click on the <em>Security</em> tab at the top of the <em>Internet Options</em> window (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step2.png" alt="" /></div>
+<strong></strong>
+
+3. Once the contents of the <em>Security</em> tab are displayed, highlight <em>Local intranet</em> and click on the <em>Sites</em> button (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step3.png" alt="" /></div>
+<strong></strong>
+
+4. In the <em>Local intranet</em> dialog that pops up, make sure that the last three boxes are checked and click on the <em>Advanced</em> button (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/ie7step3.5.png" alt="" /></div>
+<strong></strong>
+
+5. In the next dialog, type the following into the <em>Add this website to the zone:</em> textbox: <strong><em>http://www.yourdomain.org</em></strong> and click on the <em>Add</em> button (see screenshot below)…
+
+Note: If you’d like to enable Active Directory pass-through authentication for all the sites on a domain, type the following into the <em>Add this website to the zone:</em> textbox: <strong><em>http://*.yourdomain.org</em></strong>.
+<div><img src="http://www.nateirwin.net/images/activedirectorypost1.png" alt="" /></div>
+<strong></strong>
+
+<strong></strong>
+<h3><span style="font-family: Verdana; font-size: medium;">Mozilla Firefox</span></h3>
+Note: These instructions have been tested on Firefox 2.0.0.1.
+
+Note2: Information first encountered here: <a href="http://ackbarr.xoops.org" target="_blank">http://ackbarr.xoops.org</a>.
+
+1. In the address bar of your Firefox browser window, type the following: <strong><em>about:config</em></strong> and press <em>Enter</em> (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/firefox2step1.png" alt="" /></div>
+<strong></strong>
+
+2. In the configuration page that displays, scroll down to the following entry: <strong><em>network.automatic-ntlm-auth.trusted-uris</em></strong> and double-click on it (see screenshot below)…
+<div><img src="http://www.nateirwin.net/images/firefox2step2.png" alt="" /></div>
+<strong></strong>
+
+3. In the <em>Enter string value</em> that pops up, type <strong><em>http://www.yourdomain.org</em></strong> into the textbox and click <em>OK</em> (see screenshot below)…
+
+Note: If you’d like to enable Active Directory pass-through
+authentication for all of the sites on a domain, type the following
+into the textbox: <strong><em>.yourdomain.org</em></strong>.
+<p align="center"><img src="http://www.nateirwin.net/images/activedirectorypost2.png" alt="" /></p>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/aspnet-ajax-10-rc-released.html" title="Previous Post: ASP.NET AJAX 1.0 RC Released">&laquo; ASP.NET AJAX 1.0 RC Released</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/aspnet-ajax-10-release-announced.html" title="next Post: ASP.NET AJAX 1.0 Release Announced">ASP.NET AJAX 1.0 Release Announced &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

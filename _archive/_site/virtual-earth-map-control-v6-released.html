@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Virtual Earth Map Control v6 Released | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Virtual Earth Map Control v6 Released
+            </h1>
+            <span class="meta">
+              Posted on 17 Oct 2007
+            </span>
+            As I'm sure most of you already know, Microsoft's recent (October 15th) release of their new version of Live Maps is getting a lot of attention. While I'm as excited as everyone else about the new features, I'm much more interested in getting at these features through Virtual Earth's JavaScript map control. Well, I decided to take some time today to update one of my web map applications to the new version of the map control. Here's a rundown of my experience, including what I'm most excited about:
+
+After switching to the v6 map control (http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6), the first thing I noticed was the new control. It's the same one that Live Maps uses. I must say that I really like it; It takes up less space, has nice transparency, and the ability to contract and expand it adds a lot to the overall experience.
+<p align="center"><a href="http://images.nateirwin.net/VirtualEarthMapControlv6Released_D1F4/ve5_1.png"><img style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" src="http://images.nateirwin.net/VirtualEarthMapControlv6Released_D1F4/ve5_1_thumb.png" border="0" alt="ve5_1" width="372" height="149" /></a></p>
+<p align="left">However, immediately after noticing this I noticed a couple of problems with my application that required my attention:</p>
+
+<ul>
+	<li>
+<div>None of my GeoRSS data were showing up. After looking into this, though, I realized that my JavaScript was incorrect (due to a hack), and - after a few simple changes - everything was back up and running. It's strange that the v5 map control let my errors slide, but I'm assuming that there must have been a fix in the underlying JavaScript that invalidated my code.</div></li>
+	<li>
+<div>My custom icons were not displaying. This was, again, because of a workaround that I implemented in v5 of the map control. After going back and correcting a couple of things (read: making them conform to standards), this problem was taken care of.</div></li>
+</ul>
+<p align="left">And that's it! Those were the only problems that I ran into with the switch to the new map control, and both were necessary because of workarounds that I had to implement in v5 of the map control. I must say that I'm impressed with how easy it was. The upgrade from v4 to v5 was much more painful, but it looks like those painful changes are starting to pay off in time and effort saved now.</p>
+<p align="left">Some fixes that I've already noticed:</p>
+
+<ul>
+	<li>
+<div>The SetCenterAndZoom method seems to be working correctly now. In v5 of the map control, it was inconsistent and I had to revert back to setting the center and then zooming to a point with two different methods.</div></li>
+	<li>
+<div>Like in Live Maps, the 3D map control works *much better than it did in the v5 release. The overall experience is much smoother (especially in Firefox), and the data are looking better than ever.</div></li>
+	<li>
+<div>It looks like the CSS has been touched up a bit, as well. With the v5 map control (and a couple of map control releases before it) the info boxes often showed up unattached to a particular point when hovering over the point in Internet Explorer. My workaround required creating my own custom info boxes and turning off Virtual Earth's. Hopefully I'll be able to abandon this workaround now.</div></li>
+</ul>
+<p align="left">Some enhancements to the SDK that I'm excited about (for a complete list, see the <a href="http://msdn2.microsoft.com/en-us/library/bb412440.aspx" target="_blank">version changelist</a>):</p>
+
+<ul>
+	<li>
+<div>VEAltitude Enumeration - Gives developers the ability to find the altitude of any point on the globe.</div></li>
+	<li>
+<div>VEMap.GetDirections Method - Allows for multi-point routing. This is a great addition.</div></li>
+	<li>
+<div>VEMapStyle Enumeration - Added the "Shaded" value. It was possible to get to this in v5 of the map control, but it is now accessible through the LoadMap and SetMapStyle methods.</div></li>
+	<li>
+<div>VEMatchConfidence Enumeration - Gives developers access to the accuracy of a returned geocode. This is an extremely useful feature that Google's geocode service has had since its 2.59 release. Microsoft still isn't as far along as Google on this one though; they only return three possible values (High, Medium, and Low), whereas Google returns nine values (0 being the least accurate (unknown) and 8 being the most accurate(address level)) and even gives developers access to "failure reasons", making it possible to let the user know why his/her geocode failed. That said, with this VEMatchConfidence Enumeration and the VEMatchCode Enumeration, Microsoft is moving in the right direction.</div></li>
+	<li>
+<div>VERouteOptimize Enumeration - Allows developers to specify how a route is optimized. The options include Default (no route optimization is done), MinimizeTime, and MinimizeDistance.</div></li>
+	<li>
+<div>There are also a handful of new 3D methods. It makes a lot of sense for Microsoft to continue to focus its resources on furthering Virtual Earth's 3D capabilities, as these capabilities are what really set it apart from the rest of the pack.</div></li>
+</ul>
+<p align="left">A random observation:</p>
+
+<ul>
+	<li>
+<div>It looks like disambiguation is now turned off by default for the geocode service. When I searched for "Denver", I was taken straight to Denver with no other options presented to me. With v5 of the map control, I was always asked if I meant "Denver" the city or "Denver" the county.</div></li>
+</ul>
+<p align="left">All in all, I'm very impressed with this release. There are enough new features to get me excited, but I'm just as excited about some of the fixes. As I continue to work with this new version of the map control, I'll post about my experiences here.</p>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/setting-up-a-windows-ruby-on-rails-development-environment.html" title="Previous Post: Setting Up a Windows Ruby on Rails Development Environment">&laquo; Setting Up a Windows Ruby on Rails Development Environment</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/virtual-earth-dashboard-display-bug.html" title="next Post: Virtual Earth Dashboard Display Bug">Virtual Earth Dashboard Display Bug &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

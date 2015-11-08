@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Planning for Internet Explorer 8 | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Planning for Internet Explorer 8
+            </h1>
+            <span class="meta">
+              Posted on 04 Feb 2009
+            </span>
+            [caption id="" align="aligncenter" width="500" caption="Photo by Eyeliam."]<a href="http://www.flickr.com/photos/eyeliam/"><img class="size-full" title="Another Version of IE to Support" src="http://images.nateirwin.net/internetexplorer.jpg" alt="" width="500" height="375" /></a>[/caption]
+
+<span class="drop_cap">L</span>ook out web developers, a new version of Internet Explorer is about to be released into the wild. Fun fun. There's no use complaining. You know you're going to have to support it, so, the only thing left to do is work hard to make sure that your site works in the new browser. How best to start?
+
+I just sat through a session on Internet Explorer 8 at Web Directions North. The session, "Ensuring Maximum Compatibility with Internet Explorer 8", was put on by Pete LePage, a Microsoft employee. It was all about planning for the upcoming release. In the session, I discovered a few interesting tidbits that I want to pass on here. But before I get to those, I want to talk a bit about how Microsoft approached the issue of compatibility while building Internet Explorer 8.
+
+We've all seen (and possibly worked on) web sites/applications that were "hacked" together. You know, the application that was pushed out too quickly due to limited resources or deadlines and then left out there to rot. Amazingly enough, some of these sites/applications take on a life of their own. Even though they aren't supported, users adapt to their bad qualities and somehow use them to get something done. In some cases, they even become a critical part of a workflow. I've worked on plenty of projects for the US federal government, so I've definitely seen these monsters - and have even, ahem, worked on a few of them.
+
+Well, the bad thing is, plenty of other developers have worked on these types of projects too, and Microsoft plans on continuing to support them for at least the foreseeable future. In fact, it would appear that Microsoft has put quite a bit of effort into continuing this support for non-standards compliant sites/applications in Internet Explorer 8. What exactly does this mean for you, the web developer, and to one of your Internet Explorer 8 users? Possibly a big mess if you aren't careful about how you implement support for the new browser.
+
+Before I move on from here, let me first say that Microsoft thinks that Internet Explorer 8 will bring them up to par with Firefox and Safari. The problem is, they aren't forcing (or even really encouraging) developers to bring their apps up to date. In fact, by making something they're calling "Compatibility Mode" available to developers and users alike, they are actually encouraging just the opposite. Why should you update that archaic application if you don't have to?
+
+Luckily, Microsoft is giving developers the ability to ensure that their applications run in standards-compliant mode. And, if you manually specify (through a meta tag or an http header sent down from your server) that your app should run in standards-compliant mode, Internet Explorer will get rid of the "easy way out" "Switch to Compatibility View" button. This means that your user won't even have the option to switch to compatibility view. This is definitely the way to go for applications that are actively developed, as this makes it less confusing for both you and your poor IE 8 user. And for those applications that are... not... so actively developed, you do have the option to specify that your site run in "Internet Explorer 7" mode.
+
+To switch the browser to "Compatibility Mode": &lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /&gt;
+
+To do the right thing by making sure that your site runs in standards-compliant mode: &lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /&gt;
+
+One other interesting piece of information: Microsoft is planning on maintaining a limited (~10,000) list of the "most visible" sites on the web that need to run in "Compatibility Mode". If a site that falls into the category of being one of the top sites on the web is reported to Microsoft as not working in Internet Explorer 8's standards mode, they plan on putting the site on this list and then automatically adding it to the list of "Compatibility" sites on each machine that has Internet Explorer 8 installed. The site will then automatically be rendered in compatibility mode. Unless, that is, the developers of the site override this by using one of the &lt;meta&gt; tags.
+
+All of these workarounds seem like a horribly convoluted way to do things. Why not just push developers to build things the right way and stop spending all of this time (and resources) on building something that forces people down the wrong path? Hopefully Microsoft will get its act together sometime soon and fully commit itself to supporting standards. Until then, we have IE 8, which is at least a step in the right direction.
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/great-javascript-debugging-article.html" title="Previous Post: Great JavaScript Debugging Article">&laquo; Great JavaScript Debugging Article</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/foxmarks-now-for-internet-explorer-and-safari.html" title="next Post: Foxmarks Now for Internet Explorer and Safari">Foxmarks Now for Internet Explorer and Safari &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

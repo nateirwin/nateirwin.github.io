@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Development Seed is making it easier to create and serve tiles and maps | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Development Seed is making it easier to create and serve tiles and maps
+            </h1>
+            <span class="meta">
+              Posted on 26 Apr 2011
+            </span>
+            <p><span class="drop_cap">I</span>nteresting news today in the world of web mapping: <a href="http://developmentseed.org">Development Seed</a>, a company that works primarily in the international development space, <a href="http://developmentseed.org/blog/2011/apr/26/mapbox-launches-tilestream-hosting-and-announces-tilemill-appliance">announced</a> that they are releasing two new commercially-focused products: a hosted TileStream service and a TileMill/TileStream appliance that is mobile and can be deployed behind corporate firewalls. If you don&#8217;t know much about <a href="http://tilemill.com/">TileMill</a> or <a href="https://github.com/mapbox/tilestream">TileStream</a>, here&#8217;s a brief explanation: These two standalone but complementary open source software projects work together to allow cartographers to design, create, and serve image tiles for use in web maps. The hosted service and appliance will undoubtedly make it easier for someone out there to get web maps up and running, and that is a good thing.</p>
+
+<p>Although these are interesting products in and of themselves, what makes TileMill and TileStream both interesting to me and relevant to my organization is their support for the <a href="http://mbtiles.org">MBTiles</a> format and <a href="https://github.com/mapbox/mbtiles-spec/blob/master/1.1/utfgrid.md">UTFGrid encoding scheme</a>. These two implementations combined make up the &#8220;holy grail&#8221; of web mapping; using them together allows you to utilize tiled images to render data over web maps while still supporting interactive mouseover/click behavior that users have come to expect when using modern web maps.</p>
+
+<p>MBTiles is a portable format that utilizes SQLite to store image tiles as blob data. A MBTiles file can be easily transferred over the network, and can serve tiles even when a mobile device is disconnected from the network. In short, MBTiles makes it easy to store, transfer, and serve image tiles for use in web mapping applications. The UTFGrid encoding scheme adds support for interactive mouse events to a set of tiles stored in the MBTiles format. In many cases, this eliminates the need for a call to the server to get information about a geospatial feature.</p>
+
+<p>What&#8217;s funny is that <a href="http://mapwrecker.wordpress.com/">Bill Thorp</a> of the <a href="http://maps.nps.gov">NPMap</a> team developed a similar approach a few years back. We were looking at ways to improve performance, and wrote a layer handler for NPMap that built out an R-tree for a geospatial layer on the server, then pushed it out to the web browser where it could be used to dynamically &#8220;query&#8221; the R-tree generated on top of the ArcGIS Server service. Our implementation wasn&#8217;t quite as refined or elegant as Development Seed&#8217;s, though, so I really look forward to utilizing TileMill and TileStream in some of our NPMap projects.</p>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/update-to-reeder-includes-readability-support.html" title="Previous Post: Update to reeder includes Readability support">&laquo; Update to reeder includes Readability support</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/my-b.html" title="next Post: My b">My b &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

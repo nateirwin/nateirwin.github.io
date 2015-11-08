@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>ArcGIS Desktop/Symantec Antivirus RegObj.dll Problem | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              ArcGIS Desktop/Symantec Antivirus RegObj.dll Problem
+            </h1>
+            <span class="meta">
+              Posted on 20 Aug 2006
+            </span>
+            As some of you may know, some antivirus programs recognize the RegObj.dll file (C:\Windows\System32\RegObj.dll on most systems) as malicious. This file is required by ArcGIS and, if deleted, ArcGIS' self-repairing feature is triggered, causing a <strong><em>very</em></strong> annoying delay while the install completes. <a href="http://support.esri.com/index.cfm?fa=knowledgebase.techarticles.articleShow&amp;d=29055" target="_blank">ESRI's solution</a> for the problem is to create a file exclusion in your antivirus software for the RegObj.dll. We use Symantec antivirus, and I personally set up the exclusion on our antivirus server. This hasn't, though, solved the problem. Yes, the repair install doesn't occur as often as it did, but it still happens.
+
+I came across a couple of messy, but doable, workarounds in the ESRI support forum today, and am hoping that these will take care of the problem forever! The first solution is as follows:
+<ul>
+	<li>Copy the RegObj.dll file from the \System32 folder to another folder on your harddrive (e.g. C:\Workspace). Symantec only deletes the .dll if it resides in your \System32 folder, so it should be safe here.</li>
+	<li>Create a simple batch file that moves the RegObj.dll from the C:\Workspace folder to the \System32 folder.
+<ul>
+	<li>To create the batch file, right-click in the directory where you want it to reside and select New&gt;Text Document in the context menu (<a href="http://www.nateirwin.net/images/newtextfile.png" target="_blank">picture illustration</a>).</li>
+	<li>Assuming that Windows is installed to your C:\ partition, open up the new text file and paste in the following line:
+<ul>
+	<li><span style="color: #ff0000;">copy "C:\Workspace\RegObj.dll" C:\WINDOWS\system32\RegObj.dll /Y</span></li>
+</ul>
+</li>
+	<li>Rename the text file to <span style="color: #ff0000;">YourName</span>.bat. You will have to confirm that you want to change the file extension by clicking "Yes" (<a href="http://www.nateirwin.net/images/confirmrename.png" target="_blank">picture illustration</a>).</li>
+</ul>
+</li>
+	<li>Next, point to Start&gt;Run and type in "<span style="color: #ff0000;">Tasks</span>". Press enter.</li>
+	<li>Double-click on "Add Scheduled Task", and the "Scheduled Task Wizard" dialog will open. Set the scheduled task parameters as follows:
+<ul>
+	<li>Click on "Browse..." and browse to the location of the batch file that you just created. When you get to it, double-click on it.</li>
+	<li>In the next window, choose to "Perform this task" <span style="color: #ff0000;">Daily <span style="color: #000000;">and click "</span>Next</span><span style="color: #000000;">".</span></li>
+	<li>Select the task "<span style="color: #ff0000;">Start time</span>" (I chose 12:01 AM). Choose to perform this task "<span style="color: #ff0000;">Every Day</span>" and specify the task "<span style="color: #ff0000;">Start date</span><span style="color: #000000;">" (today's date).</span></li>
+	<li>This is important. Specify a valid username and password in this dialog - the task will run as if started by this user. This can be tricky if you authenticate against Active Directory. If you know the credentials of a <em>local administrator</em>, use them (as you won't have to worry about forgetting to go back in and reset the password when an Active Directory password expires).</li>
+	<li>At the next dialog, check the "<span style="color: #ff0000;">Open advanced properties...</span>" box and click "<span style="color: #ff0000;">Finish</span>".</li>
+	<li>When you get into the advanced properties dialog, click on the "<span style="color: #ff0000;">Schedule</span>" tab at the top and push the "<span style="color: #ff0000;">Advanced...</span>" button.</li>
+	<li>In the "<span style="color: #ff0000;">Advanced Schedule Options</span>" dialog, check the "<span style="color: #ff0000;">Repeat task</span>" box and choose to repeat the task at a set interval (I chose 5 minutes).</li>
+	<li>Chose the "<span style="color: #ff0000;">Time:</span>" radio button and set the scheduled task end time (I chose 11:59 PM) and click "<span style="color: #ff0000;">OK</span>".</li>
+	<li>Click "<span style="color: #ff0000;">OK</span>" to close out the other open dialog and you should be good!</li>
+</ul>
+</li>
+</ul>
+The second solution uses the same method but doesn't have to run as often, as it unzips and then registers the RegObj.dll file before moving it into the \System32 folder. I'm not going to document this method, as it has already been done. I will, however, <a href="http://forums.esri.com/Attachments/15523.zip" target="_blank">point you in the right direction</a> (zip uploaded to the ESRI Support Forum by Tunrayo Alabi, here's a <a href="http://forums.esri.com/Thread.asp?c=93&amp;f=1148&amp;t=167058&amp;g=1" target="_blank">link to the full discussion</a>).
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/arcgis-reference-card.html" title="Previous Post: ArcGIS Reference Card">&laquo; ArcGIS Reference Card</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/the-confluence-of-gis-and-it.html" title="next Post: The Confluence of GIS and IT">The Confluence of GIS and IT &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Virtual Earth and SQL Server 2008 - A Match Made in Heaven? | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Virtual Earth and SQL Server 2008 - A Match Made in Heaven?
+            </h1>
+            <span class="meta">
+              Posted on 01 May 2008
+            </span>
+            <p align="center"><img id="id" style="border-right: 0px; border-top: 0px; border-left: 0px; border-bottom: 0px" src="http://images.nateirwin.net/VirtualEarthandSQLServer2008AMatchMadein_AC0F/WebServicesArchitecture.png" border="0" alt="WebServicesArchitecture" width="437" height="237" /></p>
+
+Johannes Kebeck has an <a href="http://johanneskebeck.spaces.live.com/blog/cns!42E1F70205EC8A96!4504.entry" target="_blank">interesting post</a> showing how to get the benefits of the MapPoint Web Service method, FindNearRoute, through the use of SQL Server 2008. He uses a newly-added feature of the Virtual Earth API that allows developers to gain access to a complete returned route-geometry when performing a route. This new feature, however, does require that the mapping application use <a href="http://msdn.microsoft.com/en-us/library/bb924353.aspx" target="_blank">customer identification</a> (which, in turn, requires that you sign up for a <a href="https://mappoint-css.live.com/mwssignup" target="_blank">Virtual Earth platform developer account</a>).
+
+If you haven't checked out Johannes' blog lately, you might want to give it a go now. He has written a whole slew of Virtual Earth and SQL Server 2008 posts lately, and there's a wealth of good information there.
+
+We've already started using SQL Server 2008 in some of our development applications, and are planning on taking advantage of ArcSDE 9.3's ability to utilize SQL Server 2008's spatial data types. We're hoping that by doing this, we'll be able to offer access to our geometries through both traditional GIS tools (ArcGIS Desktop for our shop) and web services (ADO.Net Data Services returning JSON and XML and other services built on top of WCF). As we're already using ArcGIS Server 9.3's REST capabilities from within our JavaScript/Virtual Earth applications, if we can "close the circle" by tying SQL Server 2008 and Virtual Earth together in a robust and meaningful way, we may just be able to hit the proverbial bulls-eye. We've already written quite a bit of code that brings these technologies together, but are still deciding on the best overall approach.
+
+One thing that is still unclear to me is if we're going to utilize ESRI's tools heavily or try to avoid them as much as possible and stick with all of the non-ESRI .NET technologies. In a lot of ways, we're already going the latter route (saying ArcGIS Server 9.2 still leaves a bad taste in my mouth), but I've been impressed with ArcGIS Server 9.3 so far, so I'm withholding judgement until we see how the new set of technologies perform in a couple of months.
+
+And from the Microsoft camp, I expect that more direct integration with SQL Server 2008 will be coming soon to the Virtual Earth API. I haven't, however, heard of any solid dates yet. Any integration will be much-welcomed, as it will save us precious development time.
+
+Whichever route we decide to take, it's pretty obvious that now is a great time to be working in web mapping. Especially if you're able to take advantage of all the integration points available through .NET.
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/a-few-reasons-to-upgrade-to-firebug-11-beta.html" title="Previous Post: A Few Reasons to Upgrade to Firebug 1.1 Beta">&laquo; A Few Reasons to Upgrade to Firebug 1.1 Beta</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/new-version-of-whereyougonnabe-released.html" title="next Post: New Version of whereyougonnabe Released">New Version of whereyougonnabe Released &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

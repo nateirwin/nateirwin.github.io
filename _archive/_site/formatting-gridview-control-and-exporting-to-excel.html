@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Formatting GridView Control and Exporting to Excel | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Formatting GridView Control and Exporting to Excel
+            </h1>
+            <span class="meta">
+              Posted on 16 Apr 2007
+            </span>
+            For organizations that have adopted Microsoft Office as their standard office suite, working with Office formats (Access, Excel, and Word) in web applications is often a necessity. Users are familiar and comfortable with Office, and with added support for Excel spreadsheets in ArcGIS Desktop 9.2 exporting to Excel from database controls (GridView, DetailsView, etc.) is a great way to make your data more accessible to GIS users.
+
+My group provides access to several organization-wide databases through our enterprise GIS intranet web portal, and we wanted to allow users to query out data and then export the data to an Excel spreadsheet. They would then be able to bring the spreadsheet into ArcMap and link it with their existing spatial data. Looking at the larger picture, this is a great - albeit not that elegant - way to tie disparate systems together and allow data developers to error-check their data by providing crosswalks between databases.
+
+Although exporting the contents of an ASP.NET 2.0 GridView control is simple, I ran into a couple of issues right off the bat:
+<ul>
+	<li>With paging enabled on my GridView control (which is a necessity for our web application), when the contents of the GridView were rendered in Excel the page links at the bottom were preserved and passed into the spreadsheet.</li>
+	<li>With sorting enabled on my GridView control (which is, again, a necessity for our web application), the column headers were passed as hyperlinks into the Excel spreadsheet. When they were clicked on an error message displayed.</li>
+</ul>
+Thankfully these problems were easily solved. As you'll see in the code below, the solution simply involved turning paging and sorting off temporarily and then turning it back on after the "Export to Excel" is completed.
+
+Note a couple of caveats:
+<ol>
+	<li>This will only work for exports of 65,000 or less records. Even though you can get up to 65,000 records returned, be aware that there is a performance hit on the server. It is a good idea to build the interface so that users have to first query out records before exporting to Excel.</li>
+	<li>I have tested this in Internet Explorer 7.0, Mozilla Firefox 2.0, and Opera 9.0 with both Office 2003 and Office 2007. When opening the exported .xls with Excel 2007, the following warning comes up:</li>
+</ol>
+<img src="http://www.nateirwin.net/images/excelexporterror.png" alt="" />
+<blockquote>When you click on the "Yes" button, the spreadsheet opens fine. This is not much of an issue for our organization, as we are still using Office 2003 and likely will be for at least another year. I found a <a href="http://forums.asp.net/thread/1560113.aspx" target="_blank">reference to this problem</a> in the ASP.NET forums, but was unable to find a solution. If anyone runs into a solution, please <a href="http://www.nateirwin.net/ContactForm.aspx" target="_blank">let me know</a>.</blockquote>
+With those caveats in mind, here's the code:
+
+<strong>Sorry that the code formatting below is messed up. I'll try to get it fixed soon!</strong>
+
+<strong>ASPX</strong> - Assuming that you are have a valid SqlDataSource set up<strong>:</strong>
+<div id="overflow">
+<pre>"btnExport" runat=<span class="str">"server"</span> OnClick=<span class="str">"btnExport_Click"</span> Text=<span class="str">"Export to Excel"</span> /&gt;</pre>
+<pre>"GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" PageSize="50"  BorderColor="Black" BorderStyle="Solid" BorderWidth="1px"&gt;
+     "#5D7B9D" Font-Bold=<span class="str">"True"</span> ForeColor=<span class="str">"White"</span> /&gt;
+
+          "DataField1" HeaderText=<span class="str">"Data Field 1"</span> SortExpression=<span class="str">"DataField1"</span> /&gt;
+          "DataField2" HeaderText=<span class="str">"Data Field 2"</span> SortExpression=<span class="str">"DataField2"</span> /&gt;
+          "DataField3" HeaderText=<span class="str">"Data Field 3" </span>SortExpression=<span class="str">"DataField3"</span> /&gt;
+
+     "#F7F6F3" ForeColor=<span class="str">"#333333"</span> /&gt;
+     "#999999" /&gt;
+
+"#E2DED6" Font-Bold=<span class="str">"True"</span> ForeColor=<span class="str">"#333333"</span> /&gt;
+
+"#284775" ForeColor=<span class="str">"White"</span> HorizontalAlign=<span class="str">"Center"</span> /&gt;
+     "#5D7B9D" Font-Bold=<span class="str">"True"</span> ForeColor=<span class="str">"White"</span> /&gt;
+     "White" ForeColor=<span class="str">"#284775"</span> /&gt;</pre>
+</div>
+<strong>Code-Behind:</strong>
+<div id="overflow">
+<pre class="csharpcode"><span class="kwrd">public</span> <span class="kwrd">partial</span> <span class="kwrd">class</span> ExporttoExcel : System.Web.UI.Page
+{
+    protected void btnExport_Click(object sender, EventArgs e)
+    {
+        GridView1.AllowPaging = false;
+        GridView1.AllowSorting = false;
+        GridView1.DataBind();
+
+        Response.Clear();
+        Response.AddHeader("content-disposition", "attachment;filename=ExcelSpreadsheet.xls");
+        Response.Charset = "";
+        Response.ContentType = "application/vnd.xls";
+
+        StringWriter stringWrite = new StringWriter();
+        HtmlTextWriter htmlWrite = new HtmlTextWriter(stringWrite);
+
+        GridView1.RenderControl(htmlWrite);
+
+        Response.Write(stringWrite.ToString());
+        Response.End();
+
+        GridView1.AllowPaging = true;
+        GridView1.AllowSorting = true;
+        GridView1.DataBind();
+    }
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+
+    }
+}
+</pre>
+</div>
+The code is pretty straightforward. On the <span style="color: #ff0000;">btnExport_Click</span><span style="color: #000000;"> event, paging and sorting are turned off on GridView1. Next, the content type is set and passed to the browser as HTML and the download is initiated. After the transfer is completed, paging and sorting are turned back on. Finally, <span style="color: #ff0000;">VerifyRenderingInServerForm</span> is overridden, confirming that an HtmlForm control is rendered for the server control at run time.</span>
+
+Hope this helps...
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/encrypting-sections-of-your-webconfig-in-aspnet-2.html" title="Previous Post: Encrypting Sections of Your Web.config in ASP.NET 2">&laquo; Encrypting Sections of Your Web.config in ASP.NET 2</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/serving-exe-files-with-iis-6.html" title="next Post: Serving .exe Files with IIS 6">Serving .exe Files with IIS 6 &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

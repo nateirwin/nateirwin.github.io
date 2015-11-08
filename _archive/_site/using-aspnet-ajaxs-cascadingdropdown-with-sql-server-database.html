@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Using ASP.NET AJAX's CascadingDropDown with SQL Server Database | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Using ASP.NET AJAX's CascadingDropDown with SQL Server Database
+            </h1>
+            <span class="meta">
+              Posted on 09 Nov 2006
+            </span>
+            I've been using Microsoft's <a href="http://ajax.asp.net/" target="_blank">ASP.NET AJAX</a> implementation since the early "Atlas" beta days, but am just now starting to feel comfortable enough with its stability to use it in actual projects. Most of the sample controls that are included with the framework are remarkably easy (and fun) to setup and use. It's pretty amazing how much usability can be added to an application through the use of AJAX.
+
+Well, I recently set out to use the <a href="http://ajax.asp.net/ajaxtoolkit/CascadingDropDown/CascadingDropDown.aspx" target="_blank">CascadingDropDown control</a> on one of my sites, but found that I ran into several different issues. The example that is included with the <a href="http://ajax.asp.net/ajaxtoolkit/" target="_blank">ASP.NET AJAX Control Toolkit</a> grabs its values from an XML dataset. I, however, wanted the controls to grab their values from tables in a SQL Server 2005 database. Luckily, there is a pretty decent <a href="http://ajax.asp.net/ajaxtoolkit/Walkthrough/CCDWithDB.aspx" target="_blank">walkthrough</a> for setting up the control with a database available on the ASP.NET AJAX webpage. I found it incomplete in a couple of important areas, though, so I thought that I would put up my version of a walkthrough for those who find themselves running into issues with implementation.
+
+I decided to use ASP.NET 2.0's datasets feature, with the new TableAdapters functionality to provide access to the data in my tables. Here are the steps to setting up the data access side:
+<blockquote>Create a new dataset (right-click in Solution Explorer, "Add New Item...", Dataset).</blockquote>
+<blockquote>Configure your TableAdapter(s) using the "TableAdapter Configuration Wizard".</blockquote>
+<ul>
+	<li>If you don't have an existing connection to your database, you will need to create one in the first dialog of the wizard.</li>
+	<li>Build as many TableAdapter queries as you need. You should have a query built for each CascadingDropDown control that you'll be using in your application.
+<ul>
+	<li>The first query will likely be a simple select query on a single column (example, as presented in the ControlToolkit and in the code below: make of a car).</li>
+	<li>The next query(ies) will need to "GetData" by a certain parameter that was returned from the previous query(ies) (example: model of a car, filtered by the make that was returned from the first query).</li>
+	<li>You will probably want to sort by one or more fields in your query(ies), as well.</li>
+	<li>Make sure that you validate your query(ies) to make sure that they return the proper records before moving on.</li>
+</ul>
+</li>
+	<li>If you are grabbing data from multiple tables, you will have to add each table into the dataset and build TableAdapter(s) for each one.</li>
+</li>
+</ul>
+Now that you can access your data and return the necessary values through the dataset, you are ready to build your Page/Web Methods. I chose to make calls to Web Methods, as a known limitation of using Page Methods in the ASP.NET AJAX beta 1 release (note: they just released beta 2, but I'm not sure if this issue has been addressed in the new release) is that if you use Page Methods, the code has to live in the .aspx page.
+<blockquote>1. To create a new Web Method, right-click on the directory where you want your code to live, select "Add New Item...", select "Web Service" from the templates, check the "Place code in separate file" option, and click "Add".</blockquote>
+<blockquote>2. Make sure that you have all of the following namespaces, along with the [Microsoft.Web.Script.Services.ScriptService()] entry at the top of your .cs, assuming, of course, that you are programming in C#:</blockquote>
+<pre>
+using System;
+using System.Web;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using AjaxControlToolkit;
+using System.Data;
+using System.Data.SqlClient;
+
+///
+/// Summary description for DataService
+///
+[WebService(Namespace = "http://yourdomain/webservices")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+[Microsoft.Web.Script.Services.ScriptService()]
+public class DataService : System.Web.Services.WebService
+{
+    public DataService ()
+    {
+        //Uncomment the following line if using designed components
+        //InitializeComponent();
+    }
+}
+</pre>
+3. build the Web Method(s). Following are two sample web methods:
+<pre>
+[WebMethod]
+public CascadingDropDownNameValue[] GetMakes(string knownCategoryValues, string category)
+{
+    CarsTableAdapters.MakeTableAdapter makeAdapter = new CarsTableAdapters.MakeTableAdapter();
+    Cars.MakeDataTable makes = makeAdapter.GetMakes();
+    Listvalues = new List();
+    
+    foreach</span> (DataRow dr in makes.Rows)
+    {
+        string make = (string)dr["Make"];
+        int makeId = (int)dr["MakeID"];
+        values.Add(new CascadingDropDownNameValue(make, makeId.ToString()));
+    }
+
+    return values.ToArray();
+}
+</pre>
+<pre>
+[WebMethod]
+public CascadingDropDownNameValue[] GetModelsByMake(string knownCategoryValues, string category)
+{
+    StringDictionary kv = CascadingDropDown.ParseKnownCategoryValuesString(knownCategoryValues);
+    int makeId;
+    
+    if (!kv.ContainsKey("Make") || !Int32.TryParse(kv["Make"], out makeId))
+    {
+        return null;
+    }
+
+    CarsTableAdapters.ModelTableAdapter modelAdapter = new CarsTableAdapters.ModelTableAdapter();
+    Cars.ModelDataTable modelTable = modelAdapter.GetModelsByMake(makeId);
+    List values = new List();
+    
+    foreach (DataRow dr in modelTable.Rows)
+    {
+        values.Add(new CascadingDropDownNameValue((string)dr["Model"], dr["ModelID"].ToString()));
+    }
+    
+    return values.ToArray();
+}
+</pre>
+
+The first method simply grabs the "Make" and "makeId" (key field) from the Make table and returns them to an array, displaying the Makes in the first dropdown. The second method parses out the valid car models, using the "makeId" to identify the valid returns, and displays them in the second dropdown.
+
+The next step includes adding the dropdown list(s) to your ASP.NET page and pointing it/them to your Web Method(s). Here is the code to create two dropdown lists and hook them up to the Web Methods. Make sure that you <a href="http://forums.asp.net/post/1281139.aspx" target="_blank">turn EnableEventValidation off</a> in the page directive (see code below). If you don't, your CascadingDropDowns will not populate and you'll get a helpful [Method 500 error]:
+<pre>
+The ASP.NET code for the CascadingDropDown controls got lost in a blog transition. My apologies!
+</pre>
+
+Some helpful resources that I used:
+
+<ul>
+	<li>Most of the core code came from <a href="http://blogs.msdn.com/sburke/" target="_blank">Shawn Burke</a> in his <a href="http://ajax.asp.net/ajaxtoolkit/Walkthrough/CCDWithDB.aspx" target="_blank">"Using CascadingDropDown with a Database"</a> walkthrough.</li>
+	<li>Gabriel Flores' <a href="http://www.elguille.info/colabora/NET2006/gflores_atlasCDDbd.htm" target="_blank">CascadingDropDown</a> walkthrough.</li>
+	<li><a href="http://www.asp.net/Learn/DataAccess/" target="_blank">"Building and Using a 3-tiered Data Architecture in ASP.NET 2.0"</a> series on <a href="http://www.asp.net">http://www.asp.net</a>.</li>
+</ul>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/validation-scripts-stop-working-in-aspnet-20.html" title="Previous Post: Validation Scripts Stop Working in ASP.NET 2.0">&laquo; Validation Scripts Stop Working in ASP.NET 2.0</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/cascadingdropdown-selectedvaluetext.html" title="next Post: CascadingDropDown SelectedValue.Text">CascadingDropDown SelectedValue.Text &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

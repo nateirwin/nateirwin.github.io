@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Geodatabase Design and Documentation | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Geodatabase Design and Documentation
+            </h1>
+            <span class="meta">
+              Posted on 07 Sep 2006
+            </span>
+            I've been looking for a better way to design, diagram, and document my geodatabase designs.
+
+Visio is my tool of choice for database design. It is easy to use and allows me to visualize and demonstrate the capabilities and limitations of my data model before actually creating the geodatabase. Using Visio, I can generate a UML schema and export it to XMI. From there, it is possible to generate all of the objects that exist in the data model into a geodatabase. There are other tools available, in addition to Visio. I haven't yet experimented with them, though.
+
+For diagramming geodatabases that weren't designed in Visio, I use <a href="http://arcscripts.esri.com/details.asp?dbid=13616" target="_blank">Geodatabase Diagrammer</a>, which is available for download on <a href="http://arcscripts.esri.com" target="_blank">ArcScripts</a>. This sweet little utility allows you to export a diagram straight out of a geodatabase (with the newest release, it supports both personal and enterprise) into Visio. It was initially developed as an internal ESRI tool, but was released to the public to help in the documentation of geodatabases. One problem that the tool has, though, is that it uses the default ESRI layout for the diagrams - which probably isn't that big of a deal for most. Another weakness that I see is that, like Geodatabase Designer 2, you have to export the entire geodatabase schema. This likely isn't much of a problem with personal geodatabases (or maybe it is for some???), but it can be a pain to export an entire SDE geodatabase schema out and then pick through the Visio model to get <em>just</em> the elements that you want in your diagram. I usually have more than one "data model" in my enterprise geodatabases, and would like to be able to select the feature classes that are associated with a particular model and get only those relationships classes and related tables that are tied to the model.
+
+For documentation of geodatabases, I use Richie Carmichael's (ESRI) <a href="http://arcscripts.esri.com/details.asp?dbid=13484" target="_blank">Geodatabase Designer 2</a>, and it works well for what it was designed to do. It allows you to import and export Geodatabase XML schemas and documents all of the tables (spatial and otherwise), subtypes, domains, relationships, and networks that exist in a geodatabase in both HTML and XML. One shortcoming that the tool has is the fact that, like the geodatabase diagrammer, you cannot pick and choose "parts" of a geodatabase to export. On the positive side, though, this is obviously a valuable tool. It would be really valuable if I could figure out how to convert the XML into a Visio model. If only we could reverse engineer an SDE geodatabase!
+
+Bottomline from what I've found is that if you didn't use UML to initially design your geodatabase, there is no single tool or method that will allow you to easily diagram your model. If you, however, did design your initial data model in Visio, you can then use that model as a visual tool and generate your geodatabase from it. To document all of the contents of the model, use Geodatabase Designer 2.
+
+I would love to hear about other methods of designing and documenting geodatabases. Any ideas?
+
+Helpful Links:
+<ul>
+	<li><a href="http://support.esri.com/index.cfm?fa=knowledgebase.documentation.viewDoc&amp;PID=43&amp;MetaID=658">Building Geodatabases with CASE Tools</a></li>
+	<li><a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=3dd3f3be-656d-4830-a868-d0044406f57d&amp;DisplayLang=en">Visio 2003 UML to XMI Export Tool</a></li>
+</ul>
+<em><span style="font-size: xx-small;">Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B000002KD9/nateirwinnet-20">Neil Young - After the Gold Rush</a>...</span></em>
+
+<em></em>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/postgresqlpostgis-installation.html" title="Previous Post: PostgreSQL/PostGIS Installation">&laquo; PostgreSQL/PostGIS Installation</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/smugmug.html" title="next Post: Smugmug">Smugmug &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

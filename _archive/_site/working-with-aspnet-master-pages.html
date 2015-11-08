@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Working with ASP.NET Master Pages | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Working with ASP.NET Master Pages
+            </h1>
+            <span class="meta">
+              Posted on 12 Aug 2006
+            </span>
+            <div><span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;"><img src="http://www.nateirwin.net/images/masterpages.png" alt="" /></span></div>
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">
+So, I've been working a lot with ASP.NET 2.0 while building the <a href="http://www.naldarageomatics.net" target="_blank">Naldara Geomatics</a> website. I knew from the beginning that I wanted to use <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets" target="_blank">CSS</a>, as I am all for making the design and management of websites easier (and I really don't like how tables look or act). As I started work on the site, though, I ran into a new feature of ASP.NET 2.0 - master pages.</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">I'm not going to really delve into what master pages are; there are hundreds of websites and blog posts that already cover this, and they all say basically the same things (if you don't believe me, try a <a href="http://www.google.com" target="_blank">google</a> search for "asp master pages". Here are the basics: master pages allow you to create a template page, with CSS, menus, headers and footers, images, etc. and create what are called content placeholders within the page. You can then create pages using the master page as the template, and only worry about creating content for the sections that are unique to the particular page. The strength of this should be obvious: if you have a single template master page, you only have to edit a single HTML page when changes to a menu or logo or footer are needed. And, of course, you don't have to worry about adding scripts multiple times to multiple pages (and then you don't have to worry about keeping them all in sync and clean).</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">Not being very experienced in the use of ASP.NET or master pages, I don't want to assert that I know everything there is to know about the two. However, I have noticed that the use of master pages makes it much more difficult to get ASP applications to work. Notice I didn't say that it <em>doesn't</em> work. There simply isn't, at this point, enough online documentation or help available.</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">For example, I have been working on putting together an ASP contact form that utilizes several controls and sits within a master page template. When the controls sit inside of a content placeholder, I have not yet been able to get it to work well. For some reason, a control that sits inside of a content placeholder has the <em>unique</em> (and this is important) name of the content placeholder and and another (logical, I'm sure, but unknown to me) set of alphanumeric characters appended to the front of its name. So, to access a control's input, you have to first find out what this unique name is and then call it into whatever script you are using. There has to be a better way of doing this, but I haven't figured it out.</span>
+
+<span style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: x-small;">Anyways, enough for now. Once I solve this problem, I'll update the post to reflect what I have learned. If any kind souls out there want to help, please do!</span>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/application-launchers-save-yourself-some-time.html" title="Previous Post: Application Launchers - Save Yourself Some Time!">&laquo; Application Launchers - Save Yourself Some Time!</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/first-post-with-windows-live-writer.html" title="next Post: First Post with Windows Live Writer">First Post with Windows Live Writer &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

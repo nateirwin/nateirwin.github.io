@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Amazon S3 as a Backup Solution | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Amazon S3 as a Backup Solution
+            </h1>
+            <span class="meta">
+              Posted on 23 Sep 2007
+            </span>
+            I've always understood the importance of backing up my workstations, but haven't always followed through with action. Luckily it has never come back to burn me too badly, although I did have one bad experience a couple of years ago when I lost a good portion of my digital music library. Well, over the last year and a half I've tried to change this by consistently backing up important files to external hard drives and taking image snapshots of all my computers using <a href="http://www.acronis.com/homecomputing/products/trueimage/" target="_blank">Acronis' True Image</a> product (see <a href="http://www.nateirwin.net/MyFavoriteApplicationsAndTools.aspx" target="_blank">My Favorite Applications and Tools</a> post for more info on True Image). However, with more and more of my life (documents, emails, music, pictures, projects, videos, etc.) living on a computer somewhere, I've decided that I now need a more robust and fail-proof backup solution. Enter <a href="http://www.amazon.com/S3-AWS-home-page-Money/b?ie=UTF8&amp;node=16427261" target="_blank">Amazon Simple Storage Service (S3)</a>.
+
+For those who aren't familiar with S3, it is an "in-the-cloud" storage service that Amazon provides as part of its growing list of <a href="http://www.amazon.com/AWS-home-page-Money/b/ref=sc_fe_l_1/103-2800011-2407858?ie=UTF8&amp;node=3435361&amp;no=3435361&amp;me=A36L942TSJ2AJA" target="_blank">web services</a>. These web services are built using the same technologies that Amazon.com uses, meaning that a lot of lessons have been learned and integrated into them. Developers can access these services through a variety of web service interfaces, and, using S3, can gain access to unlimited storage on Amazon's robust infrastructure. And yes, this includes the same availability and performance that users have come to expect from <a href="http://www.amazon.com" target="_blank">Amazon.com</a>. As for backups, S3 is appealing not only because of its availability and performance, but also because files stored in S3 are encrypted and redundantly stored in multiple data centers, meaning that the likelihood of loss of files is extremely low, especially when compared to the chance that your external hard drive will fail. That said, I still don't recommend making an S3 repository your authoritative copy of your data, as it's always a good idea to have at least one copy of your data somewhere where you can access it, no matter what.
+
+I've been keeping an eye on Amazon Web Services for quite a while now, and have recently opened up a dialog with the Amazon Web Services team about the possibility of migrating some of my organization's map cache and media into S3. I've also been playing around with integrating S3 into a couple of demo ASP.NET and Ruby on Rails applications as proofs-of-concept. As I've learned more and more about S3, the idea of using it for personal backups of important information has grown on me.
+
+As I hinted at earlier, Amazon gives developers tools to connect to (authenticate) and transfer files to and from S3. I, however, wanted an easier, more automated solution to help with my backups. I looked at a couple of solutions, including the <a href="https://addons.mozilla.org/en-US/firefox/addon/3247" target="_blank">Firefox Organizer for Amazon S3</a> (which I definitely suggest using, if just for browsing the files that you're storing on S3) and <a href="http://www.jungledisk.com" target="_blank">Jungle Disk</a>, a GUI for using Amazon S3 that mounts your S3 as a local drive letter (on Mac and Window machines, I'm not sure how you connect if you're using Linux, but I do know that Jungle Disk is supported on all three operating systems) and optionally automates backups. I decided on Jungle Disk, as it's easy to setup and use and acts a lot like a local hard drive. Note that there is a one-time *lifetime $20 fee for purchasing the utility. In my opinion it is well worth it. As I've said before, I'm willing to pay for a service that makes my life easier.
+
+Jungle Disk has a ton of configuration options, but is still trivial to get setup and running. You simply download and install the utility, sign up for an S3 account, tell Jungle Disk your S3 account information, and tell it which files (or directories) you want it to backup and when. If you set it up for automatic backups, it will perform a scheduled check to see which files have changed and only backup those that have been modified, keeping the S3 bandwidth/storage costs as low as possible. Taken from the Amazon S3 pricing page:
+
+Storage
+<ul>
+	<li>$0.15 per GB-Month of storage used</li>
+</ul>
+Data Transfer
+<ul>
+	<li>$0.10 per GB - all data transfer in</li>
+	<li>$0.18 per GB - first 10 TB / month data transfer out</li>
+</ul>
+Requests
+<ul>
+	<li>$0.01 per 1,000 PUT or LIST requests</li>
+	<li>$0.01 per 10,000 GET and all other requests</li>
+</ul>
+Pretty simple and cheap, eh?
+
+I just installed Jungle Disk and ran my first backup today. I got an average of ~600 kb/s on upload (and, yes, you can limit the upload speed and tell it to run only at certain times), and interacting with the files through Windows Explorer is just as fast as interacting with them on a local disk. In fact, as long as Jungle Disk knows where a copy of a file lives on my local machine, it will access that file automatically rather than going out to S3 to access it. If S3, however, has a newer copy of the file, it will browse to it.
+
+Overall, so far so good. Maybe I can finally have some peace of mind about my digital files?
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/mapdotnet-server-2007-612-released-along-with-better-documentation.html" title="Previous Post: MapDotNet Server 2007 6.1.2 Released Along with Better Documentation">&laquo; MapDotNet Server 2007 6.1.2 Released Along with Better Documentation</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/virtual-earth-map-control-v6-coming-soon.html" title="next Post: Virtual Earth Map Control v6 Coming Soon">Virtual Earth Map Control v6 Coming Soon &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

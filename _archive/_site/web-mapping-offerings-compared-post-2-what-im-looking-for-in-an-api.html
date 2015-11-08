@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Web Mapping Offerings Compared (Post 2 - What I'm Looking For in an API) | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Web Mapping Offerings Compared (Post 2 - What I'm Looking For in an API)
+            </h1>
+            <span class="meta">
+              Posted on 13 Jul 2007
+            </span>
+            <em>Note: This is the second entry in a series of posts titled "Web Mapping Offerings Compared". The first post, Introduction, is available for viewing <a href="http://www.nateirwin.net/Web+Mapping+Offerings+Compared+Post+1+Introduction.aspx" target="_blank">here</a>.</em>
+
+<strong>Introduction</strong>
+
+As I mentioned in the <a href="http://www.nateirwin.net/Web+Mapping+Offerings+Compared+Post+1+Introduction.aspx" target="_blank">first post of this series</a>, many of the online mapping services offer developers application programming interface (API) hooks into their services. These entry points allow developers to build applications that utilize both the data and other bits of functionality that they offer. Over the last couple of months, in my search for web mapping solutions for the organization that I work for, I have experimented with many of these APIs, and, as I worked with each of them, I noticed that each seemed to have its own unique set of strengths and weaknesses. It seems that while each of the products are moving generally in the same direction, they are all trying desperately to separate themselves from the rest of the pack while also working hard to attract developers. This can only be good for us (as the consumer, of course, but also, more importantly for me, as the developer), so I'm certainly not complaining, and as more levels of functionality are opened up to developers, I imagine that we will begin to see more "GIS-centric" applications built on top of these APIs (in place of the all-too-common 'mash-up').
+
+The *current bottomline, though, is that these APIs don't offer nearly as much built-in functionality as a full-featured GIS web map application. Out of the box, they don't support as many data types or allow you to directly query associated attributes, etc. So, the major question is "why would a GIS professional consider using an API when he/she has access to a full-featured GIS web map platform?" Well, the answer is simple - at least for me.
+
+I've noticed that often, although we (as GIS developers) hate to admit it, users of web map applications really only need the most basic of functionality. Although we'd like to think that all of our users need the ability to perform complex queries and analyses on our datasets, this level of skill is the exception and certainly not the rule. Now, I'm obviously generalizing here, but I'm speaking from the experience that I have within my own organization. There are certainly times where a level of advanced functionality is needed, but I would say that in about 80% of our use cases the user just needs to be able to:
+<ul>
+	<li>View data laid over high-quality (and high-performing) base data</li>
+	<li>Digitize and attribute simple geometries</li>
+	<li>Perform some fairly basic attribute queries</li>
+</ul>
+If this is the level of functionality that you're looking to achieve for your web map application(s), an API may be the way for you to go. And even if you need more functionality you may want to check back as this series progresses, as somewhere in the series (I haven't decided where I'll fit it in yet) I'll talk about ways that you can integrate other technologies with some of the existing API features I'll discuss to build your own web map application that rivals the offerings and functionality of one of the more full-featured GIS web map platforms. And the cool thing is that you can build a very lightweight but powerful application using this type of model.
+
+Following are the criteria that I'm going to use to evaluate each of the APIs:
+
+<strong>Type, Breadth, and Quality of API(s)</strong>
+
+All of the products that I'm going to review in this API section have at least a JavaScript API that allows developers to hook into their services. A few, however, have more API offerings. This was definitely a consideration for me when looking into each of them, as different APIs meet different needs. It's pretty easy for me: the more options, the better (assuming, of course, decent quality and stability).
+
+Kind of along the same lines, if a product's API(s) don't include the functionality that I need in my application, I'm not going to use it. Some of the APIs are more mature than others, and it shows when you start getting your hands dirty.
+
+<strong>Accessing Data/Services (Licensing)</strong>
+
+One of the biggest concerns/questions that I had when I first started looking into the different data/service mapping APIs had to do with licensing. If the cost or terms of use were prohibitive up front, it wasn't worth my time to spend a lot of time researching (read: playing) with the technology. Luckily, I found that the aforementioned competition in the fight to win developers and users over didn't stop at innovation in the products themselves; it also trickled down to licensing models. To put it simply, not only are the different players trying to outpace their opponents in their pricing models, all are also making their services available for free - with some limitations, of course.
+
+Now that I've gotten all of that out, I'm going to immediately renege on one of the statements (well, I'm not really backing away from what I said, but it may seem like it on first read): While the different vendors are trying to compete on pricing, when it comes down to the licensing model that they use, they are remarkably consistent. They all use the same type of model, based on transactions, to track and (if necessary) price usage of their services. Most say that a single transaction equals nine 256x256 pixel tiles (although there are exceptions to this), so, if you pan and only have to load three more tiles during the pan, this is considered 1/3 of a full transaction.
+
+The good news is that most of the vendors allow developers to use their services for free - up to a certain transaction limit - as long as the application is public-facing. If the application is, however, on an internal network you must purchase the data from the vendor.
+
+<strong>Quality of Base Data</strong>
+
+As I mentioned in the first post in this series, <a href="http://www.nateirwin.net/Web+Mapping+Offerings+Compared+Post+1+Introduction.aspx">Introduction</a>, one of the things that drove me towards this search was the fact that we needed to be able to use high-performing, high-quality data in our applications.
+
+While not all of the APIs that I'm going to discuss serve their own data, the data that they use have to be served from somewhere. So, if an API wasn't built on top of a particular data service (for instance, Open Layers), I had to know what data services it <strong>could </strong>connect to, out-of-the-box, and how good the data that it could access were. For those APIs that were built on top of a particular data service, it was important for me to know how good the default data were.
+
+<strong>Built-In Features and Data Support</strong>
+
+While all of the APIs support a "core" level of functionality, there are certain features that set some apart. Sure, they all allow you to view data and navigate around the map, but can you easily build digitizing functionality into the application with the API(s)? Can you access the product's geocode and routing services (and this question ties back to the licensing issue)? These are the types of features that I needed for my applications, and, therefore, the types of questions that I considered when researching the different options.
+
+Another key metric that makes it easier to distinguish between the different APIs is their out-of-the-box support for data. All of the different products allow you to create and manage shapes within a user's session, but they don't all give developers the capability to import different types of data into an application. Now, to be fair <strong><span style="text-decoration: underline;">most</span></strong> of the products only currently support a few different types of data out-of-the-box. I imagine, though, that this will change over the next six months or so, as many of the vendors seem to be focusing more of their efforts on this critical issue.
+
+<strong>Ability to Integrate with a GIS</strong>
+
+Unfortunately, I couldn't just throw out my organization's GIS needs when looking at the different APIs (and I say unfortunately because, if I could throw these needs out, it would make my life a whole lot easier). I had to consider GIS-type issues like projections, accuracy of base data, and resolution of imagery (and this was especially important in some rural areas, as many of my organization's units aren't anywhere close to an urban area).
+
+Not all of the applications that I'm working on require true GIS functionality, but this was an important consideration, nonetheless.
+
+<strong>And Moving On...</strong>
+
+In the next post, I'll start reviewing the APIs using both the overarching criteria that I laid out in the <a href="http://www.nateirwin.net/Web+Mapping+Offerings+Compared+Post+1+Introduction.aspx" target="_blank">Introduction</a> post and the API-specific criteria that I laid out above.
+
+<strong>Note:</strong> I've received several requests to look at products that I didn't explicitly mention in my first post. I will do my best to get to know all of them, as I'm curious to see what's out there. It will take some time, however, so please forgive me for any delays.
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/microsoft-codename-astoria.html" title="Previous Post: Microsoft Codename "Astoria"">&laquo; Microsoft Codename "Astoria"</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/arcgis-92-service-pack-3-issues-addressed-released.html" title="next Post: ArcGIS 9.2 Service Pack 3 Issues Addressed Released">ArcGIS 9.2 Service Pack 3 Issues Addressed Released &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

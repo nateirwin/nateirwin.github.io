@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Douglas Crockford, No Script, and IT Policy | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Douglas Crockford, No Script, and IT Policy
+            </h1>
+            <span class="meta">
+              Posted on 22 Nov 2007
+            </span>
+            Over the last year or so I've turned into more of a "client-side" developer than I would have thought possible a couple of years ago and, therefore, write quite a bit of JavaScript every day. That said, I haven't really contributed to the development of JavaScript, JSON, or AJAX (but have greatly benefited from each of them), and you should certainly listen to <span style="text-decoration: line-through;">anything</span> everything that Douglas Crockford says about JavaScript and technology in general over <span style="text-decoration: line-through;">everything</span> anything (about JavaScript or technology in general) that I say. <strong><em>But...</em></strong> I'll have to say that I disagree with a recent entry that Douglas published on the security of JavaScript and how it relates to people's everyday browsing habits.
+
+In a recent post, titled <em><a href="http://blog.360.yahoo.com/blog-TBPekxc1dLNy5DOloPfzVvFIVOWMB0li?p=715" target="_blank">No Script</a></em>, Douglas wrote about a <a href="https://addons.mozilla.org/en-US/firefox/addon/722" target="_blank">Firefox Extension (named, of course, "No Script")</a> that turns off, by default, most of the executable content in Firefox and only "allows JavaScript, Java and other executable content to run from trusted domains <strong><em>of your choice</em></strong>, e.g. your home-banking web site, and guards the "trust boundaries" against cross-site scripting attacks (XSS)". In the entry, Douglas goes on to recommend that we should "be using Firefox with No Script". On the official Firefox Add-ons page, the description of this NoScript extension goes on to claim that "Firefox is really safer with NoScript ;-)".
+
+While I would never argue with Douglas' or the extension development team's assertion that Firefox (or any browser) is more secure with executable content turned off, I did ask myself a couple of questions the first time I read Douglas' recommendation:
+<ul>
+	<li>How much of a threat is JavaScript (or other executable content like Flash and Silverlight) to the majority of everyday users on the internet?</li>
+	<li>Is the threat great enough to ask these everyday users to make snap judgements as to what executable(s) are allowed to run when they visit a website?</li>
+	<li>Can an everyday user really be expected to make a sound judgement as to what executable(s) should be allowed to run when they visit a website?</li>
+</ul>
+And, by the way, it looks like Jon Udell <a href="http://blog.jonudell.net/2007/11/07/noscript/" target="_blank">asked himself a similar question</a> when he read Douglas' entry.
+
+I'm going to go on a bit of a tangent here, but if you stick with me I think you'll see where I'm going when I'm done: In my 9 to 5 job, I work closely with the federal government on a number of projects, and I'll have to say that Douglas' recommendation reminds me a bit of the IT policies that have recently been working there way down in the federal government from on high. In short, a lot (most) of these policies seem to be pushed down with little or no consideration of the amount of impact that they will have on the productivity of the overall workforce. While I understand that this is a difficult metric to quantify, it seems to me that it is an important factor that should always be considered.
+
+While security - especially in an enterprise - should always be a chief consideration when formulating IT policy, it seems like organizations sometimes take it a bit too far. I'm probably misrepresenting utilitarianism when I say this, but doesn't it make sense to consider the <em><strong>greater good</strong></em> when developing IT policy? Shouldn't the impact of a policy always be quantified (on both sides) before implementation?
+
+Here are a few <strong>greatly-simplified</strong> examples that demonstrate the effects of (what I see as) rash IT policy formulation, and realize that I worked in IT support before my current job, so I can see this issue from a couple of different viewpoints:
+<ol>
+	<li>Sure, it's a pain to rebuild <strong>a workstation</strong> after it has been infected by a virus (most of the time this costs somewhere between <strong>1.5 to 5</strong> hours of IT support time), but how much more of a pain is it for users (<strong>over ten thousand </strong>in some enterprises) when you have antivirus software running real-time scans on their workstation and consuming a third - or more - of the workstation's resources? If quantified, the impact of installing bulky antivirus software on workstations could cost an organization <strong>thousands</strong>, if not hundreds of thousands, of hours of productivity over the course of a year. Even if some data are lost because of an outbreak (and if proper pro-active backup policies are in place, data should never be lost), the cost of productivity lost would likely greatly outweigh the benefits of having antivirus software installed. I'm assuming, of course, that every user needs every bit of their computer's computing resources to perform their job. This may be a false assumption, but it helps to clarify my argument and lets you know where I'm coming from.</li>
+	<li>It's, of course, no fun for an organization to have to run recovery on hundreds (possibly thousands?) of workstations a year because of user error, but how much productivity is lost - on both the user's end and the IT support staff's end - when local admin access is taken away and users have to either make due with an uncomfortable limited set of tools that are pushed down on them or wait for IT staff to approve and install software for them on their computer?</li>
+</ol>
+The connection between Douglas' recommendation and the argument about the cost of some IT policies that I just made may not be obvious. To me, however, there is a direct correlation between the two in the form of the thought process that brings each (Douglas and those who make IT policy decisions) to the conclusion that <strong>security trumps all</strong>. Where's the connection? Well, Douglas is assuming - much like the federal government in the examples given above - that security trumps productivity, and, because of this, it seems like he is willing to limit a user's productivity and/or freedom to protect a <strong>very</strong> small amount of users that might someday become a victim because of vulnerabilities caused by JavaScript/Flash/Silverlight. [Note: I say "<strong>seems like</strong>" because I am making an assumption, based on Douglas' blog entry, that this is how he feels. This is an assumption because he doesn't flat-out say that he feels this way, though I think that this can be inferred].
+
+I truly believe that the effect of a lot of these policies - which are certainly valid, especially if the policy makers are looking at the formulation of their policy solely through a "security lens" - if weighed against the quantified loss of productivity in the workplace, would be thrown out in a heart beat. The question is, how much of a threat really exists from allowing JavaScript and other executables to "run free" in a browser? And, if quantified and compared with the loss of productivity that would come from everyday users having to deal with the complexity of allowing or not allowing JavaScript to run in their browser, would a "No Script" policy still be as attractive (or even a viable suggestion)?
+
+In short, let's be realistic here. JavaScript and Flash are an integral part of today's web. Turning them off by default on every browser will never happen and would be a bad thing for developers and users alike. That said, Douglas is right, though, in saying that there has to be a plan: "In the long term, I want to replace JavaScript and the DOM with a smarter, safer design. In the medium term, I want to use something like Google Gears to give us vats with which we can have safe mashups". I certainly agree, but I disagree about the short-term. JavaScript is here to stay (at least until something like it, but better, comes along), and, although it may not be the safest option, user's aren't going to rush out and turn off JavaScript in their browser.
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/microsoft-sql-server-2008-november-ctp.html" title="Previous Post: Microsoft SQL Server 2008 November CTP">&laquo; Microsoft SQL Server 2008 November CTP</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/arcgis-explorers-helpful-network-connection-dialog.html" title="next Post: ArcGIS Explorer's Helpful Network Connection Dialog">ArcGIS Explorer's Helpful Network Connection Dialog &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

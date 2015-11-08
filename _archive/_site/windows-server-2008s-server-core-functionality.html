@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Windows Server 2008's "Server Core" Functionality | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Windows Server 2008's "Server Core" Functionality
+            </h1>
+            <span class="meta">
+              Posted on 09 Jul 2007
+            </span>
+            I haven't (yet) had the chance to experiment with the June Community Technology Preview (CTP) of Windows Server 2008, previously code-named "Longhorn", but was excited <a href="http://blogs.iis.net/bills/archive/2007/06/26/iis7-on-server-core-june-ctp-build-released.aspx" target="_blank">to read</a> that a server core role has been added for IIS7. If you haven't played with or read about any of the features included in Windows Server 2008, I'll catch you up on one of the ones that I'm most excited about: the ability to run Windows Server 2008 in a stripped-down, lightweight, and extremely focused mode. Microsoft is calling this new feature, which is basically a set of new operating systems, server core.
+
+When running a server core, you are setting up an operating system to perform a single task, and are not installing any unnecessary features. This not only increases the stability of the operating system and lessens the load on the supporting hardware, but it also makes the machine much less vulnerable to attacks and makes maintenance (e.g. applying patches) on the machine less burdensome. And, best of all, there's no overhead of having a graphical user interface and features that you never use running.
+
+With the release of the June CTP, IIS7 has been added as the seventh supported server role. As a web developer, this is the server role that I'm most excited about, although there are others available, including file server, domain controller, DNS, DHCP, and network load balancing.
+
+One big problem remains, though (and I hope this is taken care of before or in the final release): Because of the <a href="http://blogs.technet.com/server_core/archive/2007/06/26/iis-in-server-core.aspx" target="_blank">lack of managed code support in server core</a>, IIS doesn't currently support ASP.NET when used on server core. If this problem is taken care of, I can see us utilizing server core on virtual machines and increasing the performance of our servers while also increasing the number of instances each of our physical servers can support.
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/web-mapping-offerings-compared-post-1-introduction.html" title="Previous Post: Web Mapping Offerings Compared (Post 1 - Introduction)">&laquo; Web Mapping Offerings Compared (Post 1 - Introduction)</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/microsoft-codename-astoria.html" title="next Post: Microsoft Codename "Astoria"">Microsoft Codename "Astoria" &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

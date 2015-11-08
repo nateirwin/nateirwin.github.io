@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>ASP.NET and Web Mapping | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              ASP.NET and Web Mapping
+            </h1>
+            <span class="meta">
+              Posted on 23 Oct 2006
+            </span>
+            As is obvious from my recent posts, for the last several months I've been working extensively with ASP.NET 2.0. From this experience, I've really come to appreciate the power and flexibility that the .NET Framework offers (and please realize that this is hard for me to say, as I've long been a proponent of all things non-Microsoft). I've especially been impressed when developing on a strictly .NET platform. The seamless integration between Active Directory, ASP.NET, IIS, SQL Server, and, of course, Visual Studio makes developing applications straightforward and nearly painless.
+
+The database controls for ASP.NET 2.0 are, in my opinion, some of the most powerful and valuable controls available. For example, the DetailsView and GridView controls are an easy way to open up a database to multiple users. Using the controls, you can make a database viewable and editable (including the addition of new records and deletion of unwanted records) and write less than twenty lines of code in the process. There is even built-in support for some basic "reconciliation" of the database to check for changes to the same record before submitting updates back to it, along with the ability to add some client-side validation to the insert/update forms. The big question for us GIS sorts, though, is how easy is it to integrate these types of controls - and this level of functionality - into geospatial web apps?
+
+In the past, this would have likely been done through an ArcIMS application. Anyone that's worked with ArcIMS knows, though, that developing an ArcIMS application isn't exactly what you call sustainable; basically, it's better to avoid ArcIMS altogether if possible. Have you ever seen an ArcIMS application that <span style="text-decoration: underline;">works efficiently</span>, <span style="text-decoration: underline;">looks good</span>, and <span style="text-decoration: underline;">serves its purpose well</span>? Well, to be honest, I have too - but they are few and far between. I could tell, though, by looking at these dispersed gems that (likely expensive) third-party products were used and lots of time and effort went into developing the interface.
+
+On to today, and the question that's currently picking at my brain: I've just started really experimenting with ArcGIS Server 9.2, and - to be honest - I'm about hooked already. Talk about an easy way to publish services (KML, Map, WMS, etc.) to the net! And with ArcGIS Explorer coming out soon, as well, it looks like we might actually have a way to present these services in a solid, customizable, and easy-to-use interface. One thing I haven't tested yet, though, is the ability of ArcGIS Server 's mapping services to be extended into a truly customized and powerful web application (think along the lines of an ArcIMS application, but with much more functionality and end-user interaction/control). With the .NET support, I'm sure it can't be too difficult. Again, this is one of those topics that I'm going to have to explore further and report back with more details later on in the process.
+
+Note: I found <a href="http://www.amazon.com/exec/obidos/ASIN/1418018759/nateirwinnet-20" target="_blank">one book</a> about ASP.NET and ArcGIS Server on Amazon, but, after reading the lone review, I'm not sure I'm going to bite.
+
+<span style="font-size: xx-small;"><em>Listening to </em></span><a href="http://www.amazon.com/exec/obidos/ASIN/B0002EQ7E2/nateirwinnet-20" target="_blank"><span style="font-size: xx-small;"><em>Paul Simon - Graceland</em></span></a><em><span style="font-size: xx-small;">...</span>
+<span style="font-size: xx-small;">My Nose is In </span></em><a href="http://www.amazon.com/exec/obidos/ASIN/0679760849/nateirwinnet-20" target="_blank"><span style="font-size: xx-small;"><em>Cormac McCarthy - The Crossing</em></span></a><span style="font-size: xx-small;"><em>...</em></span>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/geodatabase-replication-and-synchronization.html" title="Previous Post: Geodatabase Replication and Synchronization">&laquo; Geodatabase Replication and Synchronization</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/playing-in-the-snow.html" title="next Post: Playing in the Snow">Playing in the Snow &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

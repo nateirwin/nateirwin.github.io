@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Visual Studio 2005 SP1 Performance Problems | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Visual Studio 2005 SP1 Performance Problems
+            </h1>
+            <span class="meta">
+              Posted on 29 Jan 2007
+            </span>
+            <img src="http://www.nateirwin.net/images/memoryhog3.png" alt="" align="right" />
+
+Visual Studio and I have a love hate relationship. I love working in it, but why does it have to hog all of my system resources? I've got a decent system (3GHz Pentium 4, 3 GB of RAM, etc.), but lately I've been running into major issues: 5 minute freeze-ups, devenv.exe using ~200 Mb of memory (which seems like a lot to me, but I found posts from other users saying that it used over 500 Mb on their systems), etc. Doing a Google search for "devenv.exe hogging resources" shows that many others are experiencing the same type of problems. The search also, unfortunately, reveals that there really isn't a great solution for the problem. You can always disable add-ons, of course, but this doesn't always fix the problem and sometimes just isn't an option.
+
+Well, I ran into an <a href="http://blogs.vbcity.com/drydo/archive/2006/06/15.aspx" target="_blank">interesting and bizarre workaround</a>: when you see that devenv.exe is getting out of control and funky minimize the Visual Studio window(s) and then restore it/them. This takes devenv.exe's memory usage down to a more reasonable level. Watch out, though, as it will likely start to slowly creep up again.
+
+The ultimate inefficient workaround that I'm currently implementing is downloading the next version of Visual Studio, currently codenamed "Orcas". I'm going to run it in a virtual machine on my desktop. I've been meaning to do this for awhile, as it's got a lot of features that I'm really interested in trying out, including full support for C# 3.0 and integration of the Language Integrated Query (LINQ) project, but this VS 2005 performance issue is pushing me towards this workaround a little faster than I might have gotten there otherwise.
+
+Anyone else have tips on optimizing the Visual Studio environment?
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/aspnet-ajax-10-release-announced.html" title="Previous Post: ASP.NET AJAX 1.0 Release Announced">&laquo; ASP.NET AJAX 1.0 Release Announced</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/and-the-news-ismore-snow.html" title="next Post: And the News is...More Snow!">And the News is...More Snow! &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

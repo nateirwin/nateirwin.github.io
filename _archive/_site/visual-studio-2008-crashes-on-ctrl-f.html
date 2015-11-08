@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Visual Studio 2008 Crashes on Ctrl-F | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Visual Studio 2008 Crashes on Ctrl-F
+            </h1>
+            <span class="meta">
+              Posted on 20 Dec 2007
+            </span>
+            So, the "Find" and "Find/Replace" tools aren't an important part of Visual
+Studio, are they?
+
+I recently installed the RTM of Visual Studio 2008 Professional on my
+<strong>Windows XP x64</strong> machine, leaving Visual Studio 2005 installed,
+as well, just in case things went awry with the new version. I've been using the
+early release versions of 2008 for sometime now, and have been impressed with
+the performance improvements and many of the new features, so I didn't think
+that I'd have too many problems with or misgivings about the upgrade.
+
+Well, after the install I was working in the IDE and used the trusty Ctrl-F
+combo to open up the "Find" dialog. Visual Studio 2008 immediately conked on me.
+Totally conked. I opened it back up and tried Ctrl-F again and it conked
+again.
+
+At this point I was ready to go back to 2005 (I was pretty disappointed in
+the much-hyped JavaScript debugging already), but I decided to do a quick Google
+search first. After performing the search, I ended up on the Visual Studio
+feedback site at the "<a href="https://connect.microsoft.com/VisualStudio/feedback/ViewFeedback.aspx?FeedbackID=311712" target="_blank">Visual Studio 2008 RTM Search Crashes</a>" bug report.
+
+For those of you who aren't into reading bug reports, I'll summarize the
+contents: If you use more than one monitor and a utility (UltraMon in my case,
+but could be a utility that comes with your video card or any other third party
+utility) that helps you manage the multiple monitor setup, Visual Studio 2008
+will crash when you open up the "Find" and "Find/Replace" dialog. This bug is
+apparently not a problem with Visual Studio 2008, but a newly-discovered (or at
+least newly-publicized) bug in Windows XP x64.
+
+After reading through the multiple posts that were associated with the bug
+report, it became painfully obvious that I had only two choices: either
+uninstall my baby UltraMon or go back to using Visual Studio 2005. I didn't even
+have to think about it; I immediately went back to using 2005 and accepted my
+fate.
+
+Today I randomly decided to check to see if an update for UltraMon had been
+released, and lo and behold it had! And talk about lucky - in this newest
+release (3.01 = beta 2 of 3.0) Realtime Soft decided to take some of the Windows
+'hooks' out, meaning that the Windows XP x64 bug that was causing my Visual
+Studio 2008 Ctrl-F issues was fixed for me immediately!
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/arcgis-explorers-helpful-network-connection-dialog.html" title="Previous Post: ArcGIS Explorer's Helpful Network Connection Dialog">&laquo; ArcGIS Explorer's Helpful Network Connection Dialog</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/yahoo-maps-is-now-pure-javascript.html" title="next Post: Yahoo! Maps is Now Pure JavaScript">Yahoo! Maps is Now Pure JavaScript &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

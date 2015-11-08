@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>MOSS 2007 - Creating and Using a Site Template | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              MOSS 2007 - Creating and Using a Site Template
+            </h1>
+            <span class="meta">
+              Posted on 03 Jan 2008
+            </span>
+            I've recently been tasked with setting up a Microsoft Office Sharepoint Server (MOSS) 2007 portal for multiple program areas within the organization that I work for. I've worked with Sharepoint in the past, but have never really had the opportunity to "dive deep" into the technology, so I'm not all that familiar with the inner-workings.
+
+That said, I didn't expect it to be too difficult to setup a single template subsite and then clone the template to create multiple sites with the same look, feel, and functionality. Well, I was wrong. You see, if you don't have access to the server that you're developing for (and I don't), you have to either work with the server admin to get the template put into the server's template collection or use a workaround that I discovered after a bit of playing around in Sharepoint Designer 2007:
+
+1. Develop a Sharepoint, getting it to the point where you'd like to "clone" it.
+
+2. Use Sharepoint Designer 2007 (I'm sure you can do this with other tools as well, but I haven't verified this) to backup the "template" Sharepoint site.
+<blockquote>a. After opening the site in Sharepoint Designer 2007, go to the "Site"&gt;"Administration"&gt;"Backup Web Site..." tool.</blockquote>
+<p align="center"><a href="http://images.nateirwin.net/MOSS2007CreatingandUsingaSiteTemplate_C443/sharepoint1.png"><img style="border: 0px none " src="http://images.nateirwin.net/MOSS2007CreatingandUsingaSiteTemplate_C443/sharepoint1_thumb.png" border="0" alt="sharepoint1" width="382" height="303" /></a></p>
+
+<blockquote>
+<p align="left">b. Click "OK" on the next dialog, choose where you want to save the .cmp (Content Migration Package) and press "Save" in the next dialog, and then wait for the backup to complete.</p>
+</blockquote>
+<p align="left">3. Next go back to the parent site that you want to create the subsite off of and create the new subsite. There are multiple ways to do this. I just use the "Folder List" dialog, right-click on the parent node, and select "New"&gt;"Subsite..." option. In the "New" dialog, just choose to create the subsite based on the "Blank Site" template.</p>
+<p align="left">4. After the subsite is created successfully, Sharepoint Designer 2007 should open it in a new window. Next you simply need to restore the backup that you previously took to this new subsite.</p>
+
+<blockquote>
+<p align="left">a. To do this, go to the "Site"&gt;"Administration"&gt;"Restore Web Site..." tool.</p>
+<p align="left">b. In the explorer dialog, browse to the backup that you created previously and open it. Click "OK" in the "Restore Web Site" dialog and wait for the restore to finish.</p>
+</blockquote>
+<p align="left">And that's it! This solution is definitely a bit of a workaround, but it works well if you don't have access to the template library. If anyone knows of a better way to do this, I'd be interested to hear about it.</p>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/yahoo-maps-is-now-pure-javascript.html" title="Previous Post: Yahoo! Maps is Now Pure JavaScript">&laquo; Yahoo! Maps is Now Pure JavaScript</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/installing-windows-live-writer-on-64-bit-windows.html" title="next Post: Installing Windows Live Writer on 64-bit Windows">Installing Windows Live Writer on 64-bit Windows &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

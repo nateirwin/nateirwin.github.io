@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Populating SharePoint form fields from URL parameters | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Populating SharePoint form fields from URL parameters
+            </h1>
+            <span class="meta">
+              Posted on 08 Nov 2011
+            </span>
+            <p>I occasionally get asked to do a bit of SharePoint hackery for my company, so it didn&#8217;t come as a surprise when I was asked last week if it was possible to populate fields in a SharePoint form with parameters passed in via the form URL. My answer, as always: &#8220;Anything is possible!&#8221; And, of course, it is possible, but it isn&#8217;t quite as straight-forward as just writing a snippet of JavaScript.</p>
+
+<p>Main lesson learned: Use Internet Explorer when trying to do anything with SharePoint. We are running the latest version of SharePoint, MOSS 2010, and it is amazing to me that Microsoft can still get away with releasing a product that only runs properly in Internet Explorer. When are companies going to demand more?</p>
+
+<p>Now that that&#8217;s out of my system: After figuring out that I had to use Internet Explorer, completing this task really was as easy as writing a few lines of JavaScript.</p>
+
+<p>Here are the exact steps taken:</p>
+
+<ol>
+<li>
+<p>Navigate to the URL of the form that you want to hook the auto population up to (&#8220;NewForm.aspx&#8221; in most cases).</p>
+</li>
+
+<li>
+<p>Insert a &#8220;ContentWebEditor&#8221; web part into the page.</p>
+</li>
+
+<li>
+<p>Click within the &#8220;ContentWebEditor&#8221; web part and click on &#8220;Edit HTML Source&#8221; under the &#8220;Editing Tools &#62; Format Text &#62; HTML&#8221; menu item.</p>
+</li>
+
+<li>
+<p>Copy and paste the following snippet into your page. Note: I&#8217;m using jQuery here, as we use it in pretty much all of our products. You can very easily do this without the jQuery dependency.</p>
+
+<p>&#60;script type=&#8221;text/javascript&#8221; src=&#8221;http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js&#8221;&#62;&#60;/script&#62; &#60;script type=&#8221;text/javascript&#8221;&#62; $(document).ready(function() {         var query = window.location.search.replace(&#8217;?&#8217;, &#8221;).split(&#8217;&#38;&#8217;);</p>
+
+<pre><code> for (var i = 0; i &amp;lt; query.length; i++) {
+   var p = query[i].split(&#39;=&#39;);
+   
+   $(&#39;input[title=&quot;&#39; + p[0] + &#39;&quot;]&#39;).val(p[1]);
+ }</code></pre>
+
+<p>}); &#60;/script&#62;</p>
+</li>
+</ol>
+
+<p>This script loads jQuery (if you already have it loaded into your web page, you obviously don&#8217;t need to load it again here), grabs the query parameters from the URL, iterates through them, looking for HTML inputs with the exact same title as the parameter name, and sets the value of a matched input to the value of the parameter.</p>
+
+<p>So, if I had a form located at <code>http://mysharepointsite/Lists/DataAction/NewForm.aspx</code>, I could pass parameters in like this: <code>http://mysharepointsite/Lists/DataAction/NewForm.aspx?Parameter1=Test1&amp;amp;Parameter2=Test2</code>. The JavaScript would iterate through the parameters, and set the value of inputs with a title of &#8220;Parameter1&#8221; or &#8220;Parameter2&#8221; with the appropriate values.</p>
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/tilemill-0-6-0-released.html" title="Previous Post: TileMill 0.6.0 released">&laquo; TileMill 0.6.0 released</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/adobe-officially-kills-flash-player-for-mobile-says-html5-is-the-best-solution.html" title="next Post: Adobe officially kills Flash Player for mobile, says HTML5 is 'the best solution'">Adobe officially kills Flash Player for mobile, says HTML5 is 'the best solution' &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

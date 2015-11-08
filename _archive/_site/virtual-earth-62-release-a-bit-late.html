@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Virtual Earth 6.2 Release a Bit Late | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Virtual Earth 6.2 Release a Bit Late
+            </h1>
+            <span class="meta">
+              Posted on 24 Sep 2008
+            </span>
+            I wrote about the 6.2 release of Virtual Earth on September 10th, saying that it was due to be released on September 22nd. Well, it’s now the 24th and we still haven’t seen the new code. There are signs, however, that it’s on the way, including a document on MSDN (you can get to it by going to the Virtual Earth Interactive SDK -- <a title="http://dev.live.com/virtualearth/sdk/" href="http://dev.live.com/virtualearth/sdk/">http://dev.live.com/virtualearth/sdk/</a> -- and clicking on the “What’s new in the latest release” link).
+<p align="center"><img style="border: 0px none " title="image" src="http://images.nateirwin.net/VirtualEarth6.2ReleaseaBitLate_884E/image.png" border="0" alt="image" width="177" height="49" /></p>
+
+The document has more information on the coming release, including the following, copied and pasted from the document (and yes, those links to MSDN do currently work):
+<ul>
+	<li><strong>Pushpin clustering</strong>. Use the <a href="http://msdn.microsoft.com/en-us/library/cc966930%28ide%29.aspx">VEShapeLayer.SetClusteringConfiguration Method</a> to set how to display and cluster overlapping pushpins for better shape display at higher altitudes.</li>
+	<li><strong>Hints for route instructions</strong>. Help your users find route turns with hints about nearby landmarks and intersections using the <a href="http://msdn.microsoft.com/en-us/library/cc966723%28ide%29.aspx">VERouteItineraryItem.Hints Property</a>.</li>
+	<li><strong>Imagery metadata</strong>. Retrieve information about imagery using the <a href="http://msdn.microsoft.com/en-us/library/cc966714%28ide%29.aspx">VEMap.GetImageryMetadata Method</a>.</li>
+	<li><strong>Base map disabling</strong>. Use the Virtual Earth Mercator projection in non-mapping applications by turning off the base map with the <a href="http://msdn.microsoft.com/en-us/library/cc966724%28ide%29.aspx">VEMapOptions.LoadBaseTiles Property</a>. You can use the <a href="http://msdn.microsoft.com/en-us/library/cc980906%28ide%29.aspx">VEMap.HideScalebar Method</a> as well.</li>
+	<li><strong>Support for other languages</strong>. Retrieve maps with labels in French, German, Italian, and Spanish from Virtual Earth. See the <a href="http://msdn.microsoft.com/en-us/library/cc469974%28ide%29.aspx">Returning Localized Results</a> topic for a list of supported culture strings.</li>
+	<li><strong>3D model import</strong>. Import 3D model data files into a shape layer using the <a href="http://msdn.microsoft.com/en-us/library/cc966728%28ide%29.aspx">VEMap.Import3DModel Method</a>. Interact with these models as you would any shape.</li>
+	<li><strong>Updated interactive SDK</strong>. See the new functionality of the Virtual Earth map control demonstrated in the updated <a href="http://dev.live.com/virtualearth/sdk/">Virtual Earth Interactive SDK</a>.</li>
+</ul>
+I also received an email from Microsoft yesterday that said that the release has been delayed and that they will send out an update on the status sometime today. I’ll make sure that this post gets updated when I receive the email.
+
+UPDATE: The new release is now out (9/25/2008 at 7:45 AM Mountain Time).
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/virtual-earth-62-coming-september-22nd.html" title="Previous Post: Virtual Earth 6.2 Coming September 22nd">&laquo; Virtual Earth 6.2 Coming September 22nd</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/migrating-from-blogenginenet-to-wordpress.html" title="next Post: Migrating from BlogEngine.Net to WordPress">Migrating from BlogEngine.Net to WordPress &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

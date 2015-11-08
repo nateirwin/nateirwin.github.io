@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>PostgreSQL/PostGIS Installation | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              PostgreSQL/PostGIS Installation
+            </h1>
+            <span class="meta">
+              Posted on 30 Aug 2006
+            </span>
+            I've worked with <a href="http://www.postgresql.org/" target="_blank">PostgreSQL</a> for a while now, but everytime I perform a new
+install (usually with <a href="http://postgis.refractions.net/" target="_blank">PostGIS</a> added on soon after the initial install) I am amazed
+at how simple it is and how smoothly it goes. In the past, I've worked on some
+pretty complex database installs - especially complex, at least for me, when
+installing to a Linux system - but it really only takes a few minutes to get
+PostGIS up and running on a database on <strong><em>any</em></strong>
+platform.
+
+If you haven't checked them out, you should go download them both now. And
+if you want an open source desktop interface, there are a number of options that
+plug directly into PostGIS, including <a href="http://qgis.org/" target="_blank">Quantum GIS</a> and <a href="http://udig.refractions.net/" target="_blank">uDig</a>. With them you can easily connect to a PostGIS database,
+and load (check out the Import Shapefiles to PostgreSQL plugin for Quantum
+GIS) and edit data. On top of this, you can greatly extend Quantum GIS'
+capabilities by using it as a graphical user interface for <a href="http://grass.ibiblio.org/index.php" target="_blank">GRASS</a>.
+
+I agree with others that the major "gap" in the open source GIS arena is on
+the client side of things. At this point, there isn't an interface that rivals
+the ArcGIS Desktop suite. The products that are available, though, do serve a
+purpose. And if you're willing to put the time into learning and integrating
+them, they fill a huge niche that is left empty by ESRI.
+
+As for the open source spatially-aware database, however, PostgreSQL and
+PostGIS offer a viable - albeit not as powerful - alternative to the expensive
+proprietary solutions. The two combined don't work for every scenario, but they
+do work for a surprising number of cases.
+
+More to come on all of these solutions later...
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/free-3d-modeling-software.html" title="Previous Post: Free 3D Modeling Software">&laquo; Free 3D Modeling Software</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/geodatabase-design-and-documentation.html" title="next Post: Geodatabase Design and Documentation">Geodatabase Design and Documentation &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>

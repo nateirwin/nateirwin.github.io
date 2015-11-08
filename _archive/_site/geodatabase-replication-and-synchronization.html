@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Geodatabase Replication and Synchronization | nateirwin.net</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The online home of Nate Irwin, NPMap team lead for the National Park Service.">
+<meta name="author" content="Nate Irwin">
+<!--<link href="http://fonts.googleapis.com/css?family=Cantarell:400,700,400italic,700italic" rel="stylesheet">-->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" href="atom.xml">
+<style>
+  .navbar .nav .active > a, .navbar .nav .active > a:hover {
+    background-color: #333;
+  }
+</style>
+<script src="http://use.typekit.net/iqg7vfd.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="/css/site.css" rel="stylesheet">
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57-precomposed.png">
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <!--[if !IE 7]>
+      <style type="text/css">
+        #wrapper {display:table;height:100%}
+      </style>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/">nateirwin.net</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          
+          <li><a href="about.html">About</a></li>
+          
+          
+          <li><a href="archive.html">Archive</a></li>
+          
+          <li><a href="http://life.nateirwin.net">Life</a></li>
+          <li><a href="atom.xml">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+    <div id="wrapper">
+      <div id="main" class="container padding-top">
+        <div class="row">
+          <div class="span12 post" style="margin-bottom:50px;">
+            <h1>
+              Geodatabase Replication and Synchronization
+            </h1>
+            <span class="meta">
+              Posted on 13 Oct 2006
+            </span>
+            As many of you probably already know, ESRI's upcoming ArcGIS 9.2 release will greatly enhance the ability of an organization to expand its enterprise GIS to multiple sites through the use of geodatabase replication and synchronization. This ability comes with the workgroup and enterprise versions of ArcSDE; it does not work with personal or file-based geodatabases.
+
+Data have to be registered with the geodatabase and versioned before they are replicated, and a globally unique identifier (GUID) has to be added to each table record to aid in the tracking of multiple copies of the same tables (feature classes). Thankfully, there are ways to limit the data that are synchronized between geodatabases, allowing for a database administrator to control the amount of bandwidth used - and the data exchanged - by replicating and synchronizing only the data that are needed.
+
+As far as versions go, they are replicated and synchronized with the geodatabase, as well. This is obviously necessary, but I can see it being both a good and a bad thing, depending on how you look at it. One thing is for sure, though: the addition of these features to the geodatabase, while adding a tremendously useful resource to the toolset of a geodatabase administrator, adds another dimension of complexity to the SDE world.
+
+I am currently working on a project that will eventually replicate a geodatabase between multiple (10-50) sites, including the management and replication/synchronization of over 300 versions of multiple enterprise datasets from these sites. Up until the 9.2 release, this project wasn't a possibility for us, as many of the sites that we are focusing on have iffy - at best - network connectivity. Also, the check-in/out capabilities that currently exist in the ESRI world have problems that make them an undesirable solution in many situations.
+
+I plan on detailing the progress of our project as it progresses. I'm sure we'll run into many pitfalls and (hopefully) some triumphs along the way.
+
+<em><span style="font-size: xx-small;">Listening to <a href="http://www.amazon.com/exec/obidos/ASIN/B000EOTUY4/nateirwinnet-20">Calexico - Garden Ruin</a>...</span></em>
+
+            
+            
+              <hr>
+              <div style="text-align:center;">
+                 
+                  <a href="/registering-aspnet-20-with-iis-6.html" title="Previous Post: Registering ASP.NET 2.0 with IIS 6">&laquo; Registering ASP.NET 2.0 with IIS 6</a>
+                
+                
+                 | 
+                 
+                 
+                  <a href="/aspnet-and-web-mapping.html" title="next Post: ASP.NET and Web Mapping">ASP.NET and Web Mapping &raquo; </a> 
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="row-fluid" id="sticky">
+  <div class="container">
+    <p style="margin:8px 0 0 0;" id="copyright">&copy; 2006 - 2013, Nate Irwin. All rights reserved.</p>
+    <p style="float:right;margin:13px 0 0 0;" id="follow-twitter"><a href="https://twitter.com/nateirwin" class="twitter-follow-button" data-show-count="false">Follow @nateirwin</a></p>
+  </div>
+</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="/js/bootstrap-collapse.js"></script>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-526976-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </body>
+</html>
